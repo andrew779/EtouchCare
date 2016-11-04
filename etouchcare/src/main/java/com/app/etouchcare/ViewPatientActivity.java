@@ -38,7 +38,7 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
         PatientModel modelSource = new PatientModel();
         PatientModel model = modelSource.GetTop3Patients().get(intentExtra);
 
-<<<<<<< HEAD
+
         Button btn_condition = (Button) findViewById(R.id.btn_condition);
         btn_condition.setOnClickListener(this);
 
@@ -55,12 +55,7 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
                 break;
 
         }
-=======
-        //txtName.setTextSize(40);
-        txtName.setText(model.Name);
-        txtId.setText(model.Id);
-        txtRoom.setText(model.Room);
->>>>>>> 2eee2930225bf74b62cf085650ee68e911b639fa
+
     }
 
 

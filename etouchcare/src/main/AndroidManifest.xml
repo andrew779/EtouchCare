@@ -16,10 +16,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".MyPatientsListActivity" />
-        <activity android:name="com.app.etouchcare.ViewPatientActivity" />
-        <activity android:name="com.app.etouchcare.ConditionActivity" />
-        <activity android:name="com.app.etouchcare.DiagnosisActivity" />
-        <activity android:name="com.app.etouchcare.TestsActivity"></activity>
+        <activity android:name="com.app.etouchcare.ViewPatientActivity"
+            android:parentActivityName=".MyPatientsListActivity"/>
+        <activity android:name="com.app.etouchcare.ConditionActivity"
+            android:parentActivityName=".ViewPatientActivity"/>
+        <activity android:name="com.app.etouchcare.DiagnosisActivity"
+            android:parentActivityName=".ViewPatientActivity"/>
+        <activity android:name="com.app.etouchcare.TestsActivity"
+            android:parentActivityName=".ViewPatientActivity"/>
     </application>
 
 </manifest>
