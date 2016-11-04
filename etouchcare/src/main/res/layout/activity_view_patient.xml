@@ -26,15 +26,6 @@
         android:rowCount="4">
 
         <TextView
-            android:text="Name: Michael Jackson"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="1"
-            android:id="@+id/tv_profile"
-            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
-
-        <TextView
             android:text="ID: 123789456"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,6 +44,15 @@
             android:id="@+id/tv_room"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
 
+        <TextView
+            android:text="Name: Michael Jackson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:id="@+id/tv_profile"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
+
 
     </GridLayout>
 
@@ -61,17 +61,22 @@
         android:text="Condition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_condition" />
+        android:id="@+id/btn_condition"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
     <Button
         android:text="Diagnosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_diagnosis" />
+
     <Button
         android:text="Tests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_tests" />
+        android:id="@+id/btn_tests"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
     <Button
         android:text="Records"
         android:layout_width="match_parent"

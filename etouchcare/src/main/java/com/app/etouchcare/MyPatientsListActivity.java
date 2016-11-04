@@ -9,11 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.app.etouchcare.ExpandableListAdapter;
 import com.app.etouchcare.LoginActivity;
@@ -21,8 +24,6 @@ import com.app.etouchcare.R;
 
 
 public class MyPatientsListActivity extends AppCompatActivity {
-
-
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -51,12 +52,9 @@ public class MyPatientsListActivity extends AppCompatActivity {
         tv_uname.setTextSize(40);
         tv_uname.setText(u_id);
 
-
         //Declaration:
         TabHost host = (TabHost)findViewById(R.id.th_list);
         host.setup();
-
-
 
         //Tab1:
         TabHost.TabSpec spec = host.newTabSpec("My Patients");
@@ -69,11 +67,6 @@ public class MyPatientsListActivity extends AppCompatActivity {
         spec.setContent(R.id.Clinical_Trials);
         spec.setIndicator("My Clinical Trial");
         host.addTab(spec);
-
-
-
-
-
     }
 
 
@@ -107,9 +100,9 @@ public class MyPatientsListActivity extends AppCompatActivity {
         listDataChild = new HashMap<String, List<String>>();
 
         //Add Header data: Level 1
-        listDataHeader.add("Manuel Rodriguez, ID: 574385743");
-        listDataHeader.add("Andrea Smith, ID: 574385743");
-        listDataHeader.add("Michael Phelps, ID: 574385743");
+        listDataHeader.add("Manuel Rodriguez, ID: 574743");
+        listDataHeader.add("Andrea Smith, ID: 574385");
+        listDataHeader.add("Michael Phelps, ID: 5747434");
 
         //Add Child Data: Level 2
         List<String> ManuelRodriguez = new ArrayList<String>();
@@ -128,11 +121,5 @@ public class MyPatientsListActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(0), ManuelRodriguez);
         listDataChild.put(listDataHeader.get(1), AndreaSmith);
         listDataChild.put(listDataHeader.get(2), MichaelPhelps);
-
-
-
     }
-
-
-
 }

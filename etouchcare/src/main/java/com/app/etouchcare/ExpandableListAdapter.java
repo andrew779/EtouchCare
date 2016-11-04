@@ -3,12 +3,16 @@ package com.app.etouchcare;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -56,6 +60,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.lbl_List_Patient);
 
         txtListChild.setText(childText);
+
+//        Button btnDetails = (Button) convertView
+//                .findViewById(R.id.btndetails);
+//
+//        btnDetails.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//
+//            }
+//        });
+
+
         return convertView;
     }
 
