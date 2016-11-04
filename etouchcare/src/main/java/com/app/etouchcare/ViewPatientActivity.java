@@ -45,19 +45,34 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
 
 
         Button btn_condition = (Button) findViewById(R.id.btn_condition);
+        Button btn_diagnosis = (Button) findViewById(R.id.btn_diagnosis);
+        Button btn_test = (Button) findViewById(R.id.btn_tests);
+        //Button btn_history = (Button) findViewById(R.id.btn_records);
+
         btn_condition.setOnClickListener(this);
+        btn_diagnosis.setOnClickListener(this);
+        btn_test.setOnClickListener(this);
+        //btn_history.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent;
+        Intent intent=null;
         switch (v.getId()){
             case R.id.btn_condition:
                 intent = new Intent(this, ConditionActivity.class);
-                startActivity(intent);
                 break;
-
+            case R.id.btn_diagnosis:
+                intent = new Intent(this, DiagnosisActivity.class);
+                break;
+            case R.id.btn_tests:
+                intent = new Intent(this, TestsActivity.class);
+                break;
+//            case R.id.btn_records:
+//                intent =
         }
+        if(intent!=null)startActivity(intent);
+
 
     }
 
