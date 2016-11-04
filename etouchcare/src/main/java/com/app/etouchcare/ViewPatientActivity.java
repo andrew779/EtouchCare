@@ -25,22 +25,20 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
-        //Get ListView
-        TextView txtName = (TextView) findViewById(R.id.tv_name);
+        //Get Views
+        TextView txtName = (TextView) findViewById(R.id.tv_nameBind);
+        TextView txtRoom = (TextView) findViewById(R.id.tv_roomBind);
+        TextView txtId = (TextView) findViewById(R.id.tv_idBind);
 
-        //Setup List Data
-        //prepareListData();
-
-
-        //Intent User ID:
+        //Intent Patient ID:
         Intent intent_id = getIntent();
-        String intentExtra = intent_id.getExtras().get("PatientPosition").toString();
+        Integer intentExtra = (Integer)intent_id.getExtras().get("PatientPosition");
 
-        Toast.makeText(this, intentExtra, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, intentExtra, Toast.LENGTH_SHORT).show();
+        PatientModel modelSource = new PatientModel();
+        PatientModel model = modelSource.GetTop3Patients().get(intentExtra);
 
-        txtName.setTextSize(40);
-        txtName.setText(intentExtra);
-
+<<<<<<< HEAD
         Button btn_condition = (Button) findViewById(R.id.btn_condition);
         btn_condition.setOnClickListener(this);
 
@@ -57,6 +55,12 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
                 break;
 
         }
+=======
+        //txtName.setTextSize(40);
+        txtName.setText(model.Name);
+        txtId.setText(model.Id);
+        txtRoom.setText(model.Room);
+>>>>>>> 2eee2930225bf74b62cf085650ee68e911b639fa
     }
 
 

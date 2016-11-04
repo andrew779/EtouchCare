@@ -87,16 +87,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             }
         }
 
-//        Button btnDetails = (Button) convertView
-//                .findViewById(R.id.btndetails);
-//
-//        btnDetails.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//            }
-//        });
-
-
         return convertView;
     }
 
