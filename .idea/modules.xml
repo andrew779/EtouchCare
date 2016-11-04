@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EtouchCare.iml" filepath="$PROJECT_DIR$/EtouchCare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eTouchCare.iml" filepath="$PROJECT_DIR$/eTouchCare.iml" />
       <module fileurl="file://$PROJECT_DIR$/etouchcare/etouchcare.iml" filepath="$PROJECT_DIR$/etouchcare/etouchcare.iml" />
     </modules>
   </component>

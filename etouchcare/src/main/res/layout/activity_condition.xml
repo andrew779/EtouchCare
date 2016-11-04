@@ -21,8 +21,16 @@
     <TextView
         android:text="In this section you can find information on the symptom you are experiencing, for example abdominal pain, headache, breathlessness and leg cramps. Our doctor-authored leaflets explain the symptom, the kind of people who might experience it, what investigations are commonly done to make a diagnosis and which conditions may be responsible for causing that symptom. You can then follow the links provided to read more about specific possible causes of your symptom."
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="132dp"
         android:id="@+id/textView" />
+
+    <ListView
+        android:id="@+id/condition_listview"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </ListView>
 
 
 </LinearLayout>
