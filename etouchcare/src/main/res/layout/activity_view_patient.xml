@@ -23,43 +23,62 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="4"
-        android:rowCount="4">
+        android:columnCount="2"
+        android:rowCount="3"
+        android:paddingBottom="20dp">
 
         <TextView
             android:text="ID: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_row="1"
             android:id="@+id/tv_id"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
-            android:layout_alignParentStart="true" />
+             />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
-            android:layout_row="3"
+            android:layout_row="1"
+            android:id="@+id/tv_idBind"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="2"
             android:id="@+id/tv_room"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
             android:text="Room:" />
 
         <TextView
-            android:text="Name: "
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
-            android:layout_row="1"
+            android:layout_row="2"
+            android:id="@+id/tv_roomBind"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+            android:text="Room:" />
+
+        <TextView
+            android:text="Name: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
             android:id="@+id/tv_profile"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
         <TextView
 
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:layout_row="1"
-            android:id="@+id/tv_name"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:id="@+id/tv_nameBind"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
 
     </GridLayout>
