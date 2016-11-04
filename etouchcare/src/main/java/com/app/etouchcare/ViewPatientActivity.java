@@ -1,6 +1,7 @@
 package com.app.etouchcare;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import com.app.etouchcare.R;
 
 public class ViewPatientActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private int intentExtra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,15 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
         TextView txtId = (TextView) findViewById(R.id.tv_idBind);
 
         //Intent Patient ID:
-        Intent intent_id = getIntent();
-        Integer intentExtra = (Integer)intent_id.getExtras().get("PatientPosition");
+        //Intent intent_id
+        if(savedInstanceState != null){
+            intentExtra = savedInstanceState.getInt("PatientPosition");
+        }
+        else{
+            intentExtra = getIntent().getIntExtra("PatientPosition",0);
+        }
+
+        //Integer intentExtra = (Integer)intent_id.getExtras().get("PatientPosition");
 
         //Toast.makeText(this, intentExtra, Toast.LENGTH_SHORT).show();
         PatientModel modelSource = new PatientModel();
@@ -53,6 +63,16 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
         btn_diagnosis.setOnClickListener(this);
         btn_test.setOnClickListener(this);
         //btn_history.setOnClickListener(this);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        savedInstanceState.putInt("PatientPosition", intentExtra);
+
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
