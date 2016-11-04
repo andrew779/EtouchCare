@@ -39,10 +39,13 @@ public class ViewPatientActivity extends AppCompatActivity implements View.OnCli
         PatientModel model = modelSource.GetTop3Patients().get(intentExtra);
 
 
+        txtName.setText(model.Name);
+        txtId.setText(model.Id);
+        txtRoom.setText(model.Room);
+
+
         Button btn_condition = (Button) findViewById(R.id.btn_condition);
         btn_condition.setOnClickListener(this);
-
-
     }
 
     @Override

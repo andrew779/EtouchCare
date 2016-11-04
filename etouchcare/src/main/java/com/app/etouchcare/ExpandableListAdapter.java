@@ -63,28 +63,26 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         txtListChild.setText(childText);
 
-        if (childText.contains("Diag"))
+        LinearLayout ll = (LinearLayout)txtListChild.getParent();
+
+        if (childText.contains("Diag") && ll.getChildCount() < 3)
         {
-            LinearLayout ll = (LinearLayout)txtListChild.getParent();
-            if (ll.getChildCount() < 3) {
+            Button myButton = new Button(_context);
+            myButton.setText("Details");
 
-                Button myButton = new Button(_context);
-                myButton.setText("Details");
+            //LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
-                //LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            myButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent_id = new Intent(_context, ViewPatientActivity.class);
+                    intent_id.putExtra("PatientPosition", groupPosition);
+                    _context.startActivity(intent_id);
+                }
+            });
 
-                myButton.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        Intent intent_id = new Intent(_context, ViewPatientActivity.class);
-                        intent_id.putExtra("PatientPosition", groupPosition);
-                        _context.startActivity(intent_id);
-                    }
-                });
+            ll.addView(myButton);
 
-                ll.addView(myButton);
-
-    //                Toast.makeText(_context, "hey", Toast.LENGTH_SHORT).show();
-            }
+            //Toast.makeText(_context, "hey", Toast.LENGTH_SHORT).show();
         }
 
         return convertView;
