@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_condition"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.app.etouchcare.ConditionActivity">
+
+    <TextView
+        android:text="Patient Condition View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_head"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <TextView
+        android:text="In this section you can find information on the symptom you are experiencing, for example abdominal pain, headache, breathlessness and leg cramps. Our doctor-authored leaflets explain the symptom, the kind of people who might experience it, what investigations are commonly done to make a diagnosis and which conditions may be responsible for causing that symptom. You can then follow the links provided to read more about specific possible causes of your symptom."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+
+
+</LinearLayout>
