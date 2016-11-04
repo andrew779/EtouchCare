@@ -14,7 +14,9 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.etouchcare.R;
 
@@ -45,7 +47,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition,
+    public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = (String) getChild(groupPosition, childPosition);
@@ -60,6 +62,30 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.lbl_List_Patient);
 
         txtListChild.setText(childText);
+
+        if (childText.contains("Diag"))
+        {
+            LinearLayout ll = (LinearLayout)txtListChild.getParent();
+            if (ll.getChildCount() < 3) {
+
+                Button myButton = new Button(_context);
+                myButton.setText("Details");
+
+                //LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+
+                myButton.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent_id = new Intent(_context, ViewPatientActivity.class);
+                        intent_id.putExtra("PatientPosition", groupPosition);
+                        _context.startActivity(intent_id);
+                    }
+                });
+
+                ll.addView(myButton);
+
+    //                Toast.makeText(_context, "hey", Toast.LENGTH_SHORT).show();
+            }
+        }
 
 //        Button btnDetails = (Button) convertView
 //                .findViewById(R.id.btndetails);
