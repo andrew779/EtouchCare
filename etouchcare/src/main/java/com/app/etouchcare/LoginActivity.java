@@ -1,3 +1,6 @@
+/**
+ * TeamOne
+ */
 package com.app.etouchcare;
 
 import android.content.Intent;

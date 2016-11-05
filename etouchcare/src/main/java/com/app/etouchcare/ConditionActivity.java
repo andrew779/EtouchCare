@@ -1,3 +1,6 @@
+/**
+ * TeamOne
+ */
 package com.app.etouchcare;
 
 import android.support.v7.app.ActionBar;
