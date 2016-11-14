@@ -1,7 +1,7 @@
 /**
  * TeamOne
  */
-package com.app.etouchcare;
+package com.app.etouchcare.patientlist;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,18 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
-import com.app.etouchcare.ExpandableListAdapter;
-import com.app.etouchcare.LoginActivity;
 import com.app.etouchcare.R;
+import com.app.etouchcare.login.LoginActivity;
+import com.app.etouchcare.patientlist.ExpandableListAdapter;
 
 
 public class MyPatientsListActivity extends AppCompatActivity {
