@@ -26,7 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity {
 
     public final static String USER_ID = "com.app.etouchcare.ID";
 
@@ -116,23 +116,26 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
-    public void doLogin(){
+    public void doLogin() {
         //TODO LOGIN INTENT
 
         Toast.makeText(getApplicationContext(), "OK! I'm performing login.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this,MyPatientsListActivity.class);
-        intent.putExtra("PatientPosition",USER_ID);
+        Intent intent = new Intent(this, MyPatientsListActivity.class);
+        intent.putExtra("PatientPosition", USER_ID);
         startActivity(intent);
 
 
     }
+
     public boolean isEmailValid(String email) {
         matcher = pattern.matcher(email);
-        return matcher.matches();
+        //return matcher.matches();
+        return true;
     }
 
     public boolean isPasswordValid(String password) {
-        return password.length() >= 4;
+        //return password.length() >= 4;
+        return true;
     }
 
     private void hideKeyboard() {
@@ -142,6 +145,7 @@ public class LoginActivity extends AppCompatActivity  {
                     hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
+
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -223,7 +227,7 @@ public class LoginActivity extends AppCompatActivity  {
 
             if (success) {
                 doLogin();
-               // finish();
+                // finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
