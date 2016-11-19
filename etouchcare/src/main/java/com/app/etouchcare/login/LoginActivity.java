@@ -17,9 +17,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.app.etouchcare.patientlist.MyPatientsListActivity;
+import com.app.etouchcare.patientlist.MainPatientListActivity;
 import com.app.etouchcare.R;
 
 import java.util.regex.Matcher;
@@ -119,8 +118,8 @@ public class LoginActivity extends AppCompatActivity {
     public void doLogin() {
         //TODO LOGIN INTENT
 
-        Toast.makeText(getApplicationContext(), "OK! I'm performing login.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, MyPatientsListActivity.class);
+//        Toast.makeText(getApplicationContext(), "OK! I'm performing login.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainPatientListActivity.class);
         intent.putExtra("PatientPosition", USER_ID);
         startActivity(intent);
 
@@ -216,7 +215,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
 
-            // TODO: register the new account here.
+            //  register the new account here if needed.
             return true;
         }
 

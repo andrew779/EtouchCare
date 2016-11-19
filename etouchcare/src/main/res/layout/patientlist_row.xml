@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/patientlist_row"
+    android:layout_width="match_parent"
+    android:layout_height="72dp">
+
+    <ImageView
+        android:id="@+id/patientlist_row_img"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/logo"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/patientlist_row_img"
+        android:layout_centerVertical="true"
+        >
+
+        <TextView
+            android:id="@+id/patientlist_row_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56dp"
+
+            android:text="Andrew Zhou"/>
+        <TextView
+            android:id="@+id/patientlist_row_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This is a very long description"
+            android:layout_below="@+id/patientlist_row_name"/>
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

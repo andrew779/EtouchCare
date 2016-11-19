@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content_main_patient_list"
+    tools:context="com.app.etouchcare.MainContentFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/patientlist_instruction"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Swipe left or right for more options"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/patientlist_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/patientlist_instruction"
+        android:scrollbars="vertical">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
