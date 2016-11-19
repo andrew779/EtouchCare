@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.app.etouchcare.datamodel.Patients;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,11 +24,14 @@ import java.util.List;
 public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
-    List<Data> data = Collections.emptyList();
+    private ArrayList<Patients> data = new ArrayList<>();
 
-    public PatientListAdapter(Context context,List<Data> data) {
+    public PatientListAdapter(Context context) {
         inflater = LayoutInflater.from(context);
-        this.data = data;
+    }
+    public void setPatientList(ArrayList<Patients> listPatients){
+        data = listPatients;
+        notifyItemRangeChanged(0,listPatients.size());
     }
 
     @Override
@@ -39,10 +45,13 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Data current = data.get(position);
-        holder.pName.setText(current.getpName());
-        holder.description.setText(current.getDescription());
-        holder.imageView.setImageResource(R.drawable.profile) ;
+        Patients current = data.get(position);
+        holder.pName.setText(String.format("Name: %s", current.getpName()));
+        holder.diagnosis.setText(String.format("Diagnosis: %s", current.getDiagnosis()));
+        holder.imageView.setImageResource(R.drawable.patienticon) ;
+        holder.id.setText(String.format("ID: %s", current.getId()));
+        holder.room.setText(String.format("Room: %s", current.getRoom()));
+
 
     }
 
@@ -53,13 +62,15 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView imageView;
-        TextView pName,description;
+        TextView pName,diagnosis,id,room;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.patientlist_row_img);
             pName = (TextView) itemView.findViewById(R.id.patientlist_row_name);
-            description = (TextView) itemView.findViewById(R.id.patientlist_row_des);
+            diagnosis = (TextView) itemView.findViewById(R.id.patientlist_row_des);
+            id = (TextView) itemView.findViewById(R.id.patientlist_row_id);
+            room = (TextView) itemView.findViewById(R.id.patientlist_row_room);
 
 
         }

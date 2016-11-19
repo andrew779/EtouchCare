@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean isPasswordValid(String password) {
-        //return password.length() >= 4;
+        //return password.length() >= patienticon;
         return true;
     }
 
