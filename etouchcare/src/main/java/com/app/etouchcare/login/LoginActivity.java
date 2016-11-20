@@ -18,7 +18,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
-import com.app.etouchcare.patientlist.MainPatientListActivity;
+import com.app.etouchcare.activity.MainPatientListActivity;
 import com.app.etouchcare.R;
 
 import java.util.regex.Matcher;

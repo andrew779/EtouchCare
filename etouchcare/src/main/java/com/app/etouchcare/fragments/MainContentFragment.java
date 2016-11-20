@@ -1,44 +1,36 @@
-package com.app.etouchcare;
+package com.app.etouchcare.fragments;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
+import com.app.etouchcare.adapters.PatientListAdapter;
+import com.app.etouchcare.R;
+import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
-import com.app.etouchcare.network.VolleySingleton;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.app.etouchcare.tasks.TaskLoadPatientList;
 
 import java.util.ArrayList;
-import java.util.List;
-import static com.app.etouchcare.extra.Keys.EndPointPatientList.*;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainContentFragment extends Fragment {
+public class MainContentFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, PatientListLoadedListener {
 
     PatientListAdapter adapter;
     private RecyclerView recyclerView;
     private ArrayList<Patients>  listPatients = new ArrayList<>();
+    private SwipeRefreshLayout swipeRefreshLayout;
 
-    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
+//    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
+    public static final String STATE_PATIENTS = "state_patients";
 
     public MainContentFragment() {
         // Required empty public constructor
@@ -50,20 +42,33 @@ public class MainContentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_content, container, false);
+        //refresh layout object
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.patientlist_refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+        //recyclerview object
         recyclerView = (RecyclerView) view.findViewById(R.id.patientlist_recyclerview);
         adapter = new PatientListAdapter(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
+//        if (savedInstanceState != null){
+//            listPatients = savedInstanceState.getParcelableArrayList(STATE_PATIENTS);
+//        }
 
 
-        sendJsonRequest();
-
+        new TaskLoadPatientList(this).execute();
 
 
         return view;
     }
 
-    public void sendJsonRequest(){
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        outState.putParcelableArrayList(STATE_PATIENTS, listPatients);
+//    }
+
+ /*   public void sendJsonRequest(){
         //get volley RequestQueue object in order to execute request later
         RequestQueue requestQueue = VolleySingleton.getInstance().getmRequestQueue();
 
@@ -82,6 +87,7 @@ public class MainContentFragment extends Fragment {
             }
         });
         requestQueue.add(request);
+
     }
 
     //parsing json data into Patients data model
@@ -122,6 +128,18 @@ public class MainContentFragment extends Fragment {
             e.printStackTrace();
         }
         return listPatients;
+    }*/
+
+    @Override
+    public void onRefresh() {
+        new TaskLoadPatientList(this).execute();
     }
 
+    @Override
+    public void onPatientListLoaded(ArrayList<Patients> patientList) {
+        if(swipeRefreshLayout.isRefreshing()){
+            swipeRefreshLayout.setRefreshing(false);
+        }
+        adapter.setPatientList(patientList);
+    }
 }

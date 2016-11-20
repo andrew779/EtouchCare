@@ -3,7 +3,7 @@ package com.app.etouchcare.network;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.app.etouchcare.MyApplication;
+import com.app.etouchcare.activity.MyApplication;
 
 /**
  * Created by wenzhongzheng on 2016-11-19.

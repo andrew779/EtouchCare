@@ -13,7 +13,7 @@ public class AnimationUtil {
 
 
     public static void animate(RecyclerView.ViewHolder holder){
-        YoYo.with(Techniques.RollIn)
+        YoYo.with(Techniques.Landing)
                 .duration(500)
                 .playOn(holder.itemView);
     }

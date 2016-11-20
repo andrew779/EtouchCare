@@ -1,4 +1,4 @@
-package com.app.etouchcare.patientlist;
+package com.app.etouchcare.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.app.etouchcare.MainContentFragment;
+import com.app.etouchcare.fragments.MainContentFragment;
 import com.app.etouchcare.R;
 
 public class MainPatientListActivity extends AppCompatActivity

@@ -1,4 +1,4 @@
-package com.app.etouchcare;
+package com.app.etouchcare.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.app.etouchcare.R;
+import com.app.etouchcare.anim.AnimationUtil;
 import com.app.etouchcare.datamodel.Patients;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 //import com.app.etouchcare.R;
 
@@ -34,7 +34,8 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
     }
     public void setPatientList(ArrayList<Patients> listPatients){
         data = listPatients;
-        notifyItemRangeChanged(0,listPatients.size());
+//        notifyItemRangeChanged(0,listPatients.size());
+        notifyDataSetChanged();
     }
 
     @Override
@@ -54,6 +55,8 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
         holder.imageView.setImageResource(R.drawable.patienticon) ;
         holder.id.setText(String.format("ID: %s", current.getId()));
         holder.room.setText(String.format("Room: %s", current.getRoom()));
+
+        AnimationUtil.animate(holder);
 
 
     }

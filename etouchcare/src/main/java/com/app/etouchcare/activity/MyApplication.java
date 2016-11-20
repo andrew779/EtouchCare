@@ -1,4 +1,4 @@
-package com.app.etouchcare;
+package com.app.etouchcare.activity;
 
 import android.app.Application;
 import android.content.Context;
