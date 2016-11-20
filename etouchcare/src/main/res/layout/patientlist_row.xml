@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/patientlist_row"
     android:layout_width="match_parent"
+    android:background="@drawable/custom_bg"
+    android:clickable="true"
     android:layout_height="76dp">
 
     <ImageView

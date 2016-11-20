@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.app.etouchcare.datamodel.Patients;
@@ -25,8 +26,10 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
 
     private LayoutInflater inflater;
     private ArrayList<Patients> data = new ArrayList<>();
+    private Context context=null;
 
     public PatientListAdapter(Context context) {
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
     public void setPatientList(ArrayList<Patients> listPatients){
@@ -60,7 +63,7 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
         return data.size() ;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView pName,diagnosis,id,room;
 
@@ -71,8 +74,15 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
             diagnosis = (TextView) itemView.findViewById(R.id.patientlist_row_des);
             id = (TextView) itemView.findViewById(R.id.patientlist_row_id);
             room = (TextView) itemView.findViewById(R.id.patientlist_row_room);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context,getAdapterPosition()+" get Clicked",Toast.LENGTH_SHORT).show();
+                }
+            });
 
         }
+
+
     }
 }

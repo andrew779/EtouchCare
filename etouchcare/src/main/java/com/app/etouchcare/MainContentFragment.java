@@ -55,6 +55,7 @@ public class MainContentFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
 
+
         sendJsonRequest();
 
 
