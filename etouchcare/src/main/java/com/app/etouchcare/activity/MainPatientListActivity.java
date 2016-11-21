@@ -17,9 +17,9 @@ import com.app.etouchcare.fragments.MainContentFragment;
 import com.app.etouchcare.R;
 
 public class MainPatientListActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainContentFragment.OnFetchIDListener {
 
-
+    private String patientID="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,5 +102,14 @@ public class MainPatientListActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public String getPatientID(){
+        return patientID;
+    }
+    @Override
+    public void onFetchID(String id) {
+        patientID = id;
+//        Toast.makeText(this,"Parent get id: "+id,Toast.LENGTH_SHORT).show();
     }
 }

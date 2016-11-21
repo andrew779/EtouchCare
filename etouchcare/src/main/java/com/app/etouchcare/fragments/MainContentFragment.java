@@ -1,6 +1,7 @@
 package com.app.etouchcare.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -10,13 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.etouchcare.adapters.PatientListAdapter;
 import com.app.etouchcare.R;
+import com.app.etouchcare.adapters.PatientListAdapter;
 import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.RecyclerTouchListener;
+import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 import com.app.etouchcare.tasks.TaskLoadPatientList;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -31,12 +34,12 @@ import java.util.ArrayList;
  */
 public class MainContentFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, PatientListLoadedListener, View.OnClickListener {
 
-    PatientListAdapter adapter;
+    private PatientListAdapter adapter;
     private RecyclerView recyclerView;
-    private ArrayList<Patients>  listPatients = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
     private FloatingActionMenu menuRed;
     private FloatingActionButton fab1,fab2;
+    private OnFetchIDListener mListener;
 
 
 
@@ -45,6 +48,10 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
 
     public MainContentFragment() {
         // Required empty public constructor
+    }
+
+    public interface OnFetchIDListener{
+         void onFetchID(String id);
     }
 
 
@@ -70,10 +77,16 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
 
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getActivity(),"Click on "+ position, Toast.LENGTH_SHORT).show();
+
+                TextView tvID = (TextView) view.findViewById(R.id.patientlist_row_id);
+                String str = tvID.getText().toString();
+                str = str.substring(str.indexOf(" "));
+                if (mListener != null) mListener.onFetchID(str);
+
             }
 
             @Override
@@ -89,73 +102,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         return view;
     }
 
-//    @Override
-//    public void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putParcelableArrayList(STATE_PATIENTS, listPatients);
-//    }
 
- /*   public void sendJsonRequest(){
-        //get volley RequestQueue object in order to execute request later
-        RequestQueue requestQueue = VolleySingleton.getInstance().getmRequestQueue();
-
-        //creating a JSONObject request
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_LIST_ALL_PATIENTS, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-//                Log.d("Wenzhong","response: "+response);
-                listPatients = parseJSONResponse(response);
-                adapter.setPatientList(listPatients);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong","ERR: "+error);
-            }
-        });
-        requestQueue.add(request);
-
-    }
-
-    //parsing json data into Patients data model
-    private ArrayList<Patients> parseJSONResponse(JSONObject response){
-        ArrayList<Patients> listPatients = new ArrayList<>();
-        if (response==null||response.length()==0){
-            return null;
-        }
-        try {
-            JSONArray arrayPatients = response.getJSONArray(KEY_PATIENTS);
-            for (int i=0;i<arrayPatients.length();i++){
-                JSONObject currentPatient = arrayPatients.getJSONObject(i);
-                //get current patient id
-                String id = currentPatient.getString(KEY_ID);
-                //get current patient name
-                String name = currentPatient.getString(KEY_NAME);
-                //get current patient diagnosis
-                String diagnosis = currentPatient.getString(KEY_DIAGNOSIS);
-                //get current patient diagnosis detail
-                String diagnosisDetail = currentPatient.getString(KEY_DIAGNOSIS_DETAIL);
-                //get current patient room
-                String room = currentPatient.getString(KEY_ROOM);
-                //get current patient condition
-                String condition = currentPatient.getString(KEY_CONDITION);
-
-                Patients patients = new Patients();
-                patients.setpName(name);
-                patients.setId(id);
-                patients.setDiagnosis(diagnosis);
-                patients.setDiagnosisDetails(diagnosisDetail);
-                patients.setRoom(room);
-                patients.setCondition(condition);
-                listPatients.add(patients);
-            }
-            Log.d("wenzhong",listPatients.toString());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return listPatients;
-    }*/
 
     @Override
     public void onRefresh() {
@@ -185,4 +132,27 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 break;
         }
     }
+
+    public void onButtonPressed(String id) {
+        if (mListener != null) {
+            mListener.onFetchID(id);
+        }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFetchIDListener) {
+            mListener = (OnFetchIDListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
 }

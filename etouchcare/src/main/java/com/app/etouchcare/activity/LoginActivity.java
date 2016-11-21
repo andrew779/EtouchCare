@@ -1,7 +1,7 @@
 /**
  * TeamOne
  */
-package com.app.etouchcare.login;
+package com.app.etouchcare.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

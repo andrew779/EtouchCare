@@ -20,7 +20,7 @@
 //import android.widget.ExpandableListView;
 //
 //import com.app.etouchcare.R;
-//import com.app.etouchcare.login.LoginActivity;
+//import com.app.etouchcare.activity.LoginActivity;
 //
 //
 //public class MyPatientsListActivity extends AppCompatActivity {
