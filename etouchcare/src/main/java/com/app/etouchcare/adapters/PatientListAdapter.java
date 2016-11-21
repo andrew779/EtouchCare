@@ -77,12 +77,14 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
             diagnosis = (TextView) itemView.findViewById(R.id.patientlist_row_des);
             id = (TextView) itemView.findViewById(R.id.patientlist_row_id);
             room = (TextView) itemView.findViewById(R.id.patientlist_row_room);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context,getAdapterPosition()+" get Clicked",Toast.LENGTH_SHORT).show();
-                }
-            });
+
+            //approach one to handle item onClick within a RecyclerView
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Toast.makeText(context,getAdapterPosition()+" get Clicked",Toast.LENGTH_SHORT).show();
+//                }
+//            });
 
         }
 

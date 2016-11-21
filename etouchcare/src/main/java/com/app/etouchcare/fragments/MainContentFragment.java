@@ -2,6 +2,7 @@ package com.app.etouchcare.fragments;
 
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,25 +10,35 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.app.etouchcare.adapters.PatientListAdapter;
 import com.app.etouchcare.R;
 import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.extra.RecyclerTouchListener;
 import com.app.etouchcare.tasks.TaskLoadPatientList;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.ArrayList;
+
+
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainContentFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, PatientListLoadedListener {
+public class MainContentFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, PatientListLoadedListener, View.OnClickListener {
 
     PatientListAdapter adapter;
     private RecyclerView recyclerView;
     private ArrayList<Patients>  listPatients = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
+    private FloatingActionMenu menuRed;
+    private FloatingActionButton fab1,fab2;
+
+
 
 //    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
     public static final String STATE_PATIENTS = "state_patients";
@@ -46,14 +57,30 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.patientlist_refreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        //floating button
+        menuRed = (FloatingActionMenu) view.findViewById(R.id.menu_red);
+        fab1 = (FloatingActionButton) view.findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) view.findViewById(R.id.fab2);
+        fab1.setOnClickListener(this);
+        fab2.setOnClickListener(this);
+
         //recyclerview object
         recyclerView = (RecyclerView) view.findViewById(R.id.patientlist_recyclerview);
         adapter = new PatientListAdapter(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
-//        if (savedInstanceState != null){
-//            listPatients = savedInstanceState.getParcelableArrayList(STATE_PATIENTS);
-//        }
+
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Toast.makeText(getActivity(),"Click on "+ position, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                Toast.makeText(getActivity(),"Long Press on "+position, Toast.LENGTH_SHORT).show();
+            }
+        }));
 
 
         new TaskLoadPatientList(this).execute();
@@ -141,5 +168,21 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
             swipeRefreshLayout.setRefreshing(false);
         }
         adapter.setPatientList(patientList);
+    }
+
+    //floating button click listener
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.fab1:
+
+                Snackbar.make(v,"FAB1 clicked",Snackbar.LENGTH_SHORT).show();
+                menuRed.close(true);
+                break;
+            case R.id.fab2:
+                new TaskLoadPatientList(this).execute();
+                menuRed.close(true);
+                break;
+        }
     }
 }
