@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.app.etouchcare.fragments.MainContentFragment;
 import com.app.etouchcare.R;
+import com.app.etouchcare.fragments.UserProfileFragment;
 
 public class MainPatientListActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainContentFragment.OnFetchIDListener {
@@ -91,12 +93,14 @@ public class MainPatientListActivity extends AppCompatActivity
             manager.beginTransaction().replace(R.id.content_main, mainContent, mainContent.getTag()).commit();
 
         } else if (id == R.id.nav_profile) {
-            Toast.makeText(this,"Nav profile",Toast.LENGTH_SHORT).show();
+            UserProfileFragment userProfileFragment = new UserProfileFragment();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.content_main, userProfileFragment, userProfileFragment.getTag()).commit();
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_logout) {
-
+            NavUtils.navigateUpFromSameTask(this);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

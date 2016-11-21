@@ -24,6 +24,7 @@
 
         <activity
             android:name=".activity.MainPatientListActivity"
+            android:parentActivityName=".activity.LoginActivity"
             android:label="@string/title_activity_main_patient_list"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

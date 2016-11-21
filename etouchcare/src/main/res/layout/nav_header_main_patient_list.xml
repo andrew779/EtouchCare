@@ -29,13 +29,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:text="Andrew Zheng"
+        android:textSize="14sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp"
         android:text="andrew123123123@gmail.com" />
 
 </LinearLayout>
