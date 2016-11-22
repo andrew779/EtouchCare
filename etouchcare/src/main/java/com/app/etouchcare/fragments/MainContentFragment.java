@@ -2,6 +2,7 @@ package com.app.etouchcare.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.activity.PatientDetailActivity;
 import com.app.etouchcare.adapters.PatientListAdapter;
 import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
@@ -86,6 +88,9 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 String str = tvID.getText().toString();
                 str = str.substring(str.indexOf(" "));
                 if (mListener != null) mListener.onFetchID(str);
+                Intent intent = new Intent(getActivity(), PatientDetailActivity.class);
+                intent.putExtra("id",str);
+                startActivity(intent);
 
             }
 
