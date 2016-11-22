@@ -62,6 +62,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_content, container, false);
+
         //refresh layout object
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.patientlist_refreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);

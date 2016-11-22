@@ -21,6 +21,9 @@ public class PatientDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detail);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         patientID = getIntent().getStringExtra("id");
         Toast.makeText(this,patientID,Toast.LENGTH_SHORT).show();
         // Get the ViewPager and set it's PagerAdapter so that it can display items
