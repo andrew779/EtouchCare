@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
+
         // Store values at the time of the login attempt.
         String email = mEmailView.getEditText().getText().toString();
         String password = mPasswordView.getEditText().getText().toString();

@@ -9,10 +9,15 @@ import android.widget.Toast;
 
 import com.app.etouchcare.R;
 import com.app.etouchcare.adapters.SampleFragmentPagerAdapter;
+import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.fragments.MainContentFragment;
+
+import java.util.ArrayList;
 
 public class PatientDetailActivity extends AppCompatActivity {
 
     private String patientID = "";
+    private ArrayList<Patients> patientList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +30,8 @@ public class PatientDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         patientID = getIntent().getStringExtra("id");
-        Toast.makeText(this,patientID,Toast.LENGTH_SHORT).show();
+        patientList = getIntent().getParcelableArrayListExtra(MainContentFragment.PATIENT_LIST);
+        Toast.makeText(this,patientList.toString(),Toast.LENGTH_SHORT).show();
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager(),
@@ -36,5 +42,8 @@ public class PatientDetailActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
+    }
+    public String getPatientID(){
+        return patientID;
     }
 }

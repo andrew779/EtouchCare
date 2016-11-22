@@ -5,8 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.app.etouchcare.PatientBasicFragment;
-import com.app.etouchcare.PatientDiagnosisFragment;
+import com.app.etouchcare.fragments.PatientBasicFragment;
+import com.app.etouchcare.fragments.PatientDiagnosisFragment;
+import com.app.etouchcare.activity.PatientDetailActivity;
+import com.app.etouchcare.fragments.PatientTestsFragment;
+import com.app.etouchcare.fragments.UserProfileFragment;
 
 /**
  * Created by wenzhongzheng on 2016-11-21.
@@ -29,10 +32,19 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position==0)
-            return PatientBasicFragment.newInstance(position + 1);
-        else
+        if (position==0) {
+            PatientDetailActivity patientDetailActivity = (PatientDetailActivity) context;
+
+            return PatientBasicFragment.newInstance(patientDetailActivity.getPatientID());
+        }
+        else if (position == 1){
             return PatientDiagnosisFragment.newInstance("","");
+        }
+        else if (position == 2){
+            return PatientTestsFragment.newInstance("","");
+        }
+        else
+            return new UserProfileFragment();
     }
 
     @Override

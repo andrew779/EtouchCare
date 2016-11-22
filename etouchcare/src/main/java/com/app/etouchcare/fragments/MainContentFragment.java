@@ -42,11 +42,12 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
     private FloatingActionMenu menuRed;
     private FloatingActionButton fab1,fab2;
     private OnFetchIDListener mListener;
-
+    private ArrayList<Patients> patientList = new ArrayList<>();
 
 
 //    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
     public static final String STATE_PATIENTS = "state_patients";
+    public static final String PATIENT_LIST = "patient_list";
 
     public MainContentFragment() {
         // Required empty public constructor
@@ -91,6 +92,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 if (mListener != null) mListener.onFetchID(str);
                 Intent intent = new Intent(getActivity(), PatientDetailActivity.class);
                 intent.putExtra("id",str);
+                intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
                 startActivity(intent);
 
             }
@@ -120,6 +122,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         if(swipeRefreshLayout.isRefreshing()){
             swipeRefreshLayout.setRefreshing(false);
         }
+        this.patientList = patientList;
         adapter.setPatientList(patientList);
     }
 

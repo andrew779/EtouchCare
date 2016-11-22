@@ -21,7 +21,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!--Patient Basic Section-->
-    <string name="basic_id">ID: 582va832js92gw8</string>
+    <string name="basic_id">ID: </string>
+    <string name="basic_age">Age: </string>
+    <string name="basic_room">Room: </string>
     <string name="basic_contacttitle">Contact Information</string>
     <string name="basic_email">Email: </string>
     <string name="basic_phone">Phone: </string>
@@ -29,5 +31,12 @@
     <string name="basic_title_em">Emergency Contact</string>
     <string name="basic_name">Name: </string>
     <string name="basic_relation_em">Relationship: </string>
+
+    <!-- Patient Diagnosis Section -->
+    <string name="diag_title_sym">Symptoms</string>
+    <string name="diag_title">Diagnosis</string>
+
+    <!-- Patient Tests Section -->
+    <string name="tests_title">Tests</string>
 
 </resources>

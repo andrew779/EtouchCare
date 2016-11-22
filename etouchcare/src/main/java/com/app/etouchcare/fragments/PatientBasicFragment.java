@@ -1,4 +1,4 @@
-package com.app.etouchcare;
+package com.app.etouchcare.fragments;
 
 
 import android.os.Bundle;
@@ -8,34 +8,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.app.etouchcare.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PatientBasicFragment extends Fragment {
 
-    public static final String ARG_PAGE = "ARG_PAGE";
+    public static final String ARG_PATIENT_ID = "ARG_PATIENT_ID";
 
-    private int mPage;
+    private String patientID;
 
-    public static PatientBasicFragment newInstance(int page) {
+    public static PatientBasicFragment newInstance(String id) {
         Bundle args = new Bundle();
-        args.putInt(ARG_PAGE, page);
+        args.putString(ARG_PATIENT_ID, id);
         PatientBasicFragment fragment = new PatientBasicFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        patientID = getArguments().getString(ARG_PATIENT_ID);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_patient_basic, container, false);
+        TextView tvID = (TextView) view.findViewById(R.id.basic_id);
+        tvID.setText(patientID);
 
         return view;
     }

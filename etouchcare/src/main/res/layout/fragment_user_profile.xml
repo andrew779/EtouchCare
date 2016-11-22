@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:hint="Current Password">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:hint="New Password">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeActionLabel="@string/action_sign_in_short"
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:hint="Confirm New Password">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
