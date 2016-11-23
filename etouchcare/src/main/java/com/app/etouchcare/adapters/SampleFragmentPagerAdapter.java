@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.fragments.PatientBasicFragment;
 import com.app.etouchcare.fragments.PatientDiagnosisFragment;
 import com.app.etouchcare.activity.PatientDetailActivity;
@@ -20,6 +21,7 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
     private String tabTitles[] = new String[] { "Basic", "Diagnosis", "Tests", "Treatment" };
     private Context context;
     private String id;
+    private Patients theOne;
     private PatientDetailActivity patientDetailActivity;
 
     public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
@@ -27,6 +29,7 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
         this.context = context;
         patientDetailActivity = (PatientDetailActivity) context;
         this.id = patientDetailActivity.getPatientID();
+        this.theOne = patientDetailActivity.getTheOne();
     }
 
     @Override
@@ -38,13 +41,13 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position==0) {
 
-            return PatientBasicFragment.newInstance(id);
+            return PatientBasicFragment.newInstance(id,theOne);
         }
         else if (position == 1){
-            return PatientDiagnosisFragment.newInstance(id,"");
+            return PatientDiagnosisFragment.newInstance(id,theOne);
         }
         else if (position == 2){
-            return PatientTestsFragment.newInstance(id,"");
+            return PatientTestsFragment.newInstance(id,theOne);
         }
         else
             return new UserProfileFragment();

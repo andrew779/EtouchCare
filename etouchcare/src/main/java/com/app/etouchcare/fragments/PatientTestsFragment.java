@@ -13,7 +13,8 @@ import android.widget.Button;
 
 import com.app.etouchcare.R;
 import com.app.etouchcare.adapters.PatientTestAdapter;
-import com.app.etouchcare.callbacks.PatientTestLoadedListener;
+import com.app.etouchcare.callbacks.PatientLoadedListener.PatientTestLoadedListener;
+import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 
@@ -36,7 +37,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
 
     // TODO: Rename and change types of parameters
     private String id;
-    private String mParam2;
+    private Patients theOne;
 
 
     public PatientTestsFragment() {
@@ -52,11 +53,11 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
      * @return A new instance of fragment PatientTestsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PatientTestsFragment newInstance(String param1, String param2) {
+    public static PatientTestsFragment newInstance(String param1, Patients param2) {
         PatientTestsFragment fragment = new PatientTestsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -66,7 +67,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             id = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            theOne = getArguments().getParcelable(ARG_PARAM2);
         }
     }
 

@@ -3,22 +3,26 @@ package com.app.etouchcare.datamodel;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by wenzhongzheng on 2016-11-19.
  */
 
-public class Patients implements Parcelable{
+public class Patients implements Parcelable {
 
-    private String id="";
-    private String pName="";
-    private String diagnosis="";
-    private String room="";
-    private String diagnosisDetails="";
-    private String condition="";
+    private String id = "";
+    private String pName = "";
+    private String diagnosis = "";
+    private String room = "";
+    private String diagnosisDetails = "";
+    private String condition = "";
 
-    public Patients(){
+    public Patients() {
 
     }
+
     public Patients(String id, String pName, String diagnosis, String room, String diagnosisDetails, String condition) {
         this.id = id;
         this.pName = pName;
@@ -79,8 +83,9 @@ public class Patients implements Parcelable{
 
     @Override
     public String toString() {
-        return "id: "+id+", name: "+pName+", diagnosis: "+diagnosis+", room: "+room;
+        return "id: " + id + ", name: " + pName + ", diagnosis: " + diagnosis + ", room: " + room;
     }
+
 
     @Override
     public int describeContents() {

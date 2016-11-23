@@ -35,6 +35,10 @@
     <!-- Patient Diagnosis Section -->
     <string name="diag_title_sym">Symptoms</string>
     <string name="diag_title">Diagnosis</string>
+    <string name="diag_id">ID: </string>
+    <string name="diag_name">Name: </string>
+    <string name="diag_detail">Detail: </string>
+    <string name="diag_date">Date: </string>
 
     <!-- Patient Tests Section -->
     <string name="tests_title">Tests</string>

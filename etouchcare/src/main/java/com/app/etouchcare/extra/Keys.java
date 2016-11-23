@@ -24,4 +24,13 @@ public interface Keys {
         String KEY_TEST_RESULT = "results";
     }
 
+    interface EndPointPatientDiagnosis{
+        String KEY_DIAG_ROOT = "tests";
+        String KEY_DIAG_ID = "_id";
+        String KEY_DIAG_PATIENT_ID = "patientId";
+        String KEY_DIAG_DESCRPTION = "description";
+        String KEY_DIAG_DATE = "date";
+
+    }
+
 }

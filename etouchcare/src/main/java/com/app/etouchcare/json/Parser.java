@@ -2,8 +2,7 @@ package com.app.etouchcare.json;
 
 import android.util.Log;
 
-import com.app.etouchcare.callbacks.PatientListLoadedListener;
-import com.app.etouchcare.callbacks.PatientTestLoadedListener;
+import com.app.etouchcare.callbacks.PatientLoadedListener.*;
 import com.app.etouchcare.datamodel.Patients;
 
 import org.json.JSONArray;
@@ -15,6 +14,7 @@ import java.util.HashMap;
 
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.*;
 import static com.app.etouchcare.extra.Keys.EndPointPatientTest.*;
+import static com.app.etouchcare.extra.Keys.EndPointPatientDiagnosis.*;
 /**
  * Created by wenzhongzheng on 2016-11-20.
  */
@@ -59,7 +59,6 @@ public class Parser {
 
         }
         if (mPatientListLoaded != null) mPatientListLoaded.onPatientListLoaded(listPatients);
-        Log.d("wenzhong","In parser: "+listPatients);
 
     }
 
@@ -99,5 +98,46 @@ public class Parser {
         }
 
         if (patientTestLoadedListener != null) patientTestLoadedListener.onPatientTestLoaded(listTest);
+    }
+
+    public static void parseDiagnosisJSONResponse(JSONObject response, PatientDiagnosisLoadedListener patientDiagnosisLoadedListener){
+        ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
+        if (response==null||response.length()==0){
+            return;
+        }
+        try {
+            JSONArray arrayTests = response.getJSONArray(KEY_DIAG_ROOT);
+            for (int i=0;i<arrayTests.length();i++){
+                JSONObject currentPatient = arrayTests.getJSONObject(i);
+                //get current patient id
+                String id = currentPatient.getString(KEY_DIAG_ID);
+                //get current patient name
+                String description = currentPatient.getString(KEY_DIAG_DESCRPTION);
+                //get current patient diagnosis
+                String date = currentPatient.getString(KEY_DIAG_DATE);
+                //get current patient diagnosis detail
+                String patientID = currentPatient.getString(KEY_DIAG_PATIENT_ID);
+
+
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put(KEY_DIAG_ID,id);
+                hashMap.put(KEY_DIAG_DESCRPTION,description);
+                hashMap.put(KEY_DIAG_DATE,date);
+                hashMap.put(KEY_DIAG_PATIENT_ID,patientID);
+
+                listTest.add(hashMap);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (patientDiagnosisLoadedListener != null){
+            patientDiagnosisLoadedListener.onPatientDiagnosisLoaded(listTest);
+            Log.d("Parser","Check parsed list: \n"+listTest.toString());
+        }
+
+        else
+            Log.d("Parser","Null diagnosisloadedListener");
     }
 }
