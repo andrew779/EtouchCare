@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Swipe down to refresh\nLong press for more options"/>
+        android:text="@string/instructions"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/patientlist_refreshLayout"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
             app:fab_size="mini"
-            app:fab_label="Add New" />
+            app:fab_label="@string/addnew" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab2"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_refresh"
             app:fab_size="mini"
-            app:fab_label="Refresh All"/>
+            app:fab_label="@string/refresh"/>
 
     </com.github.clans.fab.FloatingActionMenu>
 
