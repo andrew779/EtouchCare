@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by wenzhongzheng on 2016-11-20.
  */
 
-public class TaskLoadPatientList extends AsyncTask<Void, Void, ArrayList<Patients>> {
+public class TaskLoadPatientList { //extends AsyncTask<Void, Void, ArrayList<Patients>> {
     private PatientListLoadedListener myComponent;
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
@@ -24,6 +24,9 @@ public class TaskLoadPatientList extends AsyncTask<Void, Void, ArrayList<Patient
         this.myComponent = myComponent;
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getmRequestQueue();
+
+        ArrayList<Patients> patientList = PatientUtils.loadPatientList(requestQueue);
+        myComponent.onPatientListLoaded(patientList);
     }
 
     @Override

@@ -45,7 +45,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
     private ArrayList<Patients> patientList = new ArrayList<>();
 
 
-//    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
+    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
     public static final String STATE_PATIENTS = "state_patients";
     public static final String PATIENT_LIST = "patient_list";
 
@@ -104,6 +104,8 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         }));
 
 
+
+        adapter.setPatientList(patientList);
         new TaskLoadPatientList(this).execute();
 
 
@@ -122,6 +124,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         if(swipeRefreshLayout.isRefreshing()){
             swipeRefreshLayout.setRefreshing(false);
         }
+
         this.patientList = patientList;
         adapter.setPatientList(patientList);
     }

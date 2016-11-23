@@ -87,10 +87,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:gravity="bottom"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
+
+
             </LinearLayout>
+
+            <Button
+                android:id="@+id/email_sign_in_button_dumb"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Sign in anyway"
+                android:textAlignment="center"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
