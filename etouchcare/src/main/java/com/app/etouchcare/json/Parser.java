@@ -77,12 +77,14 @@ public class Parser {
                 //get current patient room
                 String testID = currentPatient.getString(KEY_TEST_TESTID);
 
+                String result = currentPatient.getString(KEY_TEST_RESULT);
                 HashMap<String,String> hashMap = new HashMap<>();
                 hashMap.put(KEY_TEST_ID,id);
                 hashMap.put(KEY_TEST_NAME,name);
                 hashMap.put(KEY_TEST_DATE,date);
                 hashMap.put(KEY_TEST_PATIENT_ID,patientID);
                 hashMap.put(KEY_TEST_TESTID,testID);
+                hashMap.put(KEY_TEST_RESULT,result);
                 listTest.add(hashMap);
             }
 

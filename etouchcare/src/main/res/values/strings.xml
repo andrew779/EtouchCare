@@ -38,5 +38,9 @@
 
     <!-- Patient Tests Section -->
     <string name="tests_title">Tests</string>
+    <string name="tests_name">Test: </string>
+    <string name="tests_result">Result: </string>
+    <string name="tests_date">Date: </string>
+    <string name="tests_id">ID: </string>
 
 </resources>

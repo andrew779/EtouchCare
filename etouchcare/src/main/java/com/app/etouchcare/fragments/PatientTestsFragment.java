@@ -3,6 +3,8 @@ package com.app.etouchcare.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.adapters.PatientTestAdapter;
 import com.app.etouchcare.callbacks.PatientTestLoadedListener;
+import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 import com.app.etouchcare.tasks.TaskLoadPatientTest;
 
 import java.util.ArrayList;
@@ -22,6 +26,9 @@ import java.util.HashMap;
  * create an instance of this fragment.
  */
 public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener{
+    private RecyclerView recyclerView;
+    private PatientTestAdapter patientTestAdapter;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,11 +82,23 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
                 new TaskLoadPatientTest(PatientTestsFragment.this,"582de16906ee352605f29397").execute();
             }
         });
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.tests_recyclerview);
+        patientTestAdapter = new PatientTestAdapter(getActivity());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
+
+
+        new TaskLoadPatientTest(this,"582de16906ee352605f29397");
+
         return view;
     }
 
     @Override
     public void onPatientTestLoaded(ArrayList<HashMap<String, String>> testList) {
         Log.d("wenzhong","TestResult:\n"+testList.toString());
+        patientTestAdapter.setTestList(testList);
+        recyclerView.setAdapter(patientTestAdapter);
+        patientTestAdapter.notifyItemRangeChanged(0,testList.size());
     }
 }

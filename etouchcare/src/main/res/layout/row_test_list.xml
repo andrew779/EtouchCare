@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tests_id" />
+
+        <TextView
+            android:id="@+id/test_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="j8a71hajw82" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tests_name" />
+
+        <TextView
+            android:id="@+id/test_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Pressure" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tests_result" />
+
+        <TextView
+            android:id="@+id/test_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Positive" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATE: " />
+
+        <TextView
+            android:id="@+id/tests_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016-11-20" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
