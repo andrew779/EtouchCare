@@ -28,7 +28,6 @@ import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.network.VolleySingleton;
-import com.app.etouchcare.tasks.TaskLoadPatientList;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

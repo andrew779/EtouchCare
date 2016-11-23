@@ -31,7 +31,6 @@ public class PatientDetailActivity extends AppCompatActivity {
 
         patientID = getIntent().getStringExtra("id");
         patientList = getIntent().getParcelableArrayListExtra(MainContentFragment.PATIENT_LIST);
-        Toast.makeText(this,patientList.toString(),Toast.LENGTH_SHORT).show();
 
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items

@@ -14,8 +14,8 @@ import android.widget.Button;
 import com.app.etouchcare.R;
 import com.app.etouchcare.adapters.PatientTestAdapter;
 import com.app.etouchcare.callbacks.PatientTestLoadedListener;
+import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
-import com.app.etouchcare.tasks.TaskLoadPatientTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,14 +28,14 @@ import java.util.HashMap;
 public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener{
     private RecyclerView recyclerView;
     private PatientTestAdapter patientTestAdapter;
-
+    private PatientUtils patientUtils;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private String id;
     private String mParam2;
 
 
@@ -65,7 +65,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            id = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -73,32 +73,25 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        patientUtils = new PatientUtils();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_patient_tests, container, false);
-        Button button = (Button) view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new TaskLoadPatientTest(PatientTestsFragment.this,"582de16906ee352605f29397").execute();
-            }
-        });
 
         recyclerView = (RecyclerView) view.findViewById(R.id.tests_recyclerview);
         patientTestAdapter = new PatientTestAdapter(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
+        recyclerView.setAdapter(patientTestAdapter);
 
-
-        new TaskLoadPatientTest(this,"582de16906ee352605f29397");
+        patientUtils.loadPatientTest(this,id);
 
         return view;
     }
 
     @Override
     public void onPatientTestLoaded(ArrayList<HashMap<String, String>> testList) {
-        Log.d("wenzhong","TestResult:\n"+testList.toString());
         patientTestAdapter.setTestList(testList);
-        recyclerView.setAdapter(patientTestAdapter);
         patientTestAdapter.notifyItemRangeChanged(0,testList.size());
     }
 }

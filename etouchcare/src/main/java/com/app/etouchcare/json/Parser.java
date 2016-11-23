@@ -2,6 +2,8 @@ package com.app.etouchcare.json;
 
 import android.util.Log;
 
+import com.app.etouchcare.callbacks.PatientListLoadedListener;
+import com.app.etouchcare.callbacks.PatientTestLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 
 import org.json.JSONArray;
@@ -19,14 +21,15 @@ import static com.app.etouchcare.extra.Keys.EndPointPatientTest.*;
 
 public class Parser {
     //parsing json data into Patients data model
-    public static ArrayList<Patients> parseJSONResponse(JSONObject response){
+    public static void parseJSONResponse(JSONObject response, PatientListLoadedListener mPatientListLoaded){
         ArrayList<Patients> listPatients = new ArrayList<>();
         if (response==null||response.length()==0){
-            return null;
+            return;
         }
         try {
             JSONArray arrayPatients = response.getJSONArray(KEY_PATIENTS);
             for (int i=0;i<arrayPatients.length();i++){
+
                 JSONObject currentPatient = arrayPatients.getJSONObject(i);
                 //get current patient id
                 String id = currentPatient.getString(KEY_ID);
@@ -53,14 +56,17 @@ public class Parser {
 
         } catch (JSONException e) {
             e.printStackTrace();
+
         }
-        return listPatients;
+        if (mPatientListLoaded != null) mPatientListLoaded.onPatientListLoaded(listPatients);
+        Log.d("wenzhong","In parser: "+listPatients);
+
     }
 
-    public static ArrayList<HashMap<String,String>> parseTestJSONResponse(JSONObject response){
+    public static void parseTestJSONResponse(JSONObject response, PatientTestLoadedListener patientTestLoadedListener){
         ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
         if (response==null||response.length()==0){
-            return null;
+            return;
         }
         try {
             JSONArray arrayTests = response.getJSONArray(KEY_TEST_ROOT);
@@ -91,6 +97,7 @@ public class Parser {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return listTest;
+
+        if (patientTestLoadedListener != null) patientTestLoadedListener.onPatientTestLoaded(listTest);
     }
 }

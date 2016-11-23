@@ -20,9 +20,9 @@ import com.app.etouchcare.activity.PatientDetailActivity;
 import com.app.etouchcare.adapters.PatientListAdapter;
 import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.RecyclerTouchListener;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
-import com.app.etouchcare.tasks.TaskLoadPatientList;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -43,6 +43,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
     private FloatingActionButton fab1,fab2;
     private OnFetchIDListener mListener;
     private ArrayList<Patients> patientList = new ArrayList<>();
+    private PatientUtils patientUtils;
 
 
 //    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
@@ -63,6 +64,8 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_content, container, false);
+
+        patientUtils = new PatientUtils();
 
         //refresh layout object
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.patientlist_refreshLayout);
@@ -88,7 +91,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
 
                 TextView tvID = (TextView) view.findViewById(R.id.patientlist_row_id);
                 String str = tvID.getText().toString();
-                str = str.substring(str.indexOf(" "));
+                str = str.substring(str.indexOf(" ")+1);
                 if (mListener != null) mListener.onFetchID(str);
                 Intent intent = new Intent(getActivity(), PatientDetailActivity.class);
                 intent.putExtra("id",str);
@@ -104,8 +107,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         }));
 
 
-        new TaskLoadPatientList(this).execute();
-
+        patientUtils.loadPatientList(this);
 
         return view;
     }
@@ -114,16 +116,17 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onRefresh() {
-        new TaskLoadPatientList(this).execute();
+        patientUtils.loadPatientList(this);
     }
 
     @Override
     public void onPatientListLoaded(ArrayList<Patients> patientList) {
-        if(swipeRefreshLayout.isRefreshing()){
-            swipeRefreshLayout.setRefreshing(false);
-        }
-        this.patientList = patientList;
-        adapter.setPatientList(patientList);
+            if(swipeRefreshLayout.isRefreshing()){
+                swipeRefreshLayout.setRefreshing(false);
+            }
+            this.patientList = patientList;
+            adapter.setPatientList(patientList);
+            adapter.notifyItemRangeChanged(0,patientList.size()-1);
     }
 
     //floating button click listener
@@ -136,7 +139,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 menuRed.close(true);
                 break;
             case R.id.fab2:
-                new TaskLoadPatientList(this).execute();
+                patientUtils.loadPatientList(this);
                 menuRed.close(true);
                 break;
         }

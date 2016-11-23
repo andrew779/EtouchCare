@@ -19,10 +19,14 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 4;
     private String tabTitles[] = new String[] { "Basic", "Diagnosis", "Tests", "Treatment" };
     private Context context;
+    private String id;
+    private PatientDetailActivity patientDetailActivity;
 
     public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
+        patientDetailActivity = (PatientDetailActivity) context;
+        this.id = patientDetailActivity.getPatientID();
     }
 
     @Override
@@ -33,15 +37,14 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position==0) {
-            PatientDetailActivity patientDetailActivity = (PatientDetailActivity) context;
 
-            return PatientBasicFragment.newInstance(patientDetailActivity.getPatientID());
+            return PatientBasicFragment.newInstance(id);
         }
         else if (position == 1){
-            return PatientDiagnosisFragment.newInstance("","");
+            return PatientDiagnosisFragment.newInstance(id,"");
         }
         else if (position == 2){
-            return PatientTestsFragment.newInstance("","");
+            return PatientTestsFragment.newInstance(id,"");
         }
         else
             return new UserProfileFragment();

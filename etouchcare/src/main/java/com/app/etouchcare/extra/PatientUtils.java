@@ -7,7 +7,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.app.etouchcare.callbacks.PatientListLoadedListener;
+import com.app.etouchcare.callbacks.PatientTestLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.network.VolleySingleton;
 
 import org.json.JSONObject;
 
@@ -25,17 +28,24 @@ import static com.app.etouchcare.json.Parser.parseTestJSONResponse;
 
 public class PatientUtils {
     private static ArrayList<Patients> listPatients = new ArrayList<>();
-    private static ArrayList<HashMap<String,String>> testList = new ArrayList<>();
+    private static ArrayList<HashMap<String, String>> testList = new ArrayList<>();
+    VolleySingleton volleySingleton;
+    RequestQueue requestQueue;
 
-    public static ArrayList<Patients> loadPatientList(RequestQueue requestQueue) {
+    public PatientUtils() {
+        volleySingleton = VolleySingleton.getInstance();
+        requestQueue = volleySingleton.getmRequestQueue();
+    }
+
+
+    public void loadPatientList(final PatientListLoadedListener mPatientListLoaded) {
 
 
         //creating a JSONObject request
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_LIST_ALL_PATIENTS, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                listPatients = parseJSONResponse(response);
-
+                parseJSONResponse(response, mPatientListLoaded);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -44,16 +54,16 @@ public class PatientUtils {
             }
         });
         requestQueue.add(request);
-        return listPatients;
     }
 
-    public static ArrayList<HashMap<String,String>> loadPatientTest (RequestQueue requestQueue,String id){
+    public void loadPatientTest(final PatientTestLoadedListener patientTestLoadedListener, String id) {
+        Log.d("PatientUtils", String.format("%s%s", URL_PATIENT_TEST, id));
 
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_PATIENT_TEST + id, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_PATIENT_TEST+id, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                testList = parseTestJSONResponse(response);
+
+                parseTestJSONResponse(response, patientTestLoadedListener);
 
             }
         }, new Response.ErrorListener() {
@@ -64,6 +74,5 @@ public class PatientUtils {
         });
         requestQueue.add(request);
 
-        return testList;
     }
 }
