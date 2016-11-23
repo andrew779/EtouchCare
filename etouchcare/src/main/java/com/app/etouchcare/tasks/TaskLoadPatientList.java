@@ -1,6 +1,7 @@
 package com.app.etouchcare.tasks;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.app.etouchcare.callbacks.PatientListLoadedListener;
@@ -38,5 +39,7 @@ public class TaskLoadPatientList extends AsyncTask<Void, Void, ArrayList<Patient
         if(myComponent != null){
             myComponent.onPatientListLoaded(patients);
         }
+        Log.d("wenzhong","TaskLoadPatientList onPostExecute: "+patients);
+
     }
 }

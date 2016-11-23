@@ -3,18 +3,25 @@ package com.app.etouchcare.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.callbacks.PatientTestLoadedListener;
+import com.app.etouchcare.tasks.TaskLoadPatientTest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link PatientTestsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientTestsFragment extends Fragment {
+public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,7 +67,19 @@ public class PatientTestsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_patient_tests, container, false);
+        View view = inflater.inflate(R.layout.fragment_patient_tests, container, false);
+        Button button = (Button) view.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TaskLoadPatientTest(PatientTestsFragment.this,"582de16906ee352605f29397").execute();
+            }
+        });
+        return view;
     }
 
+    @Override
+    public void onPatientTestLoaded(ArrayList<HashMap<String, String>> testList) {
+        Log.d("wenzhong","TestResult:\n"+testList.toString());
+    }
 }

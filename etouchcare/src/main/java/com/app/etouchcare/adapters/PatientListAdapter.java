@@ -34,7 +34,7 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
     public void setPatientList(ArrayList<Patients> listPatients){
         data = listPatients;
 //        notifyItemRangeChanged(0,listPatients.size());
-        notifyDataSetChanged();
+
     }
 
     @Override

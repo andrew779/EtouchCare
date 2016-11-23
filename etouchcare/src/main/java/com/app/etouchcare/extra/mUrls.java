@@ -7,5 +7,6 @@ package com.app.etouchcare.extra;
 public interface mUrls {
     interface getAllPatients{
         String URL_LIST_ALL_PATIENTS = "http://etouch.azurewebsites.net/";
+        String URL_PATIENT_TEST = "http://etouch.azurewebsites.net/patienttests/";
     }
 }

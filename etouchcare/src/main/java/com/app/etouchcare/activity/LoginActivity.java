@@ -15,6 +15,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.network.VolleySingleton;
+import com.app.etouchcare.tasks.TaskLoadPatientList;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -230,7 +232,6 @@ public class LoginActivity extends AppCompatActivity {
                     return true;
                 }
             }
-            //this should put into if condition, when the user authentication succeed
 
             //  register the new account here if needed.
             return true;
