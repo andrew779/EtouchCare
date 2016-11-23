@@ -2,14 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.etouchcare">
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+=======
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".activity.MyApplication"
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:name=".activity.MyApplication"
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.LoginActivity"
@@ -20,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
 
         <activity
@@ -27,6 +39,17 @@
             android:parentActivityName=".activity.LoginActivity"
             android:label="@string/title_activity_main_patient_list"
             android:theme="@style/AppTheme.NoActionBar" />
+=======
+        <activity
+            android:name=".activity.MainPatientListActivity"
+            android:label="@string/title_activity_main_patient_list"
+            android:parentActivityName=".activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.PatientDetailActivity"
+            android:parentActivityName=".activity.MainPatientListActivity"
+            android:label="@string/title_activity_main_patient_list"
+            android:theme="@style/AppTheme.NoActionBar"/>
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     </application>
 
 </manifest>

@@ -8,13 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
+<<<<<<< HEAD
     <style name="AppTheme.NoActionBar" parent="AppTheme">
+=======
+    <style name="AppTheme.NoActionBar" >
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+<<<<<<< HEAD
     <!-- Widget styling -->
 
     <style name="Widget" />
@@ -29,5 +34,7 @@
         <item name="android:shadowDy">-3.5</item>
         <item name="android:shadowRadius">2</item>
     </style>
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
 
 </resources>

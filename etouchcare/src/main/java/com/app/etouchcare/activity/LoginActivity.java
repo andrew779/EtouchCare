@@ -6,6 +6,7 @@ package com.app.etouchcare.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+<<<<<<< HEAD
 import android.os.AsyncTask;
 import android.app.KeyguardManager;
 import android.content.Intent;
@@ -71,6 +72,39 @@ public class LoginActivity extends AppCompatActivity {
 
     ///Manual Log In
 
+=======
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Parcelable;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.app.etouchcare.activity.MainPatientListActivity;
+import com.app.etouchcare.R;
+import com.app.etouchcare.callbacks.PatientListLoadedListener;
+import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.extra.PatientUtils;
+import com.app.etouchcare.network.VolleySingleton;
+import com.app.etouchcare.tasks.TaskLoadPatientList;
+
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+public class LoginActivity extends AppCompatActivity {
+
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     public final static String USER_ID = "com.app.etouchcare.ID";
 
     private static final String[] DUMMY_CREDENTIALS = new String[]{
@@ -81,6 +115,10 @@ public class LoginActivity extends AppCompatActivity {
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
     private Matcher matcher;
+<<<<<<< HEAD
+=======
+    private boolean Dumb;
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
 
     //UI elements
     private TextInputLayout mEmailView;
@@ -93,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+<<<<<<< HEAD
         //FingerPrint Log In
         try {
             mKeyStore = KeyStore.getInstance("AndroidKeyStore");
@@ -170,6 +209,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //Manual Log In
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
 
         mProgressView = findViewById(R.id.login_progress);
         mLoginFormView = findViewById(R.id.login_form);
@@ -184,6 +225,7 @@ public class LoginActivity extends AppCompatActivity {
                 hideKeyboard();
                 attemptLogin();
 
+<<<<<<< HEAD
 
             }
         });
@@ -369,6 +411,22 @@ public class LoginActivity extends AppCompatActivity {
 
     ////Manual Log In Section
     //Manual Log In
+=======
+            }
+        });
+
+        Button submitBtnDumb = (Button) findViewById(R.id.email_sign_in_button_dumb);
+        submitBtnDumb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dumb = true;
+                attemptLogin();
+            }
+        });
+
+    }
+
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -378,10 +436,23 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         // Store values at the time of the login attempt.
         String email = mEmailView.getEditText().getText().toString();
         String password = mPasswordView.getEditText().getText().toString();
 
+<<<<<<< HEAD
+=======
+        if (Dumb)
+        {
+            email = "dumb@dumb.com";
+            password ="xpto";
+        }
+
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         boolean cancel = false;
         View focusView = null;
 
@@ -416,32 +487,50 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
     //Manual Log In
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     public void doLogin() {
         //TODO LOGIN INTENT
 
 //        Toast.makeText(getApplicationContext(), "OK! I'm performing login.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainPatientListActivity.class);
+<<<<<<< HEAD
         intent.putExtra("PatientPosition", USER_ID);
+=======
+//        intent.putExtra("PatientPosition", USER_ID);
+//        intent.putParcelableArrayListExtra("patients",list);
+//        Toast.makeText(this,"In doLogin: "+list.toString(),Toast.LENGTH_SHORT).show();
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         startActivity(intent);
 
 
     }
 
+<<<<<<< HEAD
     //Manual Log In
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     public boolean isEmailValid(String email) {
         matcher = pattern.matcher(email);
         //return matcher.matches();
         return true;
     }
 
+<<<<<<< HEAD
     //Manual Log In
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     public boolean isPasswordValid(String password) {
         //return password.length() >= patienticon;
         return true;
     }
 
+<<<<<<< HEAD
     //Manual Log In
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     private void hideKeyboard() {
         View view = getCurrentFocus();
         if (view != null) {
@@ -450,7 +539,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
     //Manual Log In
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -487,7 +579,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
     //Manual Log In
+=======
+
+
+
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -496,7 +594,11 @@ public class LoginActivity extends AppCompatActivity {
 
         private final String mEmail;
         private final String mPassword;
+<<<<<<< HEAD
 
+=======
+        private ArrayList<Patients> patientList;
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
@@ -517,7 +619,13 @@ public class LoginActivity extends AppCompatActivity {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
                     // Account exists, return true if the password matches.
+<<<<<<< HEAD
                     return pieces[1].equals(mPassword);
+=======
+
+
+                    return true;
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
                 }
             }
 
@@ -531,6 +639,10 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(false);
 
             if (success) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
                 doLogin();
                 // finish();
             } else {

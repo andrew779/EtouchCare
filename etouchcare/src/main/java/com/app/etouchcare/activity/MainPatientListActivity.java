@@ -14,15 +14,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+<<<<<<< HEAD
+=======
+import com.app.etouchcare.datamodel.Patients;
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
 import com.app.etouchcare.fragments.MainContentFragment;
 import com.app.etouchcare.R;
 import com.app.etouchcare.fragments.UserProfileFragment;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
 public class MainPatientListActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainContentFragment.OnFetchIDListener {
 
     private String patientID="";
+<<<<<<< HEAD
 
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +42,21 @@ public class MainPatientListActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         if (savedInstanceState == null){
             MainContentFragment mainContent = new MainContentFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main, mainContent, mainContent.getTag()).commit();
         }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
