@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Parcelable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +18,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.app.etouchcare.activity.MainPatientListActivity;
 import com.app.etouchcare.R;
+import com.app.etouchcare.callbacks.PatientListLoadedListener;
+import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.extra.PatientUtils;
+import com.app.etouchcare.network.VolleySingleton;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -78,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
+
         // Store values at the time of the login attempt.
         String email = mEmailView.getEditText().getText().toString();
         String password = mPasswordView.getEditText().getText().toString();
@@ -121,7 +130,9 @@ public class LoginActivity extends AppCompatActivity {
 
 //        Toast.makeText(getApplicationContext(), "OK! I'm performing login.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainPatientListActivity.class);
-        intent.putExtra("PatientPosition", USER_ID);
+//        intent.putExtra("PatientPosition", USER_ID);
+//        intent.putParcelableArrayListExtra("patients",list);
+//        Toast.makeText(this,"In doLogin: "+list.toString(),Toast.LENGTH_SHORT).show();
         startActivity(intent);
 
 
@@ -183,6 +194,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -191,7 +204,7 @@ public class LoginActivity extends AppCompatActivity {
 
         private final String mEmail;
         private final String mPassword;
-
+        private ArrayList<Patients> patientList;
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
@@ -212,9 +225,12 @@ public class LoginActivity extends AppCompatActivity {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
                     // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+
+
+                    return true;
                 }
             }
+            //this should put into if condition, when the user authentication succeed
 
             //  register the new account here if needed.
             return true;
@@ -226,6 +242,7 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(false);
 
             if (success) {
+
                 doLogin();
                 // finish();
             } else {

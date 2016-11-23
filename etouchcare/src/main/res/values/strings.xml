@@ -20,7 +20,23 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Patient Basic Section-->
+    <string name="basic_id">ID: </string>
+    <string name="basic_age">Age: </string>
+    <string name="basic_room">Room: </string>
+    <string name="basic_contacttitle">Contact Information</string>
+    <string name="basic_email">Email: </string>
+    <string name="basic_phone">Phone: </string>
+    <string name="basic_address">Address: </string>
+    <string name="basic_title_em">Emergency Contact</string>
+    <string name="basic_name">Name: </string>
+    <string name="basic_relation_em">Relationship: </string>
+
+    <!-- Patient Diagnosis Section -->
+    <string name="diag_title_sym">Symptoms</string>
+    <string name="diag_title">Diagnosis</string>
+
+    <!-- Patient Tests Section -->
+    <string name="tests_title">Tests</string>
 
 </resources>

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.app.etouchcare.R;
@@ -40,7 +39,7 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.patientlist_row, parent,false );
+        View view = inflater.inflate(R.layout.row_patientlist, parent,false );
         MyViewHolder holder = new MyViewHolder(view);
 
 

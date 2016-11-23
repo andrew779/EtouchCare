@@ -2,6 +2,7 @@ package com.app.etouchcare.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.activity.PatientDetailActivity;
 import com.app.etouchcare.adapters.PatientListAdapter;
 import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
@@ -40,11 +42,12 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
     private FloatingActionMenu menuRed;
     private FloatingActionButton fab1,fab2;
     private OnFetchIDListener mListener;
-
+    private ArrayList<Patients> patientList = new ArrayList<>();
 
 
 //    public static final String URL_LIST_ALL_PATIENTS = "http://mapd2016.herokuapp.com/";
     public static final String STATE_PATIENTS = "state_patients";
+    public static final String PATIENT_LIST = "patient_list";
 
     public MainContentFragment() {
         // Required empty public constructor
@@ -60,6 +63,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_content, container, false);
+
         //refresh layout object
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.patientlist_refreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -86,6 +90,10 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 String str = tvID.getText().toString();
                 str = str.substring(str.indexOf(" "));
                 if (mListener != null) mListener.onFetchID(str);
+                Intent intent = new Intent(getActivity(), PatientDetailActivity.class);
+                intent.putExtra("id",str);
+                intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
+                startActivity(intent);
 
             }
 
@@ -114,6 +122,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         if(swipeRefreshLayout.isRefreshing()){
             swipeRefreshLayout.setRefreshing(false);
         }
+        this.patientList = patientList;
         adapter.setPatientList(patientList);
     }
 

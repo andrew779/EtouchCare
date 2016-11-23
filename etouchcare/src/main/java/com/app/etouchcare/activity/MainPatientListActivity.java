@@ -14,21 +14,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.fragments.MainContentFragment;
 import com.app.etouchcare.R;
 import com.app.etouchcare.fragments.UserProfileFragment;
+
+import java.util.ArrayList;
 
 public class MainPatientListActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainContentFragment.OnFetchIDListener {
 
     private String patientID="";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_patient_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
 
 
         if (savedInstanceState == null){
