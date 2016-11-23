@@ -3,6 +3,11 @@
     <string name="action_settings">Action_Settings</string>
 
     <string name="submit">Submit</string>
+    <string name="addnew">Add New</string>
+    <string name="refresh">Refresh All</string>
+    <string name="basic_patient_title">Patient</string>
+    <string name="instructions">Swipe down to refresh - Hold for more options</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -15,7 +20,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_main_patient_list">MainPatientListActivity</string>
+    <string name="title_activity_main_patient_list">Patients</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

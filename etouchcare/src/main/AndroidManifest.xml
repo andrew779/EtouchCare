@@ -26,10 +26,12 @@
             android:label="@string/title_activity_main_patient_list"
             android:parentActivityName=".activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.PatientDetailActivity"
-            android:parentActivityName=".activity.MainPatientListActivity"
+        <activity
+            android:name=".activity.PatientDetailActivity"
             android:label="@string/title_activity_main_patient_list"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:parentActivityName=".activity.MainPatientListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.AddPatient"></activity>
     </application>
 
 </manifest>
