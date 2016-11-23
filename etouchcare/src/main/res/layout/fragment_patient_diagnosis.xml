@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:id="@+id/diagnosis_diag"
         android:text="Can not work"
         android:textSize="@dimen/basic_textsize"/>
 
@@ -38,7 +39,7 @@
         android:text="@string/diag_title_sym"
         android:layout_marginBottom="10dp"/>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/diagnosis_sym"
+        android:id="@+id/diagnosis_sym_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical">

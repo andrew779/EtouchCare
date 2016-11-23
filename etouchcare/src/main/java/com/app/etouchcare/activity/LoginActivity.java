@@ -10,24 +10,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Parcelable;
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.app.etouchcare.activity.MainPatientListActivity;
 import com.app.etouchcare.R;
-import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
-import com.app.etouchcare.extra.PatientUtils;
-import com.app.etouchcare.network.VolleySingleton;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

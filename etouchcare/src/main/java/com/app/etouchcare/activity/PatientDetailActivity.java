@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class PatientDetailActivity extends AppCompatActivity {
 
     private String patientID = "";
+    private Patients theOne;
     private ArrayList<Patients> patientList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class PatientDetailActivity extends AppCompatActivity {
 
         patientID = getIntent().getStringExtra("id");
         patientList = getIntent().getParcelableArrayListExtra(MainContentFragment.PATIENT_LIST);
-
+        theOne = findTheOne(patientID,patientList);
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -46,5 +47,15 @@ public class PatientDetailActivity extends AppCompatActivity {
     }
     public String getPatientID(){
         return patientID;
+    }
+    public Patients getTheOne(){
+        return theOne;
+    }
+
+    private Patients findTheOne(String id, ArrayList<Patients> list){
+        for (Patients one:list) {
+            if(one.getId().equals(id)) return one;
+        }
+        return null;
     }
 }

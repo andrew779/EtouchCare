@@ -19,7 +19,7 @@ import com.app.etouchcare.R;
 import com.app.etouchcare.activity.AddPatient;
 import com.app.etouchcare.activity.PatientDetailActivity;
 import com.app.etouchcare.adapters.PatientListAdapter;
-import com.app.etouchcare.callbacks.PatientListLoadedListener;
+import com.app.etouchcare.callbacks.PatientLoadedListener.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.RecyclerTouchListener;
