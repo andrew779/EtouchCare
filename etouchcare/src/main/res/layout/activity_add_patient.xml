@@ -167,6 +167,8 @@
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -244,7 +246,14 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
+            <Button
+                android:text="Add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAdd"
+                />
 
         </LinearLayout>
+
 
 </LinearLayout>
