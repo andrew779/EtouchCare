@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +58,6 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -105,12 +103,14 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
             }
         }));
 
-        new TaskLoadPatientList(this).execute();
 
+        new TaskLoadPatientList(this).execute();
 
 
         return view;
     }
+
+
 
     @Override
     public void onRefresh() {
@@ -119,13 +119,11 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onPatientListLoaded(ArrayList<Patients> patientList) {
-        Log.d("wenzhong","On the Call Back:\n"+patientList.toString());
         if(swipeRefreshLayout.isRefreshing()){
             swipeRefreshLayout.setRefreshing(false);
         }
         this.patientList = patientList;
         adapter.setPatientList(patientList);
-        adapter.notifyItemRangeChanged(0,patientList.size());
     }
 
     //floating button click listener

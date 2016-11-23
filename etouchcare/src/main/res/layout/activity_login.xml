@@ -10,6 +10,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.app.etouchcare.activity.LoginActivity">
 
+    <ImageView
+        android:layout_width="420dp"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/logo"
+        android:paddingTop="60dp"
+        android:paddingBottom="40dp"
+        />
 
         <ProgressBar
             android:id="@+id/login_progress"
@@ -25,7 +34,7 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" android:paddingTop="40dp">
 
         <LinearLayout
             android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -67,6 +76,11 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
@@ -76,6 +90,19 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/email_sign_in_button_dumb"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Sign in anyway"
+                android:textAlignment="center"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

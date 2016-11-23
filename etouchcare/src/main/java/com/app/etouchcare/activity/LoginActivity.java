@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
     private Matcher matcher;
+    private boolean Dumb;
 
     //UI elements
     private TextInputLayout mEmailView;
@@ -73,7 +74,15 @@ public class LoginActivity extends AppCompatActivity {
                 hideKeyboard();
                 attemptLogin();
 
+            }
+        });
 
+        Button submitBtnDumb = (Button) findViewById(R.id.email_sign_in_button_dumb);
+        submitBtnDumb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dumb = true;
+                attemptLogin();
             }
         });
 
@@ -92,6 +101,12 @@ public class LoginActivity extends AppCompatActivity {
         // Store values at the time of the login attempt.
         String email = mEmailView.getEditText().getText().toString();
         String password = mPasswordView.getEditText().getText().toString();
+
+        if (Dumb)
+        {
+            email = "dumb@dumb.com";
+            password ="xpto";
+        }
 
         boolean cancel = false;
         View focusView = null;
