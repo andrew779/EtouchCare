@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.activity.AddPatient;
 import com.app.etouchcare.activity.PatientDetailActivity;
 import com.app.etouchcare.adapters.PatientListAdapter;
 import com.app.etouchcare.callbacks.PatientListLoadedListener;
@@ -97,7 +98,6 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 intent.putExtra("id",str);
                 intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
                 startActivity(intent);
-
             }
 
             @Override
@@ -134,8 +134,12 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.fab1:
+                Intent intent = new Intent(getActivity(), AddPatient.class);
+                //intent.putExtra("id",str);
+                //intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
+                startActivity(intent);
 
-                Snackbar.make(v,"FAB1 clicked",Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(v,"Add new",Snackbar.LENGTH_SHORT).show();
                 menuRed.close(true);
                 break;
             case R.id.fab2:

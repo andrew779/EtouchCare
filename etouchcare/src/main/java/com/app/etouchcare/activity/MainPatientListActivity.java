@@ -96,8 +96,6 @@ public class MainPatientListActivity extends AppCompatActivity
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_main, userProfileFragment, userProfileFragment.getTag()).commit();
 
-        } else if (id == R.id.nav_share) {
-
         } else if (id == R.id.nav_logout) {
             NavUtils.navigateUpFromSameTask(this);
         }
