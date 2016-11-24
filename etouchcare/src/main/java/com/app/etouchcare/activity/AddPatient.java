@@ -2,6 +2,7 @@ package com.app.etouchcare.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.datamodel.Patients;
+import com.google.gson.Gson;
 
 public class AddPatient extends AppCompatActivity {
 
@@ -32,6 +35,8 @@ public class AddPatient extends AppCompatActivity {
                 EditText txtAddress = (EditText) findViewById(R.id.editTextAddress);
                 EditText txtEmgrName = (EditText) findViewById(R.id.editTextEmergencyName);
                 EditText txtEmgrPhone = (EditText) findViewById(R.id.editTextEmergencyPhone);
+
+
             }
         });
     }
