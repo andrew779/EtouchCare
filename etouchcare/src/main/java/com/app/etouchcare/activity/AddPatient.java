@@ -1,12 +1,16 @@
 package com.app.etouchcare.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
+import android.content.Intent;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -31,8 +35,11 @@ public class AddPatient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
 
-
+        final AddPatient addPatient = this;
         Button btnAdd = (Button) this.findViewById(R.id.btnAdd);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +48,7 @@ public class AddPatient extends AppCompatActivity {
                 Toast.makeText(AddPatient.this, "test", Toast.LENGTH_SHORT).show();
                 EditText txtName = (EditText) findViewById(R.id.editTextName);
                 EditText txtRoom = (EditText) findViewById(R.id.editTextRoom);
+                EditText txtAge = (EditText) findViewById(R.id.editTextAge);
                 EditText txtEmail = (EditText) findViewById(R.id.editTextEmail);
                 EditText txtPhone = (EditText) findViewById(R.id.editTextPhone);
                 EditText txtAddress = (EditText) findViewById(R.id.editTextAddress);
@@ -50,6 +58,7 @@ public class AddPatient extends AppCompatActivity {
                 Patients patient = new Patients();
                 patient.setpName(txtName.getText().toString());
                 patient.setRoom(txtRoom.getText().toString());
+                patient.setRoom(txtAge.getText().toString());
                 patient.setAddress(txtAddress.getText().toString());
                 patient.setEmail(txtEmail.getText().toString());
                 patient.setPhone(txtPhone.getText().toString());
@@ -69,6 +78,9 @@ public class AddPatient extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     try {
                                         VolleyLog.v("Response:%n %s", response.toString(4));
+
+                                        Intent intent = new Intent(addPatient, MainPatientListActivity.class);
+                                        startActivity(intent);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -83,7 +95,7 @@ public class AddPatient extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-// add the request object to the queue to be executed
+                // add the request object to the queue to be executed
                 RequestQueue reqq = VolleySingleton.getInstance().getmRequestQueue();
                 reqq.add(req);
             }
