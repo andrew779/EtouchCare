@@ -18,6 +18,11 @@ public class Patients implements Parcelable {
     private String room = "";
     private String diagnosisDetails = "";
     private String condition = "";
+    private String email = "";
+    private String address = "";
+    private String phone = "";
+    private String emergencyName = "";
+    private String emergencyPhone = "";
 
     public Patients() {
 
@@ -122,4 +127,44 @@ public class Patients implements Parcelable {
             return new Patients[size];
         }
     };
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmergencyName() {
+        return emergencyName;
+    }
+
+    public void setEmergencyName(String emergencyName) {
+        this.emergencyName = emergencyName;
+    }
+
+    public String getEmergencyPhone() {
+        return emergencyPhone;
+    }
+
+    public void setEmergencyPhone(String emergencyPhone) {
+        this.emergencyPhone = emergencyPhone;
+    }
 }
