@@ -32,7 +32,8 @@
             android:label="@string/title_activity_main_patient_list"
             android:parentActivityName=".activity.MainPatientListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.AddPatient"></activity>
+        <activity android:name=".activity.AddPatient"
+            android:parentActivityName=".activity.MainPatientListActivity"/>
     </application>
 
 </manifest>
