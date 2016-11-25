@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-<<<<<<< HEAD
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:showIn="@layout/app_bar_main_patient_list"
     tools:context="com.app.etouchcare.activity.MainPatientListActivity">
-=======
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
+
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,11 +16,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-<<<<<<< HEAD
-            android:id="@+id/toolbar"
-=======
             android:id="@+id/toolbar_detail"
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"

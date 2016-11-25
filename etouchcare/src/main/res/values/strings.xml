@@ -22,8 +22,6 @@
     </string>
 
     <string name="title_activity_main_patient_list">Patients</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Strings related to FingerPrint LogIn: -->
     <string name="cancel">Cancel</string>
@@ -47,13 +45,12 @@
     <string name="new_fingerprint_enrolled_description">A new fingerprint was added to this device, so your password is required.</string>
     <string name="use_fingerprint_in_future">Use fingerprint in the future</string>
     <string name="use_fingerprint_to_authenticate_title">Use fingerprint to authenticate</string>
-    <string name="use_fingerprint_to_authenticate_key" >use_fingerprint_to_authenticate_key</string>
+    <string name="use_fingerprint_to_authenticate_key">use_fingerprint_to_authenticate_key</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
->>>>>>> b4dece0f13f164ec703afb21d910522b9c1665ec
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -84,5 +81,9 @@
     <string name="tests_result">Result: </string>
     <string name="tests_date">Date: </string>
     <string name="tests_id">ID: </string>
+
+    <!--Patient Treatment Section-->
+    <string name="treat_title">Treatment Plan</string>
+
 
 </resources>

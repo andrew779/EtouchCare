@@ -1,33 +1,18 @@
 package com.app.etouchcare.datamodel;
 
-<<<<<<< HEAD
-=======
 import android.os.Parcel;
 import android.os.Parcelable;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-import java.util.HashMap;
-
-=======
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
->>>>>>> b4dece0f13f164ec703afb21d910522b9c1665ec
 /**
  * Created by wenzhongzheng on 2016-11-19.
  */
 
-<<<<<<< HEAD
-public class Patients implements Parcelable {
-=======
-<<<<<<< HEAD
-public class Patients {
-=======
+
+
 public class Patients implements Parcelable{
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
->>>>>>> b4dece0f13f164ec703afb21d910522b9c1665ec
 
     private String id = "";
-    private String pName = "";
+    private String name = "";
     private String diagnosis = "";
     private String room = "";
     private String diagnosisDetails = "";
@@ -38,26 +23,23 @@ public class Patients implements Parcelable{
     private String emergencyName = "";
     private String emergencyPhone = "";
 
-<<<<<<< HEAD
-    public Patients() {
-=======
-<<<<<<< HEAD
-=======
-    public Patients(){
->>>>>>> b4dece0f13f164ec703afb21d910522b9c1665ec
+
+
+        public Patients(){
+
 
     }
 
-    public Patients(String id, String pName, String diagnosis, String room, String diagnosisDetails, String condition) {
+    public Patients(String id, String name, String diagnosis, String room, String diagnosisDetails, String condition) {
         this.id = id;
-        this.pName = pName;
+        this.name = name;
         this.diagnosis = diagnosis;
         this.room = room;
         this.diagnosisDetails = diagnosisDetails;
         this.condition = condition;
     }
 
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
+
     public String getId() {
         return id;
     }
@@ -66,12 +48,12 @@ public class Patients implements Parcelable{
         this.id = id;
     }
 
-    public String getpName() {
-        return pName;
+    public String getName() {
+        return name;
     }
 
-    public void setpName(String pName) {
-        this.pName = pName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDiagnosis() {
@@ -106,16 +88,10 @@ public class Patients implements Parcelable{
         this.condition = condition;
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
     @Override
     public String toString() {
-        return "id: " + id + ", name: " + pName + ", diagnosis: " + diagnosis + ", room: " + room;
+        return "id: " + id + ", name: " + name + ", diagnosis: " + diagnosis + ", room: " + room;
     }
-<<<<<<< HEAD
-=======
 
 
     @Override
@@ -126,7 +102,7 @@ public class Patients implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeString(this.pName);
+        dest.writeString(this.name);
         dest.writeString(this.diagnosis);
         dest.writeString(this.room);
         dest.writeString(this.diagnosisDetails);
@@ -135,7 +111,7 @@ public class Patients implements Parcelable{
 
     protected Patients(Parcel in) {
         this.id = in.readString();
-        this.pName = in.readString();
+        this.name = in.readString();
         this.diagnosis = in.readString();
         this.room = in.readString();
         this.diagnosisDetails = in.readString();
@@ -153,7 +129,6 @@ public class Patients implements Parcelable{
             return new Patients[size];
         }
     };
-<<<<<<< HEAD
 
     public String getEmail() {
         return email;
@@ -194,7 +169,5 @@ public class Patients implements Parcelable{
     public void setEmergencyPhone(String emergencyPhone) {
         this.emergencyPhone = emergencyPhone;
     }
-=======
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
->>>>>>> b4dece0f13f164ec703afb21d910522b9c1665ec
+
 }

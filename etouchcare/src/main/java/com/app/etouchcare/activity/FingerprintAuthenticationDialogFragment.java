@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -91,10 +92,12 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 				v.findViewById(R.id.use_fingerprint_in_future_check);
 		mNewFingerprintEnrolledTextView = (TextView)
 				v.findViewById(R.id.new_fingerprint_enrolled_description);
-		mFingerprintUiHelper = new FingerprintUiHelper(
-				mActivity.getSystemService(FingerprintManager.class),
-				(ImageView) v.findViewById(R.id.fingerprint_icon),
-				(TextView) v.findViewById(R.id.fingerprint_status), this);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			mFingerprintUiHelper = new FingerprintUiHelper(
+                    mActivity.getSystemService(FingerprintManager.class),
+                    (ImageView) v.findViewById(R.id.fingerprint_icon),
+                    (TextView) v.findViewById(R.id.fingerprint_status), this);
+		}
 		updateStage();
 
 		// If fingerprint authentication is not available, switch immediately to the backup
@@ -127,7 +130,9 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		mActivity = (LoginActivity) activity;
-		mInputMethodManager = mActivity.getSystemService(InputMethodManager.class);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			mInputMethodManager = mActivity.getSystemService(InputMethodManager.class);
+		}
 		mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mActivity);
 	}
 
@@ -171,12 +176,12 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 
 			if (mUseFingerprintFutureCheckBox.isChecked()) {
 				// Re-create the key so that fingerprints including new ones are validated.
-				mActivity.createKey(LoginActivity.DEFAULT_KEY_NAME, true);
+				//mActivity.createKey(LoginActivity.DEFAULT_KEY_NAME, true);
 				mStage = Stage.FINGERPRINT;
 			}
 		}
 		mPassword.setText("");
-		mActivity.onFingerprint(false /* without Fingerprint */, null);
+		//mActivity.onFingerprint(false /* without Fingerprint */, null);
 		dismiss();
 	}
 
@@ -233,7 +238,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 	public void onAuthenticated() {
 		// Callback from FingerprintUiHelper. Let the activity know that authentication was
 		// successful.
-		mActivity.onFingerprint(true /* withFingerprint */, mCryptoObject);
+		//mActivity.onFingerprint(true /* withFingerprint */, mCryptoObject);
 		dismiss();
 	}
 

@@ -34,12 +34,8 @@
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-=======
         android:isIndicator="true"
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         android:id="@+id/user_ratingBar"
-
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/user_img" />
     <LinearLayout
@@ -54,11 +50,9 @@
             android:layout_height="wrap_content"
             android:hint="Current Password">
 
-<<<<<<< HEAD
-            <EditText
-=======
+
             <android.support.design.widget.TextInputEditText
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -72,11 +66,10 @@
             android:layout_height="wrap_content"
             android:hint="New Password">
 
-<<<<<<< HEAD
-            <EditText
-=======
+
+
             <android.support.design.widget.TextInputEditText
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeActionLabel="@string/action_sign_in_short"
@@ -92,11 +85,9 @@
             android:layout_height="wrap_content"
             android:hint="Confirm New Password">
 
-<<<<<<< HEAD
-            <EditText
-=======
+
             <android.support.design.widget.TextInputEditText
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
+
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

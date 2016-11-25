@@ -47,7 +47,7 @@ public class PatientBasicFragment extends Fragment {
         tvID = (TextView) view.findViewById(R.id.basic_id);
         tvID.setText(patientID);
         tvName = (TextView) view.findViewById(R.id.basic_name);
-        tvName.setText(theOne.getpName());
+        tvName.setText(theOne.getName());
         tvAge = (TextView) view.findViewById(R.id.basic_age);
         tvRoom = (TextView) view.findViewById(R.id.basic_room);
         tvRoom.setText(theOne.getRoom());

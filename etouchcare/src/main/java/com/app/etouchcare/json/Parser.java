@@ -10,8 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
-
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_CONDITION;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_DIAGNOSIS;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_DIAGNOSIS_DETAIL;
@@ -20,16 +18,10 @@ import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_NAME;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_PATIENTS;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_ROOM;
 
-=======
 import java.util.HashMap;
 
-import static com.app.etouchcare.extra.Keys.EndPointPatientList.*;
 import static com.app.etouchcare.extra.Keys.EndPointPatientTest.*;
-<<<<<<< HEAD
 import static com.app.etouchcare.extra.Keys.EndPointPatientDiagnosis.*;
-=======
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
->>>>>>> b4dece0f13f164ec703afb21d910522b9c1665ec
 /**
  * Created by wenzhongzheng on 2016-11-20.
  */
@@ -60,7 +52,7 @@ public class Parser {
                 String condition = currentPatient.getString(KEY_CONDITION);
 
                 Patients patients = new Patients();
-                patients.setpName(name);
+                patients.setName(name);
                 patients.setId(id);
                 patients.setDiagnosis(diagnosis);
                 patients.setDiagnosisDetails(diagnosisDetail);
@@ -68,10 +60,7 @@ public class Parser {
                 patients.setCondition(condition);
                 listPatients.add(patients);
             }
-<<<<<<< HEAD
             Log.d("wenzhong",listPatients.toString());
-=======
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -80,8 +69,6 @@ public class Parser {
         if (mPatientListLoaded != null) mPatientListLoaded.onPatientListLoaded(listPatients);
 
     }
-<<<<<<< HEAD
-=======
 
     public static void parseTestJSONResponse(JSONObject response, PatientTestLoadedListener patientTestLoadedListener){
         ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
@@ -161,5 +148,4 @@ public class Parser {
         else
             Log.d("Parser","Null diagnosisloadedListener");
     }
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
 }

@@ -8,11 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
-<<<<<<< HEAD
-    <style name="AppTheme.NoActionBar">
-=======
+
     <style name="AppTheme.NoActionBar" parent="AppTheme">
->>>>>>> b4dece0f13f164ec703afb21d910522b9c1665ec
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -37,5 +35,5 @@
         <item name="android:shadowColor">#7F000000</item>
         <item name="android:shadowDy">-3.5</item>
         <item name="android:shadowRadius">2</item>
-
+</style>
 </resources>

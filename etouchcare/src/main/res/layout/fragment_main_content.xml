@@ -19,21 +19,12 @@
         android:id="@+id/patientlist_refreshLayout"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_below="@+id/patientlist_instruction"
-<<<<<<< HEAD
-=======
-        android:padding="@dimen/activity_vertical_margin"
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/patientlist_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-<<<<<<< HEAD
-
-=======
->>>>>>> f7cf8675e1a094a013de591979dfd9bdb71a1454
-            android:scrollbars="vertical">
+            android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
 

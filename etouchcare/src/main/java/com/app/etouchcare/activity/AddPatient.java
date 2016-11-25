@@ -9,10 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Context;
-import android.content.Intent;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,13 +20,9 @@ import com.app.etouchcare.R;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.network.VolleySingleton;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
 
 public class AddPatient extends AppCompatActivity {
 
@@ -59,7 +52,7 @@ public class AddPatient extends AppCompatActivity {
                 EditText txtEmgrPhone = (EditText) findViewById(R.id.editTextEmergencyPhone);
 
                 Patients patient = new Patients();
-                patient.setpName(txtName.getText().toString());
+                patient.setName(txtName.getText().toString());
                 patient.setRoom(txtRoom.getText().toString());
                 patient.setRoom(txtAge.getText().toString());
                 patient.setAddress(txtAddress.getText().toString());
