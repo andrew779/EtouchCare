@@ -12,7 +12,7 @@ import android.os.Parcelable;
 public class Patients implements Parcelable{
 
     private String id = "";
-    private String name = "";
+    private String pname = "";
     private String diagnosis = "";
     private String room = "";
     private String diagnosisDetails = "";
@@ -32,7 +32,7 @@ public class Patients implements Parcelable{
 
     public Patients(String id, String name, String diagnosis, String room, String diagnosisDetails, String condition) {
         this.id = id;
-        this.name = name;
+        this.pname = name;
         this.diagnosis = diagnosis;
         this.room = room;
         this.diagnosisDetails = diagnosisDetails;
@@ -49,11 +49,11 @@ public class Patients implements Parcelable{
     }
 
     public String getName() {
-        return name;
+        return pname;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.pname = name;
     }
 
     public String getDiagnosis() {
@@ -90,7 +90,7 @@ public class Patients implements Parcelable{
 
     @Override
     public String toString() {
-        return "id: " + id + ", name: " + name + ", diagnosis: " + diagnosis + ", room: " + room;
+        return "id: " + id + ", name: " + pname + ", diagnosis: " + diagnosis + ", room: " + room;
     }
 
 
@@ -102,7 +102,7 @@ public class Patients implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeString(this.name);
+        dest.writeString(this.pname);
         dest.writeString(this.diagnosis);
         dest.writeString(this.room);
         dest.writeString(this.diagnosisDetails);
@@ -111,7 +111,7 @@ public class Patients implements Parcelable{
 
     protected Patients(Parcel in) {
         this.id = in.readString();
-        this.name = in.readString();
+        this.pname = in.readString();
         this.diagnosis = in.readString();
         this.room = in.readString();
         this.diagnosisDetails = in.readString();
