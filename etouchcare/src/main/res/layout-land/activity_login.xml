@@ -103,6 +103,68 @@
                     android:text="Sign in anyway"
                     android:textAlignment="center"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/login_fingerprint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_gravity="center"
+                        android:textColor="?android:attr/textColorPrimaryInverse"
+                        android:textStyle="bold"
+                        android:text="@string/fingerprint_login"
+                        android:drawableLeft="@drawable/fingerprint_icon"
+                        android:id="@+id/fingerprint_button" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_gravity="end"
+                        android:textColor="?android:attr/textColorPrimaryInverse"
+                        android:text="@string/fingerprint_not_invalidated"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/fingerprint_button_not_invalidated"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/fingerprint_button_not_invalidated_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="end"
+                        android:textAlignment="gravity"
+                        android:text="@string/fingerprint_button_not_invalidated_description"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/confirmation_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/fingerprint_done"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/encrypted_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/fingerprint_done"
+                        android:visibility="gone"/>
+                </LinearLayout>
             </LinearLayout>
 
 
