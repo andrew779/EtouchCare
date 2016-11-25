@@ -41,7 +41,7 @@ public class AddPatient extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AddPatient.this, "test", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddPatient.this, "Adding", Toast.LENGTH_SHORT).show();
                 EditText txtName = (EditText) findViewById(R.id.editTextName);
                 EditText txtRoom = (EditText) findViewById(R.id.editTextRoom);
                 EditText txtAge = (EditText) findViewById(R.id.editTextAge);
