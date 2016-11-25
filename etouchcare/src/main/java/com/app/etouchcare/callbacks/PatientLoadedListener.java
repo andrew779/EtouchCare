@@ -24,4 +24,7 @@ public interface PatientLoadedListener {
     interface PatientTreatmentLoadedListener {
         void onPatientTreatmentLoaded(ArrayList<Treatments> treatmentList);
     }
+    interface RecordDeletedListener{
+        void onRecordDeleted(int position);
+    }
 }

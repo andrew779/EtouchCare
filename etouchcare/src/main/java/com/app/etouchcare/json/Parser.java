@@ -11,12 +11,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_ADDRESS;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_CONDITION;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_DIAGNOSIS;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_DIAGNOSIS_DETAIL;
+import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_EMAIL;
+import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_EM_NAME;
+import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_EM_PHONE;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_ID;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_NAME;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_PATIENTS;
+import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_PHONE;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_ROOM;
 
 import java.util.HashMap;
@@ -40,27 +46,49 @@ public class Parser {
             JSONArray arrayPatients = response.getJSONArray(KEY_PATIENTS);
             for (int i=0;i<arrayPatients.length();i++){
 
+                Patients patients = new Patients();
                 JSONObject currentPatient = arrayPatients.getJSONObject(i);
                 //get current patient id
-                String id = currentPatient.getString(KEY_ID);
+                if (currentPatient.has(KEY_ID)) {
+                    String id = currentPatient.getString(KEY_ID);
+                    patients.setId(id);
+                }
                 //get current patient name
-                String name = currentPatient.getString(KEY_NAME);
-                //get current patient diagnosis
-                String diagnosis = currentPatient.getString(KEY_DIAGNOSIS);
-                //get current patient diagnosis detail
-                String diagnosisDetail = currentPatient.getString(KEY_DIAGNOSIS_DETAIL);
-                //get current patient room
-                String room = currentPatient.getString(KEY_ROOM);
-                //get current patient condition
-                String condition = currentPatient.getString(KEY_CONDITION);
-
-                Patients patients = new Patients();
-                patients.setName(name);
-                patients.setId(id);
-                patients.setDiagnosis(diagnosis);
-                patients.setDiagnosisDetails(diagnosisDetail);
-                patients.setRoom(room);
-                patients.setCondition(condition);
+                if (currentPatient.has(KEY_NAME)){
+                    String name = currentPatient.getString(KEY_NAME);
+                    patients.setName(name);
+                }
+                if (currentPatient.has(KEY_DIAGNOSIS)){
+                    String diagnosis = currentPatient.getString(KEY_DIAGNOSIS);
+                    patients.setDiagnosis(diagnosis);
+                }
+                if (currentPatient.has(KEY_DIAGNOSIS_DETAIL)){
+                    String diagnosisDetail = currentPatient.getString(KEY_DIAGNOSIS_DETAIL);
+                    patients.setDiagnosisDetails(diagnosisDetail);
+                }
+                if (currentPatient.has(KEY_ROOM)){
+                    String room = currentPatient.getString(KEY_ROOM);
+                    patients.setRoom(room);
+                }
+                if (currentPatient.has(KEY_CONDITION)){
+                    String condition = currentPatient.getString(KEY_CONDITION);
+                    patients.setCondition(condition);
+                }
+                if (currentPatient.has(KEY_ADDRESS)){
+                    patients.setAddress(currentPatient.getString(KEY_ADDRESS));
+                }
+                if (currentPatient.has(KEY_EMAIL)){
+                    patients.setEmail(currentPatient.getString(KEY_EMAIL));
+                }
+                if (currentPatient.has(KEY_EM_NAME)){
+                    patients.setEmergencyName(currentPatient.getString(KEY_EM_NAME));
+                }
+                if (currentPatient.has(KEY_EM_PHONE)){
+                    patients.setEmergencyPhone(currentPatient.getString(KEY_EM_PHONE));
+                }
+                if (currentPatient.has(KEY_PHONE)){
+                    patients.setPhone(currentPatient.getString(KEY_PHONE));
+                }
                 listPatients.add(patients);
             }
             Log.d("wenzhong",listPatients.toString());
