@@ -10,14 +10,21 @@
     <!--<color name="colorBlack">#9E9E9E</color>-->
     <!--<color name="colorRedivided">#D3D3D3</color>-->
 
-    <color name="colorPrimary">#673AB7</color>
-    <color name="colorPrimaryDark">#512DA8</color>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorPrimaryLight">#FFCDD2</color>
+    <color name="colorDivided">#BDBDBD</color>
+    <color name="colorAccent2">#4046ff</color>
     <color name="colorAccent">#7C4DFF</color>
+    <color name="colorBlack">#9E9E9E</color>
+    <color name="colorRedivided">#D3D3D3</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorHighlight">#B6B6B6</color>
+    <color name="warning_color">#f4511e</color>
+    <color name="hint_color">#42000000</color>
+    <color name="success_color">#009688</color>
 </resources>

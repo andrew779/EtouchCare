@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/patientlist_row"
+    android:layout_width="match_parent"
+    android:background="@drawable/custom_bg"
+    android:clickable="true"
+    android:layout_height="76dp">
+
+    <ImageView
+        android:id="@+id/patientlist_row_img"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/patienticon"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/patientlist_row_img"
+        android:padding="5dp"
+        >
+
+        <TextView
+            android:id="@+id/patientlist_row_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="ID: 1231231141"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/patientlist_row_id"
+            android:id="@+id/patientlist_row_name"
+            android:text="Name: Great Mark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/patientlist_row_room"
+            android:text="Room: 152"/>
+        <TextView
+            android:id="@+id/patientlist_row_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diagnosis: 123456789_123456789123456789_123456789_"
+            android:layout_below="@+id/patientlist_row_name"/>
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

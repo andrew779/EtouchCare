@@ -6,24 +6,60 @@ package com.app.etouchcare.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
+import android.app.KeyguardManager;
+import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.security.keystore.KeyGenParameterSpec;
+import android.security.keystore.KeyPermanentlyInvalidatedException;
+import android.security.keystore.KeyProperties;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.util.Base64;
+import android.util.Log;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.view.inputmethod.InputMethodManager;
 
+
+import com.android.volley.RequestQueue;
+import com.app.etouchcare.activity.MainPatientListActivity;
 import com.app.etouchcare.R;
+import com.app.etouchcare.callbacks.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.extra.PatientUtils;
+import com.app.etouchcare.network.VolleySingleton;
+//import com.app.etouchcare.tasks.TaskLoadPatientList;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -265,3 +301,5 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 }
+
+

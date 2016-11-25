@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.etouchcare">
 
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -21,6 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.MainPatientListActivity"
             android:label="@string/title_activity_main_patient_list"
@@ -33,6 +35,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.AddPatient"
             android:parentActivityName=".activity.MainPatientListActivity"/>
+
     </application>
 
 </manifest>
