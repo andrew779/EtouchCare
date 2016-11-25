@@ -127,6 +127,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		mActivity = (LoginActivity) activity;
@@ -176,7 +177,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 
 			if (mUseFingerprintFutureCheckBox.isChecked()) {
 				// Re-create the key so that fingerprints including new ones are validated.
-				//mActivity.createKey(LoginActivity.DEFAULT_KEY_NAME, true);
+				mActivity.createKey(LoginActivity.DEFAULT_KEY_NAME, true);
 				mStage = Stage.FINGERPRINT;
 			}
 		}
@@ -238,7 +239,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 	public void onAuthenticated() {
 		// Callback from FingerprintUiHelper. Let the activity know that authentication was
 		// successful.
-		//mActivity.onFingerprint(true /* withFingerprint */, mCryptoObject);
+		mActivity.onFingerprint(true /* withFingerprint */, mCryptoObject);
 		dismiss();
 	}
 

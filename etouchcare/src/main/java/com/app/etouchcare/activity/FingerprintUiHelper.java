@@ -3,7 +3,7 @@ package com.app.etouchcare.activity;
 /**
  * Created by joseapablaza on 2016-11-22.
  */
-
+import android.annotation.TargetApi;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
 import android.widget.ImageView;
@@ -14,6 +14,7 @@ import com.app.etouchcare.R;
 /**
  * Small helper class to manage text/icon around fingerprint authentication UI.
  */
+@TargetApi(23)
 public class FingerprintUiHelper extends FingerprintManager.AuthenticationCallback {
 
 	private static final long ERROR_TIMEOUT_MILLIS = 1600;
