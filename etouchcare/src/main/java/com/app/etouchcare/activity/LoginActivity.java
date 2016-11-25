@@ -439,10 +439,10 @@ public class LoginActivity extends AppCompatActivity {
 
     // Show confirmation, if fingerprint was used show crypto information.
     private void showConfirmation(byte[] encrypted) {
-        findViewById(R.id.confirmation_message).setVisibility(View.VISIBLE);
+        findViewById(R.id.confirmation_message).setVisibility(View.GONE);
         if (encrypted != null) {
             TextView v = (TextView) findViewById(R.id.encrypted_message);
-            v.setVisibility(View.VISIBLE);
+            v.setVisibility(View.GONE);
             v.setText(Base64.encodeToString(encrypted, 0 /* flags */));
 			doLogin();
 		}

@@ -114,12 +114,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="4dp"
-                    android:layout_gravity="end"
+                    android:layout_gravity="center"
+                    android:padding="1dp"
                     android:textColor="?android:attr/textColorPrimaryInverse"
                     android:textStyle="bold"
                     android:text="@string/fingerprint_login"
-                    android:id="@+id/fingerprint_button"
-                    android:visibility="gone"/>
+                    android:drawableLeft="@drawable/fingerprint_icon"
+                    android:id="@+id/fingerprint_button"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -130,8 +131,9 @@
                     android:padding="1dp"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    android:drawableLeft="@drawable/fingerprint_icon"
-                    android:id="@+id/fingerprint_button_not_invalidated" />
+                    android:text="@string/fingerprint_not_invalidated"
+                    android:id="@+id/fingerprint_button_not_invalidated"
+                    android:visibility="gone"/>
                 <TextView
                     android:id="@+id/fingerprint_button_not_invalidated_description"
                     android:layout_width="match_parent"
