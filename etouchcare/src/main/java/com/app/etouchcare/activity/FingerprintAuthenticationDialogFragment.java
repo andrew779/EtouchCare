@@ -127,6 +127,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		mActivity = (LoginActivity) activity;
@@ -181,7 +182,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 			}
 		}
 		mPassword.setText("");
-		//mActivity.onFingerprint(false /* without Fingerprint */, null);
+		mActivity.onFingerprint(false /* without Fingerprint */, null);
 		dismiss();
 	}
 
@@ -238,7 +239,7 @@ public class FingerprintAuthenticationDialogFragment extends DialogFragment
 	public void onAuthenticated() {
 		// Callback from FingerprintUiHelper. Let the activity know that authentication was
 		// successful.
-		//mActivity.onFingerprint(true /* withFingerprint */, mCryptoObject);
+		mActivity.onFingerprint(true /* withFingerprint */, mCryptoObject);
 		dismiss();
 	}
 
