@@ -1,2 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+        <string name="app_name"> e-touchcare </string>
+        <string name="action_settings"> Action_Settings </string>
+
+        <string name="submit"> Soumettre </string>
+        <string name="addnew"> Ajouter un nouveau </string>
+        <string name="refresh"> Actualiser tout </string>
+        <string name="basic_patient_title"> Patient </string>
+        <string name="instructions"> Faites glisser vers le bas pour actualiser - Maintenez la touche enfoncée pour plus d options </string>
+
+        <string name="prompt_email"> Email </string>
+        <string name="prompt_password"> Mot de passe </string>
+        <string name="action_sign_in"> Se connecter ou sinscrire </string>
+        <string name="action_sign_in_short"> Se connecter </string>
+        <string name="error_invalid_email"> Cette adresse e-mail nest pas valide </string>
+        <string name="error_invalid_password"> Ce mot de passe est trop court </string>
+        <string name="error_incorrect_password"> Ce mot de passe est incorrect </string>
+        <string name="error_field_required"> Ce champ est obligatoire </string>
+        <string name="permission_rationale"> Des autorisations de contacts sont nécessaires pour fournir des courriels
+            Complétions</string>
+        <string name="title_activity_main_patient_list">Patients</string>
+        <string name="cancel"> Annuler </string>
+        <string name="use_password"> Utiliser le mot de passe </string>
+        <string name="sign_in"> Se connecter </string>
+        <string name="ok">Ok </string>
+        <string name="password"> Mot de passe </string>
+        <string name="fingerprint_description"> Confirmer l empreinte pour continuer </string>
+        <string name="fingerprint_hint"> Capteur tactile </string>
+        <string name="password_description"> Entrez votre mot de passe de magasin pour continuer </string>
+        <string name="fingerprint_login"> Connexion d empreinte digitale </string>
+        <string name="fingerprint_not_invalidated"> L empreinte digitale nest pas invalidée </string>
+        <string name="fingerprint_button_not_invalidated_description">
+            Vous pouvez continuer avec ce bouton \ n même si une nouvelle empreinte digitale est inscrite </string>
+        <string name="fingerprint_not_recognized"> L empreinte digitale nest pas reconnue. Réessayez </string>
+        <string name="fingerprint_success"> Fingerprint reconnue </string>
+        <string name="item_title"> Moule Blanc Pluton </string>
+        <string name="item_price"> $ 62.68 </string>
+        <string name="item_description"> Sac à dos en maille blanche. Garniture textile noire partout. </string>
+
+
+        <string name="fingerprint_done"> Authentification dempreinte digitale réussie </string>
+        <string name="new_fingerprint_enrolled_description"> Une nouvelle empreinte digitale a été ajoutée à cet appareil. Votre mot de passe est donc requis. </string>
+        <string name="use_fingerprint_in_future"> Utiliser les empreintes digitales à lavenir </string>
+        <string name="use_fingerprint_to_authenticate_title"> Utiliser lempreinte digitale pour authentifier </string>
+        <string name="use_fingerprint_to_authenticate_key"> use_fingerprint_to_authenticate_key </string>
+
+
+        <string name="hello_blank_fragment"> Bonjour fragment vide </string>
+
+
+        <string name="navigation_drawer_open"> Ouvrir le tiroir de navigation </string>
+        <string name="navigation_drawer_close"> Fermer le tiroir de navigation </string>
+
+        <string name="basic_id"> ID: </string>
+        <string name="basic_age"> Age: </string>
+        <string name="basic_room"> Salle: </string>
+        <string name="basic_contacttitle"> Coordonnées </string>
+        <string name="basic_email"> Email: </string>
+        <string name="basic_phone"> Téléphone: </string>
+        <string name="basic_address"> Adresse: </string>
+        <string name="basic_title_em"> Contact d urgence </string>
+        <string name="basic_name"> Nom: </string>
+        <string name="basic_relation_em"> Relation: </string>
+        <string name="basic_condition"> Condition </string>
+
+      
+        <string name="diag_title_sym"> Symptômes </string>
+        <string name="diag_title"> Diagnostic </string>
+        <string name="diag_id"> ID: </string>
+        <string name="diag_name"> Nom: </string>
+        <string name="diag_detail"> Détail: </string>
+        <string name="diag_date"> Date: </string>
+
+
+        <string name="tests_title"> Tests </string>
+        <string name="tests_name"> Test: </string>
+        <string name="tests_result"> Résultat: </string>
+        <string name="tests_date"> Date: </string>
+        <string name="tests_id"> ID: </string>
+
+      
+        <string name="treat_title"> Plan de traitement </string>
+
+</resources>
