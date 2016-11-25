@@ -59,8 +59,9 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onRecordDeleted(int position) {
-
+        patientList.remove(position);
         adapter.notifyItemRemoved(position);
+
         Toast.makeText(getActivity(),"DELETED",Toast.LENGTH_SHORT).show();
     }
 
