@@ -40,6 +40,7 @@ public class Parser {
             JSONArray arrayPatients = response.getJSONArray(KEY_PATIENTS);
             for (int i=0;i<arrayPatients.length();i++){
 
+                Patients patients = new Patients();
                 JSONObject currentPatient = arrayPatients.getJSONObject(i);
                 //get current patient id
                 String id = currentPatient.getString(KEY_ID);
@@ -54,7 +55,7 @@ public class Parser {
                 //get current patient condition
                 String condition = currentPatient.getString(KEY_CONDITION);
 
-                Patients patients = new Patients();
+
                 patients.setName(name);
                 patients.setId(id);
                 patients.setDiagnosis(diagnosis);

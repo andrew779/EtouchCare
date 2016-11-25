@@ -125,8 +125,21 @@ public class PatientUtils {
 
     }
 
-    public void deletePatientList(final PatientListLoadedListener patientListLoadedListener,String id){
+    public void deletePatientList(final RecordDeletedListener recordDeletedListener, String url, final int position){
 
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                recordDeletedListener.onRecordDeleted(position);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Wenzhong", "ERR: " + error);
+            }
+        });
+
+        requestQueue.add(request);
     }
 
 }

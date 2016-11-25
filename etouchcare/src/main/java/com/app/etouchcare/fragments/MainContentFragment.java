@@ -21,6 +21,7 @@ import com.app.etouchcare.R;
 import com.app.etouchcare.activity.AddPatient;
 import com.app.etouchcare.activity.PatientDetailActivity;
 import com.app.etouchcare.adapters.PatientListAdapter;
+import com.app.etouchcare.callbacks.PatientLoadedListener;
 import com.app.etouchcare.callbacks.PatientLoadedListener.PatientListLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
@@ -28,14 +29,15 @@ import com.app.etouchcare.extra.RecyclerTouchListener;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-
 import java.util.ArrayList;
+
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_LIST_ALL_PATIENTS;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainContentFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, PatientListLoadedListener, View.OnClickListener {
+public class MainContentFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, PatientListLoadedListener, View.OnClickListener ,PatientLoadedListener.RecordDeletedListener{
 
     private PatientListAdapter adapter;
     private RecyclerView recyclerView;
@@ -53,6 +55,13 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
 
     public MainContentFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onRecordDeleted(int position) {
+
+        adapter.notifyItemRemoved(position);
+        Toast.makeText(getActivity(),"DELETED",Toast.LENGTH_SHORT).show();
     }
 
     public interface OnFetchIDListener {
@@ -99,13 +108,19 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
             }
 
             @Override
-            public void onLongClick(View view, int position) {
+            public void onLongClick(View view, final int position) {
+                TextView tvID = (TextView) view.findViewById(R.id.patientlist_row_id);
+                String str = tvID.getText().toString();
+                str = str.substring(str.indexOf(" ") + 1);
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 // Add the buttons
+                builder.setTitle("DELETE");
                 builder.setMessage("Do you want to delete the record");
+                final String finalStr = str;
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // User clicked OK button
+                        patientUtils.deletePatientList(MainContentFragment.this,URL_LIST_ALL_PATIENTS + finalStr,position);
 
                     }
                 });
@@ -120,6 +135,7 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 // Create the AlertDialog
                 AlertDialog dialog = builder.create();
                 dialog.setCancelable(true);
+                dialog.show();
 
             }
         }));
