@@ -32,5 +32,12 @@ public interface Keys {
         String KEY_DIAG_DATE = "date";
 
     }
+    interface EndPointPatientTreatment{
+        String KEY_TREAT_ROOT = "tests";
+        String KEY_TREAT_ID = "_id";
+        String KEY_TREAT_PATIENT_ID = "patientId";
+        String KEY_TREAT_DESCRPTION = "description";
+        String KEY_TREAT_DATE = "date";
+    }
 
 }

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.app.etouchcare.callbacks.PatientLoadedListener.*;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.datamodel.Treatments;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +23,8 @@ import java.util.HashMap;
 
 import static com.app.etouchcare.extra.Keys.EndPointPatientTest.*;
 import static com.app.etouchcare.extra.Keys.EndPointPatientDiagnosis.*;
+import static com.app.etouchcare.extra.Keys.EndPointPatientTreatment.*;
+
 /**
  * Created by wenzhongzheng on 2016-11-20.
  */
@@ -147,5 +150,36 @@ public class Parser {
 
         else
             Log.d("Parser","Null diagnosisloadedListener");
+    }
+
+    public static void parseTreatmentJSONResponse(JSONObject response, PatientTreatmentLoadedListener patientTreatmentLoadedListener) {
+        ArrayList<Treatments> listTest = new ArrayList<>();
+        if (response == null || response.length() == 0) {
+            Log.d("parseTreatment","No found response");
+            return;
+        }
+        try {
+            JSONArray arrayTests = response.getJSONArray(KEY_TREAT_ROOT);
+            for (int i = 0; i < arrayTests.length(); i++) {
+                JSONObject currentPatient = arrayTests.getJSONObject(i);
+                //get current patient id
+                String id = currentPatient.getString(KEY_TREAT_ID);
+                //get current patient name
+                String description = currentPatient.getString(KEY_TREAT_DESCRPTION);
+                //get current patient TREATnosis
+                String date = currentPatient.getString(KEY_TREAT_DATE);
+                //get current patient TREATnosis detail
+                String patientID = currentPatient.getString(KEY_TREAT_PATIENT_ID);
+                Treatments treatments = new Treatments(id,description,date,patientID);
+                listTest.add(treatments);
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+            patientTreatmentLoadedListener.onPatientTreatmentLoaded(listTest);
+            Log.d("Parser", "Check treat list: \n" + listTest.toString());
+
     }
 }

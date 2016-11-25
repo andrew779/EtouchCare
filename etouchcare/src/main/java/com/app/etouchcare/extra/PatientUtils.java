@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 
 import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_LIST_ALL_PATIENTS;
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_PATIENT_TREAT;
 import static com.app.etouchcare.json.Parser.parseJSONResponse;
 
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_PATIENT_TEST;
 import static com.app.etouchcare.json.Parser.parseDiagnosisJSONResponse;
 import static com.app.etouchcare.json.Parser.parseJSONResponse;
 import static com.app.etouchcare.json.Parser.parseTestJSONResponse;
+import static com.app.etouchcare.json.Parser.parseTreatmentJSONResponse;
 
 
 /**
@@ -107,8 +109,24 @@ public class PatientUtils {
         requestQueue.add(request);
     }
 
+    public void loadPatientTreatment(final PatientTreatmentLoadedListener patientTreatmentLoadedListener,String id){
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_PATIENT_TREAT + id, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                parseTreatmentJSONResponse(response,patientTreatmentLoadedListener);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Wenzhong", "ERR: " + error);
+            }
+        });
+        requestQueue.add(request);
+
+    }
+
     public void deletePatientList(final PatientListLoadedListener patientListLoadedListener,String id){
-        
+
     }
 
 }
