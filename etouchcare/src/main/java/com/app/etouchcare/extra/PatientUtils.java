@@ -1,12 +1,15 @@
 package com.app.etouchcare.extra;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.app.etouchcare.activity.AddTreatmentActivity;
 import com.app.etouchcare.callbacks.PatientLoadedListener.*;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.network.VolleySingleton;
@@ -140,6 +143,22 @@ public class PatientUtils {
         });
 
         requestQueue.add(request);
+    }
+
+    public void addTreatment(final Context context, String body){
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL_PATIENT_TREAT, body, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(context.getApplicationContext(),"Succeed",Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Wenzhong", "ERR: " + error);
+            }
+        });
+        requestQueue.add(request);
+
     }
 
 }

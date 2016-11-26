@@ -86,6 +86,9 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         recyclerView.setAdapter(patientTestAdapter);
 
+        //floa
+
+
         patientUtils.loadPatientTest(this,id);
 
         return view;
