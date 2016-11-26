@@ -4,6 +4,7 @@
 
     <string name="submit">Submit</string>
     <string name="addnew">Add New</string>
+    <string name="edit">Edit</string>
     <string name="refresh">Refresh All</string>
     <string name="basic_patient_title">Patient</string>
     <string name="instructions">Swipe down to refresh - Hold for more options</string>

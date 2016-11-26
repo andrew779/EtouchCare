@@ -25,7 +25,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AddPatient extends AppCompatActivity {
-
+    final String URL = "http://etouch.azurewebsites.net/";
+    String json="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +63,9 @@ public class AddPatient extends AppCompatActivity {
                 patient.setEmergencyPhone(txtEmgrPhone.getText().toString());
 
                 Gson gson = new Gson();
-                String json = gson.toJson(patient);
+                json = gson.toJson(patient);
 
-                final String URL = "http://etouch.azurewebsites.net/";
+
 
                 JsonObjectRequest req = null;
                 try {
@@ -96,6 +97,39 @@ public class AddPatient extends AppCompatActivity {
                 reqq.add(req);
             }
         });
+    }
+
+    public void addPatient(Patients patient){
+        Gson gson = new Gson();
+        json = gson.toJson(patient);
+        JsonObjectRequest req = null;
+        try {
+            req = new JsonObjectRequest(URL, new JSONObject(json),
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                VolleyLog.v("Response:%n %s", response.toString(4));
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.e("Error: ", error.getMessage());
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // add the request object to the queue to be executed
+        RequestQueue reqq = VolleySingleton.getInstance().getmRequestQueue();
+        reqq.add(req);
+
     }
 
     @Override

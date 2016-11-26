@@ -295,7 +295,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
             app:fab_size="mini"
-            app:fab_label="@string/addnew" />
+            app:fab_label="@string/edit" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_detail_refresh"
