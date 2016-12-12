@@ -121,7 +121,8 @@
                         android:textStyle="bold"
                         android:text="@string/fingerprint_login"
                         android:drawableLeft="@drawable/fingerprint_icon"
-                        android:id="@+id/fingerprint_button" />
+                        android:id="@+id/fingerprint_button"
+                        android:visibility="invisible"/>
 
                     <Button
                         android:layout_width="wrap_content"
