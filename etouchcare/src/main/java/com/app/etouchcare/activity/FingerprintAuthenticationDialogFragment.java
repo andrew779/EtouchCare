@@ -1,3 +1,7 @@
+/**
+ * TeamOne
+ */
+
 package com.app.etouchcare.activity;
 
 /**

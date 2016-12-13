@@ -1,3 +1,6 @@
+/**
+ * TeamOne
+ */
 package com.app.etouchcare.anim;
 
 import android.support.v7.widget.RecyclerView;

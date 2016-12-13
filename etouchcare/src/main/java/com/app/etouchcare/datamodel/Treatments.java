@@ -1,3 +1,6 @@
+/**
+ * TeamOne
+ */
 package com.app.etouchcare.datamodel;
 
 import android.os.Parcel;

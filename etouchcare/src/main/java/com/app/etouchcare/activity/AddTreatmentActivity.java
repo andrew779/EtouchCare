@@ -1,3 +1,6 @@
+/**
+ * TeamOne
+ */
 package com.app.etouchcare.activity;
 
 import android.support.v7.app.AppCompatActivity;
