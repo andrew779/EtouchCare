@@ -23,6 +23,7 @@ public class Patients implements Parcelable{
     private String email = "";
     private String address = "";
     private String phone = "";
+    private String age = "";
     private String emergencyName = "";
     private String emergencyPhone = "";
 
@@ -135,6 +136,16 @@ public class Patients implements Parcelable{
 
     public String getEmail() {
         return email;
+    }
+
+    public String getAge()
+    {
+        return age;
+    }
+
+    public void setAge(String age)
+    {
+        this.age = age;
     }
 
     public void setEmail(String email) {
