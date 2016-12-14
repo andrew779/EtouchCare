@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.app.etouchcare.R;
 import com.app.etouchcare.adapters.PatientDiagnosisAdapter;
 import com.app.etouchcare.callbacks.PatientLoadedListener.PatientDiagnosisLoadedListener;
+import com.app.etouchcare.datamodel.Diagnosis;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
@@ -116,7 +117,7 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
     }
 
     @Override
-    public void onPatientDiagnosisLoaded(ArrayList<HashMap<String, String>> diagnosisList) {
+    public void onPatientDiagnosisLoaded(ArrayList<Diagnosis> diagnosisList) {
         adapter.setDiagnosisList(diagnosisList);
         adapter.notifyItemRangeChanged(0,diagnosisList.size());
     }

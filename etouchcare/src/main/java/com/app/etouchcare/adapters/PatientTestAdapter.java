@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.app.etouchcare.R;
 import com.app.etouchcare.anim.AnimationUtil;
+import com.app.etouchcare.datamodel.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,14 +24,14 @@ import static com.app.etouchcare.extra.Keys.EndPointPatientTest.*;
 
 public class PatientTestAdapter extends RecyclerView.Adapter<PatientTestAdapter.MyViewHolder>{
     private LayoutInflater inflater;
-    private ArrayList<HashMap<String,String>> data = new ArrayList<>();
+    private ArrayList<Test> data = new ArrayList<>();
     private Context context=null;
 
     public PatientTestAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
-    public void setTestList(ArrayList<HashMap<String,String>> testList){
+    public void setTestList(ArrayList<Test> testList){
         data = testList;
 
     }
@@ -46,11 +47,12 @@ public class PatientTestAdapter extends RecyclerView.Adapter<PatientTestAdapter.
 
     @Override
     public void onBindViewHolder(PatientTestAdapter.MyViewHolder holder, int position) {
-        HashMap<String,String> current = data.get(position);
-        holder.name.setText(current.get(KEY_TEST_NAME));
-        holder.result.setText(current.get(KEY_TEST_RESULT));
-        holder.id.setText(current.get(KEY_TEST_ID));
-        holder.date.setText(current.get(KEY_TEST_DATE));
+//        HashMap<String,String> current = data.get(position);
+        Test current = data.get(position);
+        holder.name.setText(current.getName());
+        holder.result.setText(current.getResult());
+        holder.id.setText(current.get_id());
+        holder.date.setText(current.getDate());
 
         AnimationUtil.animate(holder);
 

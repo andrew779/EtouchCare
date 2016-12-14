@@ -1,6 +1,8 @@
 package com.app.etouchcare.callbacks;
 
+import com.app.etouchcare.datamodel.Diagnosis;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.datamodel.Test;
 import com.app.etouchcare.datamodel.Treatments;
 
 import java.util.ArrayList;
@@ -16,10 +18,10 @@ public interface PatientLoadedListener {
     }
 
     interface PatientDiagnosisLoadedListener{
-        void onPatientDiagnosisLoaded(ArrayList<HashMap<String,String>> diagnosisList);
+        void onPatientDiagnosisLoaded(ArrayList<Diagnosis> diagnosisList);
     }
     interface PatientTestLoadedListener {
-        void onPatientTestLoaded(ArrayList<HashMap<String,String>> testList);
+        void onPatientTestLoaded(ArrayList<Test> testList);
     }
     interface PatientTreatmentLoadedListener {
         void onPatientTreatmentLoaded(ArrayList<Treatments> treatmentList);

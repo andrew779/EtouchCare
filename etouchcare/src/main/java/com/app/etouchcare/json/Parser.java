@@ -6,7 +6,9 @@ package com.app.etouchcare.json;
 import android.util.Log;
 
 import com.app.etouchcare.callbacks.PatientLoadedListener.*;
+import com.app.etouchcare.datamodel.Diagnosis;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.datamodel.Test;
 import com.app.etouchcare.datamodel.Treatments;
 
 import org.json.JSONArray;
@@ -105,7 +107,8 @@ public class Parser {
     }
 
     public static void parseTestJSONResponse(JSONObject response, PatientTestLoadedListener patientTestLoadedListener){
-        ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
+//        ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
+        ArrayList<Test> listTest = new ArrayList<>();
         if (response==null||response.length()==0){
             return;
         }
@@ -125,14 +128,16 @@ public class Parser {
                 String testID = currentPatient.getString(KEY_TEST_TESTID);
 
                 String result = currentPatient.getString(KEY_TEST_RESULT);
-                HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put(KEY_TEST_ID,id);
-                hashMap.put(KEY_TEST_NAME,name);
-                hashMap.put(KEY_TEST_DATE,date);
-                hashMap.put(KEY_TEST_PATIENT_ID,patientID);
-                hashMap.put(KEY_TEST_TESTID,testID);
-                hashMap.put(KEY_TEST_RESULT,result);
-                listTest.add(hashMap);
+                Test test = new Test(id,patientID,testID,name,result,date);
+
+//                HashMap<String,String> hashMap = new HashMap<>();
+//                hashMap.put(KEY_TEST_ID,id);
+//                hashMap.put(KEY_TEST_NAME,name);
+//                hashMap.put(KEY_TEST_DATE,date);
+//                hashMap.put(KEY_TEST_PATIENT_ID,patientID);
+//                hashMap.put(KEY_TEST_TESTID,testID);
+//                hashMap.put(KEY_TEST_RESULT,result);
+                listTest.add(test);
             }
 
         } catch (JSONException e) {
@@ -143,7 +148,7 @@ public class Parser {
     }
 
     public static void parseDiagnosisJSONResponse(JSONObject response, PatientDiagnosisLoadedListener patientDiagnosisLoadedListener){
-        ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
+        ArrayList<Diagnosis> listTest = new ArrayList<>();
         if (response==null||response.length()==0){
             return;
         }
@@ -161,13 +166,10 @@ public class Parser {
                 String patientID = currentPatient.getString(KEY_DIAG_PATIENT_ID);
 
 
-                HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put(KEY_DIAG_ID,id);
-                hashMap.put(KEY_DIAG_DESCRPTION,description);
-                hashMap.put(KEY_DIAG_DATE,date);
-                hashMap.put(KEY_DIAG_PATIENT_ID,patientID);
+                Diagnosis diagnosis = new Diagnosis(id,patientID,description,date);
 
-                listTest.add(hashMap);
+
+                listTest.add(diagnosis);
             }
 
         } catch (JSONException e) {

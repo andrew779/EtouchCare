@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.app.etouchcare.R;
 import com.app.etouchcare.anim.AnimationUtil;
+import com.app.etouchcare.datamodel.Diagnosis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,14 +24,14 @@ import static com.app.etouchcare.extra.Keys.EndPointPatientDiagnosis.*;
 
 public class PatientDiagnosisAdapter extends RecyclerView.Adapter<PatientDiagnosisAdapter.MyViewHolder> {
     private LayoutInflater inflater;
-    private ArrayList<HashMap<String,String>> data = new ArrayList<>();
+    private ArrayList<Diagnosis> data = new ArrayList<>();
     private Context context=null;
 
     public PatientDiagnosisAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
-    public void setDiagnosisList(ArrayList<HashMap<String,String>> testList){
+    public void setDiagnosisList(ArrayList<Diagnosis> testList){
         data = testList;
 
     }
@@ -46,10 +47,11 @@ public class PatientDiagnosisAdapter extends RecyclerView.Adapter<PatientDiagnos
 
     @Override
     public void onBindViewHolder(PatientDiagnosisAdapter.MyViewHolder holder, int position) {
-        HashMap<String,String> current = data.get(position);
-        holder.tvID.setText(current.get(KEY_DIAG_ID));
-        holder.tvDetail.setText(current.get(KEY_DIAG_DESCRPTION));
-        holder.tvDate.setText(current.get(KEY_DIAG_DATE));
+
+        Diagnosis current = data.get(position);
+        holder.tvID.setText(current.get_id());
+        holder.tvDetail.setText(current.getDescription());
+        holder.tvDate.setText(current.getDate());
 
         AnimationUtil.animate(holder);
 

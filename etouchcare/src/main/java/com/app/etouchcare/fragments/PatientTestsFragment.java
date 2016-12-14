@@ -19,6 +19,7 @@ import com.app.etouchcare.R;
 import com.app.etouchcare.adapters.PatientTestAdapter;
 import com.app.etouchcare.callbacks.PatientLoadedListener.PatientTestLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.datamodel.Test;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 
@@ -98,7 +99,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
     }
 
     @Override
-    public void onPatientTestLoaded(ArrayList<HashMap<String, String>> testList) {
+    public void onPatientTestLoaded(ArrayList<Test> testList) {
         patientTestAdapter.setTestList(testList);
         patientTestAdapter.notifyItemRangeChanged(0,testList.size());
     }
