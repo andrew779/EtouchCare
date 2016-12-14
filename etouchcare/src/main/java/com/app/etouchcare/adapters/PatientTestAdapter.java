@@ -33,7 +33,6 @@ public class PatientTestAdapter extends RecyclerView.Adapter<PatientTestAdapter.
     }
     public void setTestList(ArrayList<Test> testList){
         data = testList;
-
     }
 
     @Override

@@ -11,6 +11,6 @@ public interface mUrls {
         String URL_PATIENT_TEST = "http://etouch.azurewebsites.net/patienttests/";
         String URL_PATIENT_TREAT = "http://etouch.azurewebsites.net/patienttreatments/";
         String URL_PATIENT_DIAG = "http://etouch.azurewebsites.net/patientconditions/";
-
+        String URL_TRIALS = "http://etouch.azurewebsites.net/trials/all";
     }
 }

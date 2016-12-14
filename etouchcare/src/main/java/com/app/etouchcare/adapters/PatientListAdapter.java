@@ -61,8 +61,6 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
         holder.room.setText(String.format("Room: %s", current.getRoom()));
 
         AnimationUtil.animate(holder);
-
-
     }
 
     @Override

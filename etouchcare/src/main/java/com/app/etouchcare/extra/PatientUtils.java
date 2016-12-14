@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_LIST_ALL_PATIENTS;
 import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_PATIENT_TREAT;
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_TRIALS;
 import static com.app.etouchcare.json.Parser.parseJSONResponse;
 
 import java.util.HashMap;
@@ -35,6 +36,7 @@ import static com.app.etouchcare.json.Parser.parseDiagnosisJSONResponse;
 import static com.app.etouchcare.json.Parser.parseJSONResponse;
 import static com.app.etouchcare.json.Parser.parseTestJSONResponse;
 import static com.app.etouchcare.json.Parser.parseTreatmentJSONResponse;
+import static com.app.etouchcare.json.Parser.parseTrialJSONResponse;
 
 
 /**
@@ -96,6 +98,23 @@ public class PatientUtils {
         });
         requestQueue.add(request);
 
+    }
+
+    public void loadTrials(final TrialsLoadedListener trialsLoadedListener) {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_TRIALS, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                parseTrialJSONResponse(response, trialsLoadedListener);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Network", "ERR: " + error);
+            }
+        });
+        requestQueue.add(request);
     }
 
     public void loadPatientDiagnosis(final PatientDiagnosisLoadedListener patientDiagnosisLoadedListener,String id){

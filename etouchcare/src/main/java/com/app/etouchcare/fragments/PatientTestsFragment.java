@@ -5,7 +5,9 @@ package com.app.etouchcare.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,12 +18,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.activity.AddPatient;
+import com.app.etouchcare.activity.AddTest;
 import com.app.etouchcare.adapters.PatientTestAdapter;
 import com.app.etouchcare.callbacks.PatientLoadedListener.PatientTestLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.datamodel.Test;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,10 +37,12 @@ import java.util.HashMap;
  * Use the {@link PatientTestsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener{
+public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener, View.OnClickListener{
     private RecyclerView recyclerView;
     private PatientTestAdapter patientTestAdapter;
     private PatientUtils patientUtils;
+    private FloatingActionMenu menuRed;
+    private FloatingActionButton fab_test_add, fab2;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -90,8 +98,11 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         recyclerView.setAdapter(patientTestAdapter);
 
-        //floa
-
+        menuRed = (FloatingActionMenu) view.findViewById(R.id.fab_test);
+        fab_test_add = (FloatingActionButton) view.findViewById(R.id.fab_test_add);
+        //fab2 = (FloatingActionButton) v.findViewById(R.id.fab_treat_refresh);
+        fab_test_add.setOnClickListener(this);
+        //fab2.setOnClickListener(this);
 
         patientUtils.loadPatientTest(this,id);
 
@@ -112,5 +123,25 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+
+    //floating button click listener
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab_test_add:
+                Intent intent = new Intent(getActivity(), AddTest.class);
+                //intent.putExtra("id",str);
+                //intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
+                startActivity(intent);
+                Snackbar.make(v, "Add new", Snackbar.LENGTH_SHORT).show();
+                menuRed.close(true);
+                break;
+            case R.id.fab2:
+//                patientUtils.loadPatientList(this);
+//                menuRed.close(true);
+                break;
+        }
     }
 }

@@ -35,8 +35,13 @@
         <activity
             android:name=".activity.AddPatient"
             android:parentActivityName=".activity.MainPatientListActivity" />
-        <activity android:name=".activity.AddTreatmentActivity"
-            android:parentActivityName=".activity.AddTreatmentActivity"/>
+        <activity
+            android:name=".activity.AddTreatmentActivity"
+            android:parentActivityName=".activity.AddTreatmentActivity" />
+        <activity
+            android:name=".activity.AddTest"
+            android:label="@string/title_activity_add_test"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
