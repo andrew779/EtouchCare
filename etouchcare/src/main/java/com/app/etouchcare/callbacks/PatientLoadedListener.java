@@ -21,6 +21,9 @@ public interface PatientLoadedListener {
     interface PatientTestLoadedListener {
         void onPatientTestLoaded(ArrayList<HashMap<String,String>> testList);
     }
+    interface TrialsLoadedListener {
+        void onTrialsLoaded(ArrayList<HashMap<String,String>> trialsList);
+    }
     interface PatientTreatmentLoadedListener {
         void onPatientTreatmentLoaded(ArrayList<Treatments> treatmentList);
     }

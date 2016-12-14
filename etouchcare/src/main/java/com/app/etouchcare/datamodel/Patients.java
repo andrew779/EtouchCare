@@ -31,6 +31,7 @@ public class Patients implements Parcelable{
 
     }
 
+    //unit test
     public Patients(String id, String name, String diagnosis, String room, String diagnosisDetails, String condition) {
         this.id = id;
         this.pname = name;
@@ -108,6 +109,12 @@ public class Patients implements Parcelable{
         dest.writeString(this.room);
         dest.writeString(this.diagnosisDetails);
         dest.writeString(this.condition);
+//        dest.writeString(this.email);
+//        dest.writeString(this.address);
+//        dest.writeString(this.phone);
+//        dest.writeString(this.age);
+//        dest.writeString(this.emergencyName);
+//        dest.writeString(this.emergencyPhone);
     }
 
     protected Patients(Parcel in) {
@@ -117,6 +124,8 @@ public class Patients implements Parcelable{
         this.room = in.readString();
         this.diagnosisDetails = in.readString();
         this.condition = in.readString();
+        //this.age = in.readString();
+        //this.emergencyName = in.readString();
     }
 
     public static final Creator<Patients> CREATOR = new Creator<Patients>() {

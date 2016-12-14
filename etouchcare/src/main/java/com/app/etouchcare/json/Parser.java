@@ -139,6 +139,36 @@ public class Parser {
         if (patientTestLoadedListener != null) patientTestLoadedListener.onPatientTestLoaded(listTest);
     }
 
+    public static void parseTrialJSONResponse(JSONObject response, TrialsLoadedListener trialsLoadedListener){
+        ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
+        if (response==null||response.length()==0){
+            return;
+        }
+        try {
+            JSONArray arrayTests = response.getJSONArray(KEY_TEST_ROOT);
+            for (int i=0;i<arrayTests.length();i++){
+                JSONObject currentPatient = arrayTests.getJSONObject(i);
+                //get current patient id
+                String id = currentPatient.getString(KEY_TEST_ID);
+                //get current patient name
+                String name = currentPatient.getString(KEY_TEST_NAME);
+                //get current patient diagnosis
+
+
+                String result = currentPatient.getString(KEY_TEST_RESULT);
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put(KEY_TEST_ID,id);
+                hashMap.put(KEY_TEST_NAME,name);
+                listTest.add(hashMap);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (trialsLoadedListener != null) trialsLoadedListener.onTrialsLoaded(listTest);
+    }
+
     public static void parseDiagnosisJSONResponse(JSONObject response, PatientDiagnosisLoadedListener patientDiagnosisLoadedListener){
         ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
         if (response==null||response.length()==0){

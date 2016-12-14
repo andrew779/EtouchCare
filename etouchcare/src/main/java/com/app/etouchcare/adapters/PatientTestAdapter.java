@@ -29,7 +29,6 @@ public class PatientTestAdapter extends RecyclerView.Adapter<PatientTestAdapter.
     }
     public void setTestList(ArrayList<HashMap<String,String>> testList){
         data = testList;
-
     }
 
     @Override
