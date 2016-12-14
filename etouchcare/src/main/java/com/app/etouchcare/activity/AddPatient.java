@@ -29,7 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AddPatient extends AppCompatActivity {
-    final String URL = "http://etouch.azurewebsites.net/";
+    final String URL = "https://mapd2016.herokuapp.com/";
     String json="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {

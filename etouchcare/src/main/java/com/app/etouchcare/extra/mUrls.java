@@ -7,10 +7,10 @@ package com.app.etouchcare.extra;
 public interface mUrls {
     interface getAllPatients{
 
-        String URL_LIST_ALL_PATIENTS = "http://etouch.azurewebsites.net/";
-        String URL_PATIENT_TEST = "http://etouch.azurewebsites.net/patienttests/";
-        String URL_PATIENT_TREAT = "http://etouch.azurewebsites.net/patienttreatments/";
-        String URL_PATIENT_DIAG = "http://etouch.azurewebsites.net/patientconditions/";
-        String URL_TRIALS = "http://etouch.azurewebsites.net/trials/all";
+        String URL_LIST_ALL_PATIENTS = "https://mapd2016.herokuapp.com/";
+        String URL_PATIENT_TEST = "https://mapd2016.herokuapp.com/patienttests/";
+        String URL_PATIENT_TREAT = "https://mapd2016.herokuapp.com/patienttreatments/";
+        String URL_PATIENT_DIAG = "https://mapd2016.herokuapp.com/patientconditions/";
+        String URL_TRIALS = "https://mapd2016.herokuapp.com/trials/all";
     }
 }
