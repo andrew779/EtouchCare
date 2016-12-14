@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="3dp"
+                    android:layout_margin="6dp"
                     android:text="@string/tests_title"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -68,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="@string/basic_condition"
+                        android:text="@string/basic_result"
                         android:textSize="@dimen/basic_textsize" />
 
                     <EditText
@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:ems="10"
-                        android:id="@+id/editTextCondition"
+                        android:id="@+id/editTextResults"
                         android:layout_weight="1" />
 
                 </LinearLayout>
@@ -90,7 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="@string/basic_age"
+                        android:text="@string/basic_date"
                         android:textSize="@dimen/basic_textsize" />
 
                     <EditText
@@ -98,27 +98,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:ems="10"
-                        android:id="@+id/editTextAge"
-                        android:layout_weight="1" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/basic_room"
-                        android:textSize="@dimen/basic_textsize" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:ems="10"
-                        android:id="@+id/editTextRoom"
+                        android:id="@+id/editTextDate"
                         android:layout_weight="1" />
                 </LinearLayout>
 
@@ -133,6 +113,13 @@
                 android:layout_below="@+id/basic_img"
                 android:layout_marginTop="3dp"
                 android:background="@color/colorDivider" />
+
+            <Button
+                android:text="Add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAdd"
+                />
 
         </LinearLayout>
     </ScrollView>

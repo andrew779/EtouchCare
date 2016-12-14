@@ -66,6 +66,8 @@
     <string name="basic_name">Name: </string>
     <string name="basic_relation_em">Relationship: </string>
     <string name="basic_condition">Condition</string>
+    <string name="basic_date">Date: </string>
+    <string name="basic_result">Result: </string>
 
     <!-- Patient Diagnosis Section -->
     <string name="diag_title_sym">Symptoms</string>

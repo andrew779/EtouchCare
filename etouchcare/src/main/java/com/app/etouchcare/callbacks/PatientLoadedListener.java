@@ -22,7 +22,7 @@ public interface PatientLoadedListener {
         void onPatientTestLoaded(ArrayList<HashMap<String,String>> testList);
     }
     interface TrialsLoadedListener {
-        void onTrialsLoaded(ArrayList<HashMap<String,String>> trialsList);
+        void onTrialsLoaded(ArrayList<String> trialsList, ArrayList<HashMap<String,String>> trialsHashList);
     }
     interface PatientTreatmentLoadedListener {
         void onPatientTreatmentLoaded(ArrayList<Treatments> treatmentList);

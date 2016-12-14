@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_ADDRESS;
+import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_AGE;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_CONDITION;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_DIAGNOSIS;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_DIAGNOSIS_DETAIL;
@@ -89,6 +90,10 @@ public class Parser {
                 if (currentPatient.has(KEY_PHONE)){
                     patients.setPhone(currentPatient.getString(KEY_PHONE));
                 }
+                if (currentPatient.has(KEY_AGE)){
+                    patients.setPhone(currentPatient.getString(KEY_AGE));
+                }
+
                 listPatients.add(patients);
             }
             Log.d("wenzhong",listPatients.toString());
@@ -141,11 +146,15 @@ public class Parser {
 
     public static void parseTrialJSONResponse(JSONObject response, TrialsLoadedListener trialsLoadedListener){
         ArrayList<HashMap<String,String>> listTest = new ArrayList<>();
+        ArrayList<String> trialsArray = new ArrayList<String>();
         if (response==null||response.length()==0){
             return;
         }
         try {
             JSONArray arrayTests = response.getJSONArray(KEY_TEST_ROOT);
+
+
+
             for (int i=0;i<arrayTests.length();i++){
                 JSONObject currentPatient = arrayTests.getJSONObject(i);
                 //get current patient id
@@ -154,19 +163,18 @@ public class Parser {
                 String name = currentPatient.getString(KEY_TEST_NAME);
                 //get current patient diagnosis
 
-
-                String result = currentPatient.getString(KEY_TEST_RESULT);
                 HashMap<String,String> hashMap = new HashMap<>();
                 hashMap.put(KEY_TEST_ID,id);
                 hashMap.put(KEY_TEST_NAME,name);
                 listTest.add(hashMap);
+                trialsArray.add(name);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        if (trialsLoadedListener != null) trialsLoadedListener.onTrialsLoaded(listTest);
+        if (trialsLoadedListener != null) trialsLoadedListener.onTrialsLoaded(trialsArray, listTest);
     }
 
     public static void parseDiagnosisJSONResponse(JSONObject response, PatientDiagnosisLoadedListener patientDiagnosisLoadedListener){
