@@ -51,13 +51,13 @@
             app:fab_size="mini"
             app:fab_label="@string/addnew" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_refresh"
-            app:fab_size="mini"
-            app:fab_label="@string/refresh"/>
+        <!--<com.github.clans.fab.FloatingActionButton-->
+            <!--android:id="@+id/fab2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/ic_refresh"-->
+            <!--app:fab_size="mini"-->
+            <!--app:fab_label="@string/refresh"/>-->
 
     </com.github.clans.fab.FloatingActionMenu>
 

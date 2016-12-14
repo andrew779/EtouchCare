@@ -138,10 +138,10 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
                 Snackbar.make(v, "Add new", Snackbar.LENGTH_SHORT).show();
                 menuRed.close(true);
                 break;
-            case R.id.fab2:
+//            case R.id.fab2:
 //                patientUtils.loadPatientList(this);
 //                menuRed.close(true);
-                break;
+//                break;
         }
     }
 }
