@@ -7,8 +7,10 @@ package com.app.etouchcare.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -38,12 +40,13 @@ import java.util.HashMap;
  * Use the {@link PatientTestsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener, View.OnClickListener{
+public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
     private RecyclerView recyclerView;
     private PatientTestAdapter patientTestAdapter;
     private PatientUtils patientUtils;
     private FloatingActionMenu menuRed;
     private FloatingActionButton fab_test_add, fab2;
+    private SwipeRefreshLayout swipeRefreshLayout;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -90,6 +93,10 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_patient_tests, container, false);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.test_refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+
         recyclerView = (RecyclerView) view.findViewById(R.id.tests_recyclerview);
         patientTestAdapter = new PatientTestAdapter(getActivity());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -109,6 +116,9 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
 
     @Override
     public void onPatientTestLoaded(ArrayList<Test> testList) {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
         patientTestAdapter.setTestList(testList);
         patientTestAdapter.notifyItemRangeChanged(0,testList.size());
     }
@@ -130,7 +140,8 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         switch (v.getId()) {
             case R.id.fab_test_add:
                 Intent intent = new Intent(getActivity(), AddTest.class);
-                intent.putExtra("Patient", (Serializable) theOne);
+                intent.putExtra("Patient", (Parcelable) theOne);
+                //intent.putExtra("Patient", (Serializable) theOne);
                 //intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
                 startActivity(intent);
                 Snackbar.make(v, "Add new", Snackbar.LENGTH_SHORT).show();
@@ -141,5 +152,10 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
 //                menuRed.close(true);
 //                break;
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        patientUtils.loadPatientTest(this,patientID);
     }
 }

@@ -97,53 +97,16 @@ public class Patients implements Parcelable, Serializable {
 
     @Override
     public String toString() {
-        return "id: " + id + ", name: " + pname + ", diagnosis: " + diagnosis + ", room: " + room;
+        return "id: " + id + ", name: " + pname + ", diagnosis: " + diagnosis + ", room: " + room
+                +", age: "+age
+                +", email: "+email
+                +", phone: "+phone
+                +", address: "+address
+                +", em_name: "+emergencyName
+                +", em_phone: "+emergencyPhone
+                ;
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.id);
-        dest.writeString(this.pname);
-        dest.writeString(this.diagnosis);
-        dest.writeString(this.room);
-        dest.writeString(this.diagnosisDetails);
-        dest.writeString(this.condition);
-//        dest.writeString(this.email);
-//        dest.writeString(this.address);
-//        dest.writeString(this.phone);
-//        dest.writeString(this.age);
-//        dest.writeString(this.emergencyName);
-//        dest.writeString(this.emergencyPhone);
-    }
-
-    protected Patients(Parcel in) {
-        this.id = in.readString();
-        this.pname = in.readString();
-        this.diagnosis = in.readString();
-        this.room = in.readString();
-        this.diagnosisDetails = in.readString();
-        this.condition = in.readString();
-        //this.age = in.readString();
-        //this.emergencyName = in.readString();
-    }
-
-    public static final Creator<Patients> CREATOR = new Creator<Patients>() {
-        @Override
-        public Patients createFromParcel(Parcel source) {
-            return new Patients(source);
-        }
-
-        @Override
-        public Patients[] newArray(int size) {
-            return new Patients[size];
-        }
-    };
 
     public String getEmail() {
         return email;
@@ -195,4 +158,51 @@ public class Patients implements Parcelable, Serializable {
         this.emergencyPhone = emergencyPhone;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.pname);
+        dest.writeString(this.diagnosis);
+        dest.writeString(this.room);
+        dest.writeString(this.diagnosisDetails);
+        dest.writeString(this.condition);
+        dest.writeString(this.email);
+        dest.writeString(this.address);
+        dest.writeString(this.phone);
+        dest.writeString(this.age);
+        dest.writeString(this.emergencyName);
+        dest.writeString(this.emergencyPhone);
+    }
+
+    protected Patients(Parcel in) {
+        this.id = in.readString();
+        this.pname = in.readString();
+        this.diagnosis = in.readString();
+        this.room = in.readString();
+        this.diagnosisDetails = in.readString();
+        this.condition = in.readString();
+        this.email = in.readString();
+        this.address = in.readString();
+        this.phone = in.readString();
+        this.age = in.readString();
+        this.emergencyName = in.readString();
+        this.emergencyPhone = in.readString();
+    }
+
+    public static final Creator<Patients> CREATOR = new Creator<Patients>() {
+        @Override
+        public Patients createFromParcel(Parcel source) {
+            return new Patients(source);
+        }
+
+        @Override
+        public Patients[] newArray(int size) {
+            return new Patients[size];
+        }
+    };
 }

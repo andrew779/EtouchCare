@@ -100,8 +100,9 @@ public class Parser {
                 }
 
                 listPatients.add(patients);
+                Log.d("wenzhong",patients.toString());
             }
-            Log.d("wenzhong",listPatients.toString());
+//            Log.d("wenzhong",listPatients.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -121,27 +122,40 @@ public class Parser {
             JSONArray arrayTests = response.getJSONArray(KEY_TEST_ROOT);
             for (int i=0;i<arrayTests.length();i++){
                 JSONObject currentPatient = arrayTests.getJSONObject(i);
+
+                Test test = new Test();
                 //get current patient id
-                String id = currentPatient.getString(KEY_TEST_ID);
+                if (currentPatient.has(KEY_TEST_ID)) {
+                    String id = currentPatient.getString(KEY_TEST_ID);
+                    test.set_id(id);
+                }
                 //get current patient name
-                String name = currentPatient.getString(KEY_TEST_NAME);
+                if (currentPatient.has(KEY_TEST_NAME)) {
+                    String name = currentPatient.getString(KEY_TEST_NAME);
+                    test.setName(name);
+                }
                 //get current patient diagnosis
-                String date = currentPatient.getString(KEY_TEST_DATE);
+                if (currentPatient.has(KEY_TEST_DATE)) {
+                    String date = currentPatient.getString(KEY_TEST_DATE);
+                    test.setDate(date);
+                }
                 //get current patient diagnosis detail
-                String patientID = currentPatient.getString(KEY_TEST_PATIENT_ID);
+                if (currentPatient.has(KEY_TEST_PATIENT_ID)) {
+                    String patientID = currentPatient.getString(KEY_TEST_PATIENT_ID);
+                    test.setPatientId(patientID);
+
+                }
                 //get current patient room
-                String testID = currentPatient.getString(KEY_TEST_TESTID);
+                if (currentPatient.has(KEY_TEST_TESTID)) {
+                    String testID = currentPatient.getString(KEY_TEST_TESTID);
+                    test.setTestId(testID);
+                }
 
-                String result = currentPatient.getString(KEY_TEST_RESULT);
-                Test test = new Test(id,patientID,testID,name,result,date);
+                if (currentPatient.has(KEY_TEST_RESULT)) {
+                    String result = currentPatient.getString(KEY_TEST_RESULT);
+                    test.setResult(result);
+                }
 
-//                HashMap<String,String> hashMap = new HashMap<>();
-//                hashMap.put(KEY_TEST_ID,id);
-//                hashMap.put(KEY_TEST_NAME,name);
-//                hashMap.put(KEY_TEST_DATE,date);
-//                hashMap.put(KEY_TEST_PATIENT_ID,patientID);
-//                hashMap.put(KEY_TEST_TESTID,testID);
-//                hashMap.put(KEY_TEST_RESULT,result);
                 listTest.add(test);
             }
 
@@ -216,7 +230,7 @@ public class Parser {
 
         if (patientDiagnosisLoadedListener != null){
             patientDiagnosisLoadedListener.onPatientDiagnosisLoaded(listTest);
-            Log.d("Parser","Check parsed list: \n"+listTest.toString());
+//            Log.d("Parser","Check parsed list: \n"+listTest.toString());
         }
 
         else
@@ -250,7 +264,7 @@ public class Parser {
             e.printStackTrace();
         }
             patientTreatmentLoadedListener.onPatientTreatmentLoaded(listTest);
-            Log.d("Parser", "Check treat list: \n" + listTest.toString());
+//            Log.d("Parser", "Check treat list: \n" + listTest.toString());
 
     }
 }

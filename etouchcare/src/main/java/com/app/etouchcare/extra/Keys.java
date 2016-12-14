@@ -27,7 +27,7 @@ public interface Keys {
         String KEY_TEST_TESTID = "testId";
         String KEY_TEST_NAME = "name";
         String KEY_TEST_DATE = "date";
-        String KEY_TEST_RESULT = "results";
+        String KEY_TEST_RESULT = "result";
     }
 
     interface EndPointPatientDiagnosis{

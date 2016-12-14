@@ -46,7 +46,6 @@ import static com.app.etouchcare.json.Parser.parseTrialJSONResponse;
 public class PatientUtils {
     private static ArrayList<Patients> listPatients = new ArrayList<>();
 
-    private static ArrayList<HashMap<String, String>> testList = new ArrayList<>();
     VolleySingleton volleySingleton;
     RequestQueue requestQueue;
 
@@ -180,7 +179,21 @@ public class PatientUtils {
             }
         });
         requestQueue.add(request);
+    }
 
+    public void addTest(final Context context, String body){
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL_PATIENT_TEST, body, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(context.getApplicationContext(),"Succeed",Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Wenzhong", "ERR: " + error);
+            }
+        });
+        requestQueue.add(request);
     }
 
 }

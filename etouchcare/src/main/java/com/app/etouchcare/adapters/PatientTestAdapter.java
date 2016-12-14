@@ -46,7 +46,7 @@ public class PatientTestAdapter extends RecyclerView.Adapter<PatientTestAdapter.
 
     @Override
     public void onBindViewHolder(PatientTestAdapter.MyViewHolder holder, int position) {
-//        HashMap<String,String> current = data.get(position);
+
         Test current = data.get(position);
         holder.name.setText(current.getName());
         holder.result.setText(current.getResult());
@@ -73,13 +73,7 @@ public class PatientTestAdapter extends RecyclerView.Adapter<PatientTestAdapter.
             result = (TextView) itemView.findViewById(R.id.test_result);
             date = (TextView) itemView.findViewById(R.id.tests_date);
 
-            //approach one to handle item onClick within a RecyclerView
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(context,getAdapterPosition()+" get Clicked",Toast.LENGTH_SHORT).show();
-//                }
-//            });
+
 
         }
 

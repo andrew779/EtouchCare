@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,14 +45,14 @@ public class AddTest extends AppCompatActivity implements PatientLoadedListener.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_test);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detail);
         setSupportActionBar(toolbar);
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent i = getIntent();
-        theOne= (Patients) i.getSerializableExtra("Patient");
+        theOne = i.getParcelableExtra("Patient");
 
         utils = new PatientUtils();
         utils.loadTrials(this);
@@ -77,69 +78,11 @@ public class AddTest extends AppCompatActivity implements PatientLoadedListener.
                 Gson gson = new Gson();
                 json = gson.toJson(test);
 
-//                JsonObjectRequest req = null;
-//                try {
-//                    req = new JsonObjectRequest(URL, new JSONObject(json),
-//                            new Response.Listener<JSONObject>() {
-//                                @Override
-//                                public void onResponse(JSONObject response) {
-//                                    try {
-//                                        VolleyLog.v("Response:%n %s", response.toString(4));
-//
-//                                        Intent intent = new Intent(addTest, MainPatientListActivity.class);
-//                                        startActivity(intent);
-//                                    } catch (JSONException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                }
-//                            }, new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            VolleyLog.e("Error: ", error.getMessage());
-//                        }
-//                    });
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+                utils.addTest(AddTest.this,json);
 
-                // add the request object to the queue to be executed
-//                RequestQueue reqq = VolleySingleton.getInstance().getmRequestQueue();
-//                reqq.add(req);
+                finish();
             }
         });
-    }
-
-    public void addTest(Test test){
-        Gson gson = new Gson();
-        json = gson.toJson(test);
-        JsonObjectRequest req = null;
-        try {
-            req = new JsonObjectRequest(URL, new JSONObject(json),
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                VolleyLog.v("Response:%n %s", response.toString(4));
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.e("Error: ", error.getMessage());
-                }
-            });
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        // add the request object to the queue to be executed
-        RequestQueue reqq = VolleySingleton.getInstance().getmRequestQueue();
-        reqq.add(req);
-
     }
 
     @Override
@@ -153,5 +96,15 @@ public class AddTest extends AppCompatActivity implements PatientLoadedListener.
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
