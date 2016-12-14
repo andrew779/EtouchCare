@@ -29,6 +29,7 @@ import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -45,13 +46,12 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
     private FloatingActionButton fab_test_add, fab2;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String id;
+    private static final String ARG_PATIENT_ID = "ARG_PATIENT_ID";
+    private static final String ARG_THEONE = "ARG_THEONE";
+
+    private String patientID;
     private Patients theOne;
-
 
     public PatientTestsFragment() {
         // Required empty public constructor
@@ -61,16 +61,14 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment PatientTestsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PatientTestsFragment newInstance(String param1, Patients param2) {
-        PatientTestsFragment fragment = new PatientTestsFragment();
+    public static PatientTestsFragment newInstance(String id,Patients patients) {
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putParcelable(ARG_PARAM2, param2);
+        args.putString(ARG_PATIENT_ID, id);
+        args.putParcelable(ARG_THEONE,patients);
+        PatientTestsFragment fragment = new PatientTestsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -79,8 +77,8 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            id = getArguments().getString(ARG_PARAM1);
-            theOne = getArguments().getParcelable(ARG_PARAM2);
+            patientID = getArguments().getString(ARG_PATIENT_ID);
+            theOne = getArguments().getParcelable(ARG_THEONE);
         }
     }
 
@@ -104,7 +102,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         fab_test_add.setOnClickListener(this);
         //fab2.setOnClickListener(this);
 
-        patientUtils.loadPatientTest(this,id);
+        patientUtils.loadPatientTest(this,patientID);
 
         return view;
     }
@@ -132,7 +130,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         switch (v.getId()) {
             case R.id.fab_test_add:
                 Intent intent = new Intent(getActivity(), AddTest.class);
-                //intent.putExtra("id",str);
+                intent.putExtra("Patient", (Serializable) theOne);
                 //intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
                 startActivity(intent);
                 Snackbar.make(v, "Add new", Snackbar.LENGTH_SHORT).show();

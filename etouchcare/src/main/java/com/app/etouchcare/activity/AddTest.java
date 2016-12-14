@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import com.app.etouchcare.datamodel.Patients;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.app.etouchcare.R;
 import com.app.etouchcare.callbacks.PatientLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
+import com.app.etouchcare.datamodel.Test;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.network.VolleySingleton;
 import com.google.gson.Gson;
@@ -33,9 +34,10 @@ import java.util.HashMap;
 
 public class AddTest extends AppCompatActivity implements PatientLoadedListener.TrialsLoadedListener {
     private PatientUtils utils;
+    private Patients theOne;
     private ArrayList<String> data = new ArrayList<String>();
     private ArrayList<HashMap<String,String>> trialsData;
-    final String URL = "http://etouch.azurewebsites.net/patienttests";
+    final String URL = "https://mapd2016.herokuapp.com/patienttests/";
     String json="";
 
     @Override
@@ -44,6 +46,12 @@ public class AddTest extends AppCompatActivity implements PatientLoadedListener.
         setContentView(R.layout.activity_add_test);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        Intent i = getIntent();
+        theOne= (Patients) i.getSerializableExtra("Patient");
 
         utils = new PatientUtils();
         utils.loadTrials(this);
@@ -57,17 +65,18 @@ public class AddTest extends AppCompatActivity implements PatientLoadedListener.
                 Toast.makeText(AddTest.this, "Adding", Toast.LENGTH_SHORT).show();
                 EditText txtResults = (EditText) findViewById(R.id.editTextResults);
                 EditText txtData = (EditText) findViewById(R.id.editTextDate);
-                //EditText txtAge = (EditText) findViewById(R.id.editTextAge);
+                Spinner spnTrial = (Spinner) findViewById(R.id.spinnerTrials);
 
-                Patients patient = new Patients();
-                patient.setName(txtResults.getText().toString());
-                patient.setRoom(txtData.getText().toString());
-                //patient.setRoom(txtAge.getText().toString());
+                Test test = new Test();
+                test.setName(spnTrial.getSelectedItem().toString());
+                test.setPatientId(theOne.getId());
+                test.setDate(txtData.getText().toString());
+                test.setResult(txtResults.getText().toString());
 
                 //addTest(patient);
-//                Gson gson = new Gson();
-//                json = gson.toJson(patient);
-//
+                Gson gson = new Gson();
+                json = gson.toJson(test);
+
 //                JsonObjectRequest req = null;
 //                try {
 //                    req = new JsonObjectRequest(URL, new JSONObject(json),
@@ -92,17 +101,17 @@ public class AddTest extends AppCompatActivity implements PatientLoadedListener.
 //                } catch (JSONException e) {
 //                    e.printStackTrace();
 //                }
-//
-//                // add the request object to the queue to be executed
+
+                // add the request object to the queue to be executed
 //                RequestQueue reqq = VolleySingleton.getInstance().getmRequestQueue();
 //                reqq.add(req);
             }
         });
     }
 
-    public void addTest(Patients patient){
+    public void addTest(Test test){
         Gson gson = new Gson();
-        json = gson.toJson(patient);
+        json = gson.toJson(test);
         JsonObjectRequest req = null;
         try {
             req = new JsonObjectRequest(URL, new JSONObject(json),

@@ -69,8 +69,6 @@ public class AddPatient extends AppCompatActivity {
                 Gson gson = new Gson();
                 json = gson.toJson(patient);
 
-
-
                 JsonObjectRequest req = null;
                 try {
                     req = new JsonObjectRequest(URL, new JSONObject(json),

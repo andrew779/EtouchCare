@@ -6,13 +6,15 @@ package com.app.etouchcare.datamodel;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by wenzhongzheng on 2016-11-19.
  */
 
 
 
-public class Patients implements Parcelable{
+public class Patients implements Parcelable, Serializable {
 
     private String id = "";
     private String pname = "";
