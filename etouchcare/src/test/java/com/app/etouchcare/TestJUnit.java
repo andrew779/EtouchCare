@@ -21,18 +21,6 @@ import static org.junit.Assert.assertNotNull;
 public class TestJUnit implements PatientLoadedListener.PatientListLoadedListener{
 
 
-    @Test
-
-    public void testPushPatientList() {
-
-        Patients patients = new Patients("16","Whong","Flu","114","not too bad","Cough");
-
-        AddPatient addPatient = new AddPatient();
-        addPatient.addPatient(patients);
-        assertNotNull(patients);
-
-    }
-
     @Override
     public void onPatientListLoaded(ArrayList<Patients> patientList) {
         assertNotNull(patientList);

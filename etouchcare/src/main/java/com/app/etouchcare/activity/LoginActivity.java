@@ -62,6 +62,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+import static com.app.etouchcare.R.drawable.patienticon;
 import static com.app.etouchcare.R.id.fingerprint_button;
 
 
@@ -286,12 +287,12 @@ public class LoginActivity extends AppCompatActivity {
 	public boolean isEmailValid(String email) {
 		matcher = pattern.matcher(email);
 		//return matcher.matches();
-		return true;
+		return matcher.matches();
 	}
 
 	public boolean isPasswordValid(String password) {
-		//return password.length() >= patienticon;
-		return true;
+		return password.length() >= 4;
+//		return true;
 	}
 
 	private void hideKeyboard() {

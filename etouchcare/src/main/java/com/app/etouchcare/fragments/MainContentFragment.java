@@ -86,9 +86,9 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
         //floating button
         menuRed = (FloatingActionMenu) view.findViewById(R.id.menu_red);
         fab1 = (FloatingActionButton) view.findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton) view.findViewById(R.id.fab2);
+//        fab2 = (FloatingActionButton) view.findViewById(R.id.fab2);
         fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
+//        fab2.setOnClickListener(this);
 
         //recyclerview object
         recyclerView = (RecyclerView) view.findViewById(R.id.patientlist_recyclerview);
@@ -181,10 +181,10 @@ public class MainContentFragment extends Fragment implements SwipeRefreshLayout.
                 Snackbar.make(v, "Add new", Snackbar.LENGTH_SHORT).show();
                 menuRed.close(true);
                 break;
-            case R.id.fab2:
-                patientUtils.loadPatientList(this);
-                menuRed.close(true);
-                break;
+//            case R.id.fab2:
+//                patientUtils.loadPatientList(this);
+//                menuRed.close(true);
+//                break;
         }
     }
 
