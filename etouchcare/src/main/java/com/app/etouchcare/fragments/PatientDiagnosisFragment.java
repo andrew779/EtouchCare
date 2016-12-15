@@ -3,9 +3,14 @@
  */
 package com.app.etouchcare.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,12 +20,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.activity.AddSympton;
+import com.app.etouchcare.activity.AddTest;
 import com.app.etouchcare.adapters.PatientDiagnosisAdapter;
 import com.app.etouchcare.callbacks.PatientLoadedListener.PatientDiagnosisLoadedListener;
 import com.app.etouchcare.datamodel.Diagnosis;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +43,7 @@ import java.util.HashMap;
  * Use the {@link PatientDiagnosisFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientDiagnosisFragment extends Fragment implements PatientDiagnosisLoadedListener{
+public class PatientDiagnosisFragment extends Fragment implements PatientDiagnosisLoadedListener, View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -47,8 +56,12 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
     private TextView tvDiagnosis;
     private RecyclerView recyclerView;
     private PatientDiagnosisAdapter adapter;
-    private PatientUtils patientUtils;
     private OnFragmentInteractionListener mListener;
+
+    private PatientUtils patientUtils;
+    private FloatingActionMenu fab_dia;
+    private FloatingActionButton fab_dia_add;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public PatientDiagnosisFragment() {
         // Required empty public constructor
@@ -96,6 +109,11 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
 
+        fab_dia = (FloatingActionMenu) v.findViewById(R.id.fab_test); //fab_dia_add
+        fab_dia_add = (FloatingActionButton) v.findViewById(R.id.fab_dia_add);
+        //fab2 = (FloatingActionButton) v.findViewById(R.id.fab_treat_refresh);
+        fab_dia_add.setOnClickListener(this);
+
         patientUtils.loadPatientDiagnosis(this,id);
 
         return v;
@@ -117,6 +135,11 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
     public void onPatientDiagnosisLoaded(ArrayList<Diagnosis> diagnosisList) {
         adapter.setDiagnosisList(diagnosisList);
         adapter.notifyItemRangeChanged(0,diagnosisList.size());
@@ -135,5 +158,43 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+//    @Override
+//    public void setOnClickListener(final View.OnClickListener l) {
+//        super.setOnClickListener(l);
+//        mClickListener = l;
+//        View label = (View) getTag(com.github.clans.fab.R.id.fab_label);
+//        if (label != null) {
+//            label.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (mClickListener != null) {
+//                        mClickListener.onClick(FloatingActionButton.this);
+//                    }
+//                }
+//            });
+//        }
+//    }
+
+    //floating button click listener
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab_dia_add:
+                Intent intent = new Intent(getActivity(), AddSympton.class);
+                intent.putExtra("Patient", (Parcelable) theOne);
+                //intent.putExtra("Patient", (Serializable) theOne);
+                //intent.putParcelableArrayListExtra(PATIENT_LIST,patientList);
+                startActivity(intent);
+                Snackbar.make(v, "Add new", Snackbar.LENGTH_SHORT).show();
+                //fab_dia.close(true);
+                break;
+//            case R.id.fab2:
+//                patientUtils.loadPatientList(this);
+//                menuRed.close(true);
+//                break;
+        }
     }
 }

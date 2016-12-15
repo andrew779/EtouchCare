@@ -103,7 +103,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         recyclerView.setAdapter(patientTestAdapter);
 
-        menuRed = (FloatingActionMenu) view.findViewById(R.id.fab_test);
+        menuRed = (FloatingActionMenu) view.findViewById(R.id.fab_test); //fab_dia_add
         fab_test_add = (FloatingActionButton) view.findViewById(R.id.fab_test_add);
         //fab2 = (FloatingActionButton) v.findViewById(R.id.fab_treat_refresh);
         fab_test_add.setOnClickListener(this);
