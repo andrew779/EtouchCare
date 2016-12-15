@@ -88,5 +88,6 @@
     <string name="treat_title">Treatment Plan</string>
     <string name="set_date">Set Date</string>
     <string name="title_activity_add_test">AddTest</string>
+    <string name="title_activity_add_sympton">AddSympton</string>
 
 </resources>

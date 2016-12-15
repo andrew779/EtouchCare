@@ -7,6 +7,7 @@ package com.app.etouchcare.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.etouchcare.R;
+import com.app.etouchcare.activity.AddTest;
 import com.app.etouchcare.activity.AddTreatmentActivity;
 import com.app.etouchcare.adapters.PatientTreatmentAdapter;
 import com.app.etouchcare.callbacks.PatientLoadedListener;
@@ -132,7 +134,8 @@ public class PatientTreatmentFragment extends Fragment implements PatientLoadedL
         switch (v.getId()){
             case R.id.fab_treat_add:
                 Intent intent = new Intent(getActivity(), AddTreatmentActivity.class);
-                intent.putExtra("id",id);
+                intent.putExtra("Patient", (Parcelable) theOne);
+
                 startActivity(intent);
                 break;
             case R.id.fab_treat_refresh:
