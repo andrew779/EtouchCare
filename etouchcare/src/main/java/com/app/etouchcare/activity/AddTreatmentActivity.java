@@ -21,6 +21,7 @@ import com.app.etouchcare.R;
 import com.app.etouchcare.callbacks.PatientLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.datamodel.Test;
+import com.app.etouchcare.datamodel.Treatments;
 import com.app.etouchcare.extra.PatientUtils;
 import com.google.gson.Gson;
 
@@ -71,14 +72,12 @@ public class AddTreatmentActivity extends AppCompatActivity  {
                 Toast.makeText(AddTreatmentActivity.this, "Adding", Toast.LENGTH_SHORT).show();
                 EditText txtResults = (EditText) findViewById(R.id.editTextResults);
                 EditText txtName = (EditText) findViewById(R.id.editTextName);
-
                 TextView txtData = (TextView) findViewById(R.id.textViewDate);
 
-                Test test = new Test();
-                test.setName(txtName.getText().toString());
+                Treatments test = new Treatments();
+                test.setDescription(txtName.getText().toString());
                 test.setPatientId(theOne.getId());
                 test.setDate(txtData.getText().toString());
-                test.setResult(txtResults.getText().toString());
 
                 //addTest(patient);
                 Gson gson = new Gson();
