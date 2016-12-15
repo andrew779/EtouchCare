@@ -5,6 +5,7 @@
         <string name="submit"> Soumettre </string>
         <string name="addnew"> Ajouter un nouveau </string>
         <string name="refresh"> Actualiser tout </string>
+
         <string name="basic_patient_title"> Patient </string>
         <string name="instructions"> Faites glisser vers le bas pour actualiser - Maintenez la touche enfoncée pour plus d options </string>
 
@@ -18,6 +19,7 @@
         <string name="error_field_required"> Ce champ est obligatoire </string>
         <string name="permission_rationale"> Des autorisations de contacts sont nécessaires pour fournir des courriels
             Complétions</string>
+        <string name="edit">Edit</string>
         <string name="title_activity_main_patient_list">Patients</string>
         <string name="cancel"> Annuler </string>
         <string name="use_password"> Utiliser le mot de passe </string>
@@ -33,10 +35,6 @@
             Vous pouvez continuer avec ce bouton \ n même si une nouvelle empreinte digitale est inscrite </string>
         <string name="fingerprint_not_recognized"> L empreinte digitale nest pas reconnue. Réessayez </string>
         <string name="fingerprint_success"> Fingerprint reconnue </string>
-        <string name="item_title"> Moule Blanc Pluton </string>
-        <string name="item_price"> $ 62.68 </string>
-        <string name="item_description"> Sac à dos en maille blanche. Garniture textile noire partout. </string>
-
 
         <string name="fingerprint_done"> Authentification dempreinte digitale réussie </string>
         <string name="new_fingerprint_enrolled_description"> Une nouvelle empreinte digitale a été ajoutée à cet appareil. Votre mot de passe est donc requis. </string>
@@ -61,8 +59,9 @@
         <string name="basic_title_em"> Contact d urgence </string>
         <string name="basic_name"> Nom: </string>
         <string name="basic_relation_em"> Relation: </string>
-        <string name="basic_condition"> Condition: </string>
-        <string name="basic_diagnosis">P.Diagnosis: </string>
+        <string name="basic_condition"> Condition </string>
+        <string name="basic_date">Fecha: </string>
+        <string name="basic_result">Result: </string>
 
       
         <string name="diag_title_sym"> Symptômes </string>
@@ -81,5 +80,6 @@
 
       
         <string name="treat_title"> Plan de traitement </string>
+         <string name="title_activity_add_test">AddTest</string>
 
 </resources>

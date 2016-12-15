@@ -73,7 +73,7 @@ public class PatientUtils {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong", "ERR: " + error);
+                Log.d("Network", "ERR: " + error);
             }
         });
         requestQueue.add(request);
@@ -92,7 +92,7 @@ public class PatientUtils {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong", "ERR: " + error);
+                Log.d("Network", "ERR: " + error);
             }
         });
         requestQueue.add(request);
@@ -127,7 +127,7 @@ public class PatientUtils {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong", "ERR: " + error);
+                Log.d("Network", "ERR: " + error);
             }
         });
         requestQueue.add(request);
@@ -142,7 +142,7 @@ public class PatientUtils {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong", "ERR: " + error);
+                Log.d("Network", "ERR: " + error);
             }
         });
         requestQueue.add(request);
@@ -159,7 +159,7 @@ public class PatientUtils {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong", "ERR: " + error);
+                Log.d("Network", "ERR: " + error);
             }
         });
 
@@ -175,7 +175,7 @@ public class PatientUtils {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong", "ERR: " + error);
+                Log.d("Network", "ERR: " + error);
             }
         });
         requestQueue.add(request);
@@ -190,7 +190,7 @@ public class PatientUtils {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Wenzhong", "ERR: " + error);
+                Log.d("Network", "ERR: " + error);
             }
         });
         requestQueue.add(request);
