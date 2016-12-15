@@ -5,12 +5,14 @@ package com.app.etouchcare.fragments;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,15 +20,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.app.etouchcare.R;
 import com.app.etouchcare.activity.AddPatient;
 import com.app.etouchcare.activity.AddTest;
 import com.app.etouchcare.adapters.PatientTestAdapter;
+import com.app.etouchcare.callbacks.PatientLoadedListener;
 import com.app.etouchcare.callbacks.PatientLoadedListener.PatientTestLoadedListener;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.datamodel.Test;
 import com.app.etouchcare.extra.PatientUtils;
+import com.app.etouchcare.extra.RecyclerTouchListener;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -35,18 +40,23 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_LIST_ALL_PATIENTS;
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_PATIENT_TEST;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link PatientTestsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
+public class PatientTestsFragment extends Fragment implements PatientTestLoadedListener, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, PatientLoadedListener.RecordDeletedListener {
     private RecyclerView recyclerView;
     private PatientTestAdapter patientTestAdapter;
     private PatientUtils patientUtils;
     private FloatingActionMenu menuRed;
     private FloatingActionButton fab_test_add, fab2;
     private SwipeRefreshLayout swipeRefreshLayout;
+
+    private View view;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -55,6 +65,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
 
     private String patientID;
     private Patients theOne;
+    private ArrayList<Test> patientList = new ArrayList<>();
 
     public PatientTestsFragment() {
         // Required empty public constructor
@@ -91,7 +102,7 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
 
         patientUtils = new PatientUtils();
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_patient_tests, container, false);
+        view = inflater.inflate(R.layout.fragment_patient_tests, container, false);
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.test_refreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -103,7 +114,46 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
         recyclerView.setAdapter(patientTestAdapter);
 
-        menuRed = (FloatingActionMenu) view.findViewById(R.id.fab_test); //fab_dia_add
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+
+            }
+
+            @Override
+            public void onLongClick(View view, final int position) {
+                TextView textView = (TextView) view.findViewById(R.id.test_id);
+                final String finalStr = textView.getText().toString();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                // Add the buttons
+                builder.setTitle("DELETE");
+                builder.setMessage("Do you want to delete the record");
+
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        patientUtils.deletePatientList(PatientTestsFragment.this,URL_PATIENT_TEST + finalStr,position);
+                        Log.d("wenzhong",URL_PATIENT_TEST+finalStr);
+
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+                // Set other dialog properties
+
+
+                // Create the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.setCancelable(true);
+                dialog.show();
+            }
+        }));
+
+
+        menuRed = (FloatingActionMenu) view.findViewById(R.id.fab_test);
         fab_test_add = (FloatingActionButton) view.findViewById(R.id.fab_test_add);
         //fab2 = (FloatingActionButton) v.findViewById(R.id.fab_treat_refresh);
         fab_test_add.setOnClickListener(this);
@@ -119,7 +169,8 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
         }
-        patientTestAdapter.setTestList(testList);
+        patientList = testList;
+        patientTestAdapter.setTestList(patientList);
         patientTestAdapter.notifyItemRangeChanged(0,testList.size());
     }
 
@@ -157,5 +208,13 @@ public class PatientTestsFragment extends Fragment implements PatientTestLoadedL
     @Override
     public void onRefresh() {
         patientUtils.loadPatientTest(this,patientID);
+    }
+
+    @Override
+    public void onRecordDeleted(int position) {
+        patientList.remove(position);
+        patientTestAdapter.notifyItemRemoved(position);
+
+        Snackbar.make(view,"Deleted",Snackbar.LENGTH_SHORT).show();
     }
 }

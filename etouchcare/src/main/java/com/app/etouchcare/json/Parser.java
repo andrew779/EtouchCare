@@ -208,17 +208,29 @@ public class Parser {
             JSONArray arrayTests = response.getJSONArray(KEY_DIAG_ROOT);
             for (int i=0;i<arrayTests.length();i++){
                 JSONObject currentPatient = arrayTests.getJSONObject(i);
+                Diagnosis diagnosis = new Diagnosis();
                 //get current patient id
-                String id = currentPatient.getString(KEY_DIAG_ID);
+                if (currentPatient.has(KEY_DIAG_ID)) {
+                    String id = currentPatient.getString(KEY_DIAG_ID);
+                    diagnosis.set_id(id);
+                }
                 //get current patient name
-                String description = currentPatient.getString(KEY_DIAG_DESCRPTION);
+                if (currentPatient.has(KEY_DIAG_DESCRPTION)) {
+                    String description = currentPatient.getString(KEY_DIAG_DESCRPTION);
+                    diagnosis.setDescription(description);
+                }
                 //get current patient diagnosis
-                String date = currentPatient.getString(KEY_DIAG_DATE);
+                if (currentPatient.has(KEY_DIAG_DATE)) {
+                    String date = currentPatient.getString(KEY_DIAG_DATE);
+                    diagnosis.setDate(date);
+                }
                 //get current patient diagnosis detail
-                String patientID = currentPatient.getString(KEY_DIAG_PATIENT_ID);
+                if (currentPatient.has(KEY_DIAG_PATIENT_ID)) {
+                    String patientID = currentPatient.getString(KEY_DIAG_PATIENT_ID);
+                    diagnosis.setPatientId(patientID);
+                }
 
 
-                Diagnosis diagnosis = new Diagnosis(id,patientID,description,date);
 
 
                 listTest.add(diagnosis);
@@ -247,15 +259,27 @@ public class Parser {
             JSONArray arrayTests = response.getJSONArray(KEY_TREAT_ROOT);
             for (int i = 0; i < arrayTests.length(); i++) {
                 JSONObject currentPatient = arrayTests.getJSONObject(i);
+                Treatments treatments = new Treatments();
                 //get current patient id
-                String id = currentPatient.getString(KEY_TREAT_ID);
+                if (currentPatient.has(KEY_TREAT_ID)) {
+                    String id = currentPatient.getString(KEY_TREAT_ID);
+                    treatments.set_id(id);
+                }
                 //get current patient name
-                String description = currentPatient.getString(KEY_TREAT_DESCRPTION);
+                if (currentPatient.has(KEY_TREAT_DESCRPTION)) {
+                    String description = currentPatient.getString(KEY_TREAT_DESCRPTION);
+                    treatments.setDescription(description);
+                }
                 //get current patient TREATnosis
-                String date = currentPatient.getString(KEY_TREAT_DATE);
+                if (currentPatient.has(KEY_TREAT_DATE)) {
+                    String date = currentPatient.getString(KEY_TREAT_DATE);
+                    treatments.setDate(date);
+                }
                 //get current patient TREATnosis detail
-                String patientID = currentPatient.getString(KEY_TREAT_PATIENT_ID);
-                Treatments treatments = new Treatments(id,description,date,patientID);
+                if (currentPatient.has(KEY_TREAT_PATIENT_ID)) {
+                    String patientID = currentPatient.getString(KEY_TREAT_PATIENT_ID);
+                    treatments.setPatientId(patientID);
+                }
                 listTest.add(treatments);
 
             }
