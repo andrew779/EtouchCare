@@ -68,6 +68,7 @@
     <string name="basic_condition">Condition</string>
     <string name="basic_date">Date: </string>
     <string name="basic_result">Result: </string>
+    <string name="basic_diagnosis">P.Diagnosis:</string>
 
     <!-- Patient Diagnosis Section -->
     <string name="diag_title_sym">Symptoms</string>

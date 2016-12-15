@@ -55,6 +55,7 @@ public class AddPatient extends AppCompatActivity {
                 EditText txtAddress = (EditText) findViewById(R.id.editTextAddress);
                 EditText txtEmgrName = (EditText) findViewById(R.id.editTextEmergencyName);
                 EditText txtEmgrPhone = (EditText) findViewById(R.id.editTextEmergencyPhone);
+                EditText txtDiagnosis = (EditText) findViewById(R.id.editTextDiagnosis);
 
                 Patients patient = new Patients();
                 patient.setName(txtName.getText().toString());
@@ -65,6 +66,7 @@ public class AddPatient extends AppCompatActivity {
                 patient.setPhone(txtPhone.getText().toString());
                 patient.setEmergencyName(txtEmgrName.getText().toString());
                 patient.setEmergencyPhone(txtEmgrPhone.getText().toString());
+                patient.setDiagnosis(txtDiagnosis.getText().toString());
 
                 Gson gson = new Gson();
                 json = gson.toJson(patient);

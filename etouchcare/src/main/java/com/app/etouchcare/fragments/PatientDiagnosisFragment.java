@@ -3,9 +3,12 @@
  */
 package com.app.etouchcare.fragments;
 
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,14 +19,19 @@ import android.widget.TextView;
 
 import com.app.etouchcare.R;
 import com.app.etouchcare.adapters.PatientDiagnosisAdapter;
+import com.app.etouchcare.callbacks.PatientLoadedListener;
 import com.app.etouchcare.callbacks.PatientLoadedListener.PatientDiagnosisLoadedListener;
 import com.app.etouchcare.datamodel.Diagnosis;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.extra.PatientUtils;
+import com.app.etouchcare.extra.RecyclerTouchListener;
 import com.app.etouchcare.extra.SimpleDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_PATIENT_DIAG;
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_PATIENT_TEST;
 
 
 /**
@@ -34,7 +42,7 @@ import java.util.HashMap;
  * Use the {@link PatientDiagnosisFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PatientDiagnosisFragment extends Fragment implements PatientDiagnosisLoadedListener{
+public class PatientDiagnosisFragment extends Fragment implements PatientDiagnosisLoadedListener, SwipeRefreshLayout.OnRefreshListener, PatientLoadedListener.RecordDeletedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,9 +51,14 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
     // TODO: Rename and change types of parameters
     private String id;
     private Patients theOne;
+    private ArrayList<Diagnosis> diagnosisList = new ArrayList<>();
 
     private TextView tvDiagnosis;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+
+
     private PatientDiagnosisAdapter adapter;
     private PatientUtils patientUtils;
     private OnFragmentInteractionListener mListener;
@@ -96,6 +109,44 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity()));
 
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onLongClick(View view, final int position) {
+                TextView textView = (TextView) view.findViewById(R.id.diagnosis_id);
+                final String finalStr = textView.getText().toString();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                // Add the buttons
+                builder.setTitle("DELETE");
+                builder.setMessage("Do you want to delete the record");
+
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        patientUtils.deletePatientList(PatientDiagnosisFragment.this,URL_PATIENT_DIAG + finalStr,position);
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+                // Set other dialog properties
+
+
+                // Create the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.setCancelable(true);
+                dialog.show();
+            }
+        }));
+
+        swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.diagnosis_refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         patientUtils.loadPatientDiagnosis(this,id);
 
         return v;
@@ -118,8 +169,24 @@ public class PatientDiagnosisFragment extends Fragment implements PatientDiagnos
 
     @Override
     public void onPatientDiagnosisLoaded(ArrayList<Diagnosis> diagnosisList) {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
+        this.diagnosisList = diagnosisList;
         adapter.setDiagnosisList(diagnosisList);
         adapter.notifyItemRangeChanged(0,diagnosisList.size());
+    }
+
+    @Override
+    public void onRefresh() {
+        patientUtils.loadPatientDiagnosis(this,id);
+    }
+
+    @Override
+    public void onRecordDeleted(int position) {
+        diagnosisList.remove(position);
+        adapter.notifyItemRemoved(position);
+
     }
 
     /**
