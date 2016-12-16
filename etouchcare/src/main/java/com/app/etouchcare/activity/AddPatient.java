@@ -33,7 +33,7 @@ import org.json.JSONObject;
 public class AddPatient extends AppCompatActivity {
     final String URL = "https://mapd2016.herokuapp.com/";
     String json="";
-    String[] gender = {"male","female"};
+    String[] gender = {"male","female", "n/a"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,14 +64,11 @@ public class AddPatient extends AppCompatActivity {
                 EditText txtEmgrPhone = (EditText) findViewById(R.id.editTextEmergencyPhone);
                 EditText txtDiagnosis = (EditText) findViewById(R.id.editTextDiagnosis);
 
-
-
-
                 Patients patient = new Patients();
 
                 patient.setName(txtName.getText().toString());
                 patient.setRoom(txtRoom.getText().toString());
-                patient.setRoom(txtAge.getText().toString());
+                patient.setAge(txtAge.getText().toString());
                 patient.setAddress(txtAddress.getText().toString());
                 patient.setEmail(txtEmail.getText().toString());
                 patient.setPhone(txtPhone.getText().toString());
@@ -80,6 +77,25 @@ public class AddPatient extends AppCompatActivity {
                 patient.setDiagnosis(txtDiagnosis.getText().toString());
 
                 patient.setGender(spinner.getSelectedItem().toString());
+
+                if (patient.getName().isEmpty())
+                {
+                    Toast.makeText(AddPatient.this, "Please enter Name", Toast.LENGTH_SHORT).show();
+                    txtName.requestFocus();
+                    return;
+                }
+                if (patient.getEmail().isEmpty() || !isValidEmail(patient.getEmail()))
+                {
+                    Toast.makeText(AddPatient.this, "Please enter valid E-Mail", Toast.LENGTH_SHORT).show();
+                    txtEmail.requestFocus();
+                    return;
+                }
+                if (patient.getRoom().isEmpty())
+                {
+                    Toast.makeText(AddPatient.this, "Please enter Room", Toast.LENGTH_SHORT).show();
+                    txtRoom.requestFocus();
+                    return;
+                }
 
                 Gson gson = new Gson();
                 json = gson.toJson(patient);
@@ -114,6 +130,14 @@ public class AddPatient extends AppCompatActivity {
                 reqq.add(req);
             }
         });
+    }
+
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
     }
 
     public void addPatient(Patients patient){
