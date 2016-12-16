@@ -50,7 +50,7 @@
         <string name="navigation_drawer_close"> Fermer le tiroir de navigation </string>
 
         <string name="basic_id"> ID: </string>
-        <string name="basic_age"> Age: </string>
+        <string name="basic_age"> Âge: </string>
         <string name="basic_room"> Salle: </string>
         <string name="basic_contacttitle"> Coordonnées </string>
         <string name="basic_email"> Email: </string>
@@ -62,8 +62,12 @@
         <string name="basic_condition"> Condition </string>
         <string name="basic_date">Fecha: </string>
         <string name="basic_result">Result: </string>
+<<<<<<< HEAD
+        <string name="basic_diagnosis">P.Diagnostic: </string>
+=======
         <string name="basic_diagnosis">P.Diagnosis: </string>
         <string name="basic_gender">Gender: </string>
+>>>>>>> b2b54a00f6684fe25b8aabfac7e3e6b2bba264ad
 
       
         <string name="diag_title_sym"> Symptômes </string>
@@ -83,5 +87,10 @@
       
         <string name="treat_title"> Plan de traitement </string>
          <string name="title_activity_add_test">AddTest</string>
+
+        <string name="current_password">Mot de passe actuel</string>
+        <string name="new_password">nouveau mot de passe</string>
+        <string name="confirm_password">Confirmez le mot de passe</string>
+        <string name="anyway">Se Connecter</string>
 
 </resources>
