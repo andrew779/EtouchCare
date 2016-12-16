@@ -10,6 +10,11 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_menu_manage"
             android:title="My Profile" />
+        <item
+            android:id="@+id/nav_aboutme"
+            android:icon="@drawable/ic_menu_send"
+            android:title="About Us"
+            />
     </group>
 
 
