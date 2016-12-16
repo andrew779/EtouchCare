@@ -11,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -31,6 +33,7 @@ import org.json.JSONObject;
 public class AddPatient extends AppCompatActivity {
     final String URL = "https://mapd2016.herokuapp.com/";
     String json="";
+    String[] gender = {"male","female"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,10 @@ public class AddPatient extends AppCompatActivity {
 
         final AddPatient addPatient = this;
         Button btnAdd = (Button) this.findViewById(R.id.btnAdd);
+
+        final Spinner spinner = (Spinner) findViewById(R.id.basic_gender_spinnder);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,gender);
+        spinner.setAdapter(arrayAdapter);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +64,11 @@ public class AddPatient extends AppCompatActivity {
                 EditText txtEmgrPhone = (EditText) findViewById(R.id.editTextEmergencyPhone);
                 EditText txtDiagnosis = (EditText) findViewById(R.id.editTextDiagnosis);
 
+
+
+
                 Patients patient = new Patients();
+
                 patient.setName(txtName.getText().toString());
                 patient.setRoom(txtRoom.getText().toString());
                 patient.setRoom(txtAge.getText().toString());
@@ -67,6 +78,8 @@ public class AddPatient extends AppCompatActivity {
                 patient.setEmergencyName(txtEmgrName.getText().toString());
                 patient.setEmergencyPhone(txtEmgrPhone.getText().toString());
                 patient.setDiagnosis(txtDiagnosis.getText().toString());
+
+                patient.setGender(spinner.getSelectedItem().toString());
 
                 Gson gson = new Gson();
                 json = gson.toJson(patient);

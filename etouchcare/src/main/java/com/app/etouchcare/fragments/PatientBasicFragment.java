@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.etouchcare.R;
@@ -72,6 +73,16 @@ public class PatientBasicFragment extends Fragment {
 
         tvEmPhone = (TextView) view.findViewById(R.id.basic_phone_em);
         tvEmPhone.setText(theOne.getEmergencyPhone());
+
+        ImageView imageView = (ImageView) view.findViewById(R.id.basic_img);
+        String gender = theOne.getGender();
+        if (gender.equalsIgnoreCase("male")){
+            imageView.setImageResource(R.drawable.male);
+        }else if (gender.equalsIgnoreCase("female")){
+            imageView.setImageResource(R.drawable.female);
+        }else{
+            imageView.setImageResource(R.drawable.na);
+        }
 
         return view;
     }

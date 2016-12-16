@@ -29,6 +29,16 @@ public class Patients implements Parcelable, Serializable {
     private String emergencyName = "";
     private String emergencyPhone = "";
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    private String gender = "";
+
 
 
         public Patients(){
@@ -177,6 +187,7 @@ public class Patients implements Parcelable, Serializable {
         dest.writeString(this.age);
         dest.writeString(this.emergencyName);
         dest.writeString(this.emergencyPhone);
+        dest.writeString(this.gender);
     }
 
     protected Patients(Parcel in) {
@@ -192,6 +203,7 @@ public class Patients implements Parcelable, Serializable {
         this.age = in.readString();
         this.emergencyName = in.readString();
         this.emergencyPhone = in.readString();
+        this.gender = in.readString();
     }
 
     public static final Creator<Patients> CREATOR = new Creator<Patients>() {

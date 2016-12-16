@@ -63,6 +63,7 @@
         <string name="basic_date">Fecha: </string>
         <string name="basic_result">Result: </string>
         <string name="basic_diagnosis">P.Diagnosis: </string>
+        <string name="basic_gender">Gender: </string>
 
       
         <string name="diag_title_sym"> Symptômes </string>

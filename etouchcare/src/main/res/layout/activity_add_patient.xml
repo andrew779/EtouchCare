@@ -13,14 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-        <!--<ImageView-->
-            <!--android:id="@+id/basic_img"-->
-            <!--android:layout_width="72dp"-->
-            <!--android:layout_height="72dp"-->
-            <!--android:layout_alignParentStart="true"-->
-            <!--android:layout_alignParentTop="true"-->
-            <!--app:srcCompat="@drawable/patienticon" />-->
-
     <ScrollView android:layout_height="wrap_content" android:layout_width="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,6 +94,23 @@
                     android:ems="10"
                     android:id="@+id/editTextAge"
                     android:layout_weight="1" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/basic_gender"
+                    android:textSize="@dimen/basic_textsize" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/basic_gender_spinnder"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

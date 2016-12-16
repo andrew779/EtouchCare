@@ -25,6 +25,7 @@ import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_DIAGNOSIS_DE
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_EMAIL;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_EM_NAME;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_EM_PHONE;
+import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_GENDER;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_ID;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_NAME;
 import static com.app.etouchcare.extra.Keys.EndPointPatientList.KEY_PATIENTS;
@@ -97,6 +98,9 @@ public class Parser {
                 }
                 if (currentPatient.has(KEY_AGE)){
                     patients.setAge(currentPatient.getString(KEY_AGE));
+                }
+                if (currentPatient.has(KEY_GENDER)){
+                    patients.setGender(currentPatient.getString(KEY_GENDER));
                 }
 
                 listPatients.add(patients);
