@@ -19,6 +19,7 @@ public interface Keys {
         String KEY_NAME = "pname";
         String KEY_ROOM = "room";
         String KEY_AGE = "age";
+        String KEY_GENDER = "gender";
     }
     interface EndPointPatientTest{
         String KEY_TEST_ROOT = "tests";

@@ -3,6 +3,7 @@
  */
 package com.app.etouchcare.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -11,8 +12,10 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -20,9 +23,13 @@ import android.widget.Toast;
 import com.app.etouchcare.datamodel.Patients;
 import com.app.etouchcare.fragments.MainContentFragment;
 import com.app.etouchcare.R;
+import com.app.etouchcare.fragments.PatientTestsFragment;
 import com.app.etouchcare.fragments.UserProfileFragment;
 
 import java.util.ArrayList;
+
+import static com.app.etouchcare.extra.mUrls.getAllPatients.URL_PATIENT_TEST;
+
 public class MainPatientListActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainContentFragment.OnFetchIDListener {
 
@@ -82,7 +89,7 @@ public class MainPatientListActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+//    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -100,6 +107,9 @@ public class MainPatientListActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
             NavUtils.navigateUpFromSameTask(this);
+        } else if (id == R.id.nav_aboutme){
+
+            aboutMeAlert();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -113,6 +123,30 @@ public class MainPatientListActivity extends AppCompatActivity
     @Override
     public void onFetchID(String id) {
         patientID = id;
-//        Toast.makeText(this,"Parent get id: "+id,Toast.LENGTH_SHORT).show();
     }
+
+    private void aboutMeAlert(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Add the buttons
+        builder.setTitle("About Us");
+        builder.setMessage("Team One\n" +
+                            "Team Members:\n" +
+                "Guilherme Morais\n" +
+                "Jose Apablaza\n" +
+                "Wenzhong Zheng");
+
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        // Set other dialog properties
+
+        // Create the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.setCancelable(true);
+        dialog.show();
+    }
+
 }

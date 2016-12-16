@@ -62,7 +62,12 @@
         <string name="basic_condition"> Condition </string>
         <string name="basic_date">Fecha: </string>
         <string name="basic_result">Result: </string>
+<<<<<<< HEAD
         <string name="basic_diagnosis">P.Diagnostic: </string>
+=======
+        <string name="basic_diagnosis">P.Diagnosis: </string>
+        <string name="basic_gender">Gender: </string>
+>>>>>>> b2b54a00f6684fe25b8aabfac7e3e6b2bba264ad
 
       
         <string name="diag_title_sym"> Symptômes </string>

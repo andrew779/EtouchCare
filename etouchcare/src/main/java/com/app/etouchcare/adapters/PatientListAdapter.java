@@ -56,7 +56,14 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
         Patients current = data.get(position);
         holder.pName.setText(String.format("Name: %s", current.getName()));
         holder.diagnosis.setText(String.format("Diagnosis: %s", current.getDiagnosis()));
-        holder.imageView.setImageResource(R.drawable.patienticon) ;
+        if ( current.getGender().equalsIgnoreCase("male")){
+            holder.imageView.setImageResource(R.drawable.male);
+        }else if (current.getGender().equalsIgnoreCase("female")){
+            holder.imageView.setImageResource(R.drawable.female);
+        }else{
+            holder.imageView.setImageResource(R.drawable.na);
+        }
+
         holder.id.setText(String.format("ID: %s", current.getId()));
         holder.room.setText(String.format("Room: %s", current.getRoom()));
 
