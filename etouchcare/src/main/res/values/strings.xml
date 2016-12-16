@@ -21,6 +21,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="anyway">Sign in Anyway</string>
 
     <string name="title_activity_main_patient_list">Patients</string>
 
@@ -90,5 +91,10 @@
     <string name="set_date">Set Date</string>
     <string name="title_activity_add_test">AddTest</string>
     <string name="title_activity_add_sympton">AddSympton</string>
+
+    <!-- Strings related to profile -->
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
 
 </resources>

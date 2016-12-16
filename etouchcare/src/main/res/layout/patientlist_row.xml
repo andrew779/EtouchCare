@@ -25,24 +25,27 @@
             android:id="@+id/patientlist_row_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="ID: 1231231141"/>
+            android:text="ID: 1231231141"
+            android:textSize="@dimen/button_textsize"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/patientlist_row_id"
             android:id="@+id/patientlist_row_name"
-            android:text="Name: Great Mark"/>
+            android:text="Name: Great Mark"
+            android:textSize="@dimen/button_textsize"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:id="@+id/patientlist_row_room"
-            android:text="Room: 152"/>
+            android:text="Room: 152"
+            android:textSize="@dimen/button_textsize"/>
         <TextView
             android:id="@+id/patientlist_row_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/button_textsize"
             android:text="Diagnosis: 123456789_123456789123456789_123456789_"
             android:layout_below="@+id/patientlist_row_name"/>
 
