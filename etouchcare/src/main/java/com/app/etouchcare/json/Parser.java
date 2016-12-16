@@ -96,7 +96,7 @@ public class Parser {
                     patients.setPhone(currentPatient.getString(KEY_PHONE));
                 }
                 if (currentPatient.has(KEY_AGE)){
-                    patients.setPhone(currentPatient.getString(KEY_AGE));
+                    patients.setAge(currentPatient.getString(KEY_AGE));
                 }
 
                 listPatients.add(patients);

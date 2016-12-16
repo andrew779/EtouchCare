@@ -276,36 +276,7 @@
     </LinearLayout>
 </RelativeLayout>
     </ScrollView>
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        app:menu_labels_ellipsize="end"
-        app:menu_labels_singleLine="true"
-        app:menu_backgroundColor="#ccffffff">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_detail_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit"
-            app:fab_size="mini"
-            app:fab_label="@string/edit" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_detail_refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_refresh"
-            app:fab_size="mini"
-            app:fab_label="@string/refresh"/>
-
-    </com.github.clans.fab.FloatingActionMenu>
 
 
 </RelativeLayout>

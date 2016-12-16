@@ -24,7 +24,7 @@ public class PatientBasicFragment extends Fragment {
     private static final String ARG_THEONE = "ARG_THEONE";
     private String patientID;
     private Patients theOne;
-    private TextView tvID,tvName,tvRoom,tvAge,tvEmail,tvPhone,tvAddress,tvEmName,tvEmRelation,tvEmPhone;
+    private TextView tvID,tvName,tvRoom,tvAge,tvEmail,tvPhone,tvAddress,tvEmName,tvEmPhone;
 
     public static PatientBasicFragment newInstance(String id,Patients patients) {
         Bundle args = new Bundle();

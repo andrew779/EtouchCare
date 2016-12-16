@@ -45,7 +45,7 @@
         <activity
             android:name=".activity.AddSympton"
             android:label="@string/title_activity_add_sympton"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
