@@ -107,7 +107,11 @@ public class Patients implements Parcelable, Serializable {
 
     @Override
     public String toString() {
-        return "id: " + id + ", name: " + pname + ", diagnosis: " + diagnosis + ", room: " + room
+        return "\nid: " + id
+                +",\n name: " + pname
+                +", gender: "+ gender
+                +", diagnosis: " + diagnosis
+                + ", room: " + room
                 +", age: "+age
                 +", email: "+email
                 +", phone: "+phone

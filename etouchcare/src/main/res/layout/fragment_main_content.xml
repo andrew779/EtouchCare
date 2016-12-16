@@ -7,7 +7,26 @@
     tools:context="com.app.etouchcare.fragments.MainContentFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/patientlist_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="14sp"
+        android:hint="Search here"
+        android:layout_marginTop="20dp" />
+    <View
+        android:id="@+id/border"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/patientlist_search"
+        android:layout_marginTop="14dp"
+        android:background="#d3d3d3"/>
+
     <TextView
+        android:layout_below="@+id/border"
         android:id="@+id/patientlist_instruction"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
