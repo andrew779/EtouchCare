@@ -1,4 +1,4 @@
 # EtouchCare
-TeamOne
+Android App using Firebase
 
-Members Guilherme Morais -300878610 Wenzhong Zheng -300909195 Jose Apablaza -300823547
+Guilherme Morais -300878610 Wenzhong Zheng -300909195 Jose Apablaza -300823547
